@@ -1,10 +1,10 @@
-// Essai de bout en bout des dix scènes du socle : lecture complète au tempo automatique, tous les moments, toutes les vues,
+// Essai de bout en bout des onze scènes du socle : lecture complète au tempo automatique, tous les moments, toutes les vues,
 // le clavier, le retour au menu. Aucune erreur de console, aucun nombre non fini.   node tests/smoke.mjs [scène…]   (LANG_ID=ja pour une autre langue)
 import puppeteer from 'puppeteer-core';
 import path from 'path';
 const b = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome', headless: 'new', protocolTimeout: 900000, args: ['--no-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--window-size=640,360'] });
 const url = 'file://' + path.resolve(process.env.FILE || 'dist/index.html');
-const evs = process.argv.length > 2 ? process.argv.slice(2) : ['kilonova', 'cygnus', 'tde', 'fall', 'chelyabinsk', 'sl9', 'phobos', 'sun', 'andromeda', 'betelgeuse'];
+const evs = process.argv.length > 2 ? process.argv.slice(2) : ['kilonova', 'cygnus', 'tde', 'fall', 'chelyabinsk', 'sl9', 'phobos', 'sun', 'andromeda', 'betelgeuse', 'saturn'];
 let bad = 0;
 for (const ev of evs) {
   const p = await b.newPage(); await p.setViewport({ width: 640, height: 360 }); const errs = [];
@@ -28,7 +28,7 @@ for (const ev of evs) {
     return o;
   });
   const menuBack = await (async () => { const nav = p.waitForNavigation({ timeout: 8000 }).catch(() => null); await p.evaluate(() => document.getElementById('menuBtn').click()); await nav; await new Promise(r => setTimeout(r, 400)); return p.$$eval('[data-event]', e => e.length); })();
-  const ok = !errs.length && !/NaN|err="[^"]/.test(out.join(' ')) && menuBack === 12; if (!ok) bad++;
+  const ok = !errs.length && !/NaN|err="[^"]/.test(out.join(' ')) && menuBack === 13; if (!ok) bad++;
   console.log((ok ? 'OK  ' : 'FAIL') + ' ' + ev + '\n   ' + out.join('\n   ') + '\n   retour menu: ' + menuBack + ' cartes' + (errs.length ? '\n   ERR ' + [...new Set(errs)].slice(0, 6).join('\n   ERR ') : ''));
   await p.close();
 }

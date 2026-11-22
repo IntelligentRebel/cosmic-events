@@ -36,6 +36,7 @@ void main(){vec3 d=normalize(uBasis*vec3(vUv.x*uTan*uAspect,vUv.y*uTan,-1.));
 export function start() {
   const bolKm = new THREE.Vector3(), bolM = new THREE.Vector3(), tmp = new THREE.Vector3();
   let time = 0, shake = 0, prevT = -1e9;
+  const O = new THREE.Vector3(), SUNP = new THREE.Vector3(Math.sin(2.2) * Math.cos(0.085), Math.sin(0.085), -Math.cos(2.2) * Math.cos(0.085)).multiplyScalar(1e7), TRAILP = posKm(-2, new THREE.Vector3()).multiplyScalar(1000);
   const kit = createKit({
     title: T('Tcheliabinsk · 15 février 2013'), kicker: T('Oural, Russie · 9 h 20, heure locale · −15 °C'), h1: T('Le matin de Tcheliabinsk'),
     intro: T('Un astéroïde de 18 mètres et de 10 000 tonnes entre dans l’atmosphère à 19 km/s, sous un angle rasant. Personne ne l’a vu venir : il arrivait du côté du Soleil. Il lui reste douze secondes de vol lumineux. Vous êtes dans une rue de la ville.'),
@@ -54,6 +55,7 @@ export function start() {
       { t: T_SHOCK, title: T('L’onde de choc'), text: T('Une détonation, puis une série de claquements. Les vitres de plus de 7 000 bâtiments éclatent. Près de 1 500 personnes sont blessées, presque toutes par le verre, parce qu’elles regardaient dehors.') },
       { t: T_SHOCK + 25, title: T('Ce qu’il en reste'), text: T('Le plus gros fragment, 654 kg, a troué la glace du lac Tchebarkoul, 70 km plus à l’ouest. Un objet de cette taille frappe la Terre quelques fois par siècle ; presque toujours au-dessus d’un océan ou d’un désert.') },
     ],
+    pois: [{ id: 'bol', label: T('Le bolide'), pos: (t) => t > T_START && t < 8 ? bolM : null, r: 100 }, { id: 'sun', label: T('Soleil'), far: true, pos: () => SUNP }, { id: 'city', label: T('Tcheliabinsk'), pos: (t, k) => k.view === 'ground' ? null : O, r: 3000 }, { id: 'trail', label: T('La traînée'), pos: (t, k) => t > 8 ? TRAILP : null, r: 12000 }],
     clock: (t) => [(t < 0 ? TF('T − {0}', [fmtDur(Math.abs(t))]) : TF('T + {0}', [fmtDur(Math.abs(t))])), t < 0 ? T('avant l’éclat maximal') : T('après l’éclat maximal')],
     data: (t) => {
       posKm(t, tmp); const vis = t > T_START;

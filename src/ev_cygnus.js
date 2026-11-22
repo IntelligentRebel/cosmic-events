@@ -8,6 +8,7 @@ const RSTAR = 22.3 * 695700 / RS;      // rayon de la supergéante
 const P = 5.599829 * DAY, DISK = 60000, RPRO = 6 * 695700 / RS, T_PRO = -90;
 export function start() {
   let time = 0;
+  const O = new THREE.Vector3();
   const kit = createKit({
     title: T('Cygnus X-1 · le trou noir et la supergéante'), kicker: T('Constellation du Cygne · à 7 200 années-lumière'), h1: T('Cygnus X-1'),
     intro: T('Deux étoiles massives tournent l’une autour de l’autre. L’une s’effondre en trou noir, presque sans bruit. Depuis, elle avale le vent de sa compagne : le gaz s’enroule en disque, chauffe à des millions de degrés et repart en jets.'),
@@ -33,6 +34,7 @@ export function start() {
       { t: 0.5 * P, title: T('Les jets'), text: T('Une partie du gaz n’entre jamais. Elle est éjectée le long de l’axe en deux jets fins, à une fraction notable de la vitesse de la lumière.') },
       { t: 1.2 * P, title: T('Cinq ordres de grandeur'), text: T('La supergéante mesure 31 millions de kilomètres. Le trou noir, 125. Descendez avec la molette : chaque cran divise la distance, et il en faut beaucoup.') },
     ],
+    pois: [{ id: 'pro', label: T('Étoile mourante'), pos: (t) => t < 0 ? O : null, r: RPRO }, { id: 'bh', label: T('Trou noir'), pos: (t) => t >= 0 ? O : null, r: 8 }, { id: 'star', label: T('Supergéante bleue'), pos: () => bh.u.uStar.value, r: RSTAR * 0.8 }],
     clock: (t) => t < 0 ? [TF('T − {0}', [fmtDur(-t)]), T('avant l’effondrement (scénario)')] : [t < 3 * DAY ? TF('T + {0}', [fmtDur(t)]) : TF('Jour {0}', [fr(t / DAY, 1)]), T('de l’orbite · une révolution en 5,6 jours')],
     data: (t, k) => {
       const d = k.view === 'orbit' ? k.cam.dist : A - RSTAR;

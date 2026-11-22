@@ -1255,3 +1255,11 @@ setSpeed(1); restart(); resize(); hud.root.classList.add('hidden');
   window.__sim = { orbit, setMode, OR, sim, player, step, stateAt, PH, astState, isl, terrainH, waterY, setSpeed, changeDistance, bolides };
 }
 requestAnimationFrame(frame);
+
+// ---------------------------------------------------------------- centrer sur… / flèches
+$('arrows').addEventListener('change', (e) => hud.root.classList.toggle('noarrows', !e.target.checked));
+$('focusSel').addEventListener('change', (e) => {
+  const v = e.target.value; e.target.value = ''; if (!v || MODE !== 'ground') return;
+  if (v === 'moon') { player.yaw = Math.atan2(-MOON_DIR.x, -MOON_DIR.z); player.pitch = Math.asin(clamp(MOON_DIR.y, -1, 1)); return; }
+  const a = astState(Math.min(sim.t, -0.2)); player.yaw = -a.az * DEG; player.pitch = (v === 'impact' ? 2 : clamp(a.el, 2, 80)) * DEG;
+});

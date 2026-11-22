@@ -688,3 +688,10 @@ rollSurface(); setObserver(5000); setCap(1e16); resize(); hud.root.classList.add
 }
 uiSync();
 requestAnimationFrame(frame);
+
+// ---------------------------------------------------------------- centrer sur… / flèches
+$('arrows').addEventListener('change', (e) => hud.root.classList.toggle('noarrows', !e.target.checked));
+$('focusSel').addEventListener('change', (e) => {
+  const v = e.target.value; e.target.value = ''; if (!v) return;
+  if (v === 'impact' && view.mode === 'ground') { pl.yaw = Math.atan2(-obs.glowDir.x, -obs.glowDir.z); pl.pitch = 0.12; } else lookAtTheia();
+});

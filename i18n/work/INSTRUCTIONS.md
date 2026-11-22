@@ -1,13 +1,13 @@
 # Translating Cosmic Events
 
-Cosmic Events (« Événements cosmiques ») is a free, browser-based simulator: twelve explorable 3D scenes of cosmic events (the Moon-forming impact of Theia, the Chicxulub asteroid, comet Shoemaker-Levy 9 hitting Jupiter, the Chelyabinsk meteor, the neutron-star merger GW170817, the black hole Cygnus X-1, a star torn apart by a black hole, falling into a black hole, Betelgeuse going supernova, Phobos becoming a ring around Mars, the Milky Way–Andromeda encounter, the death of the Sun). Each scene has a clock, a data panel, a journal that explains what is happening, and several viewpoints. The audience is the curious general public. The source language is **French**. You translate into one target language.
+Cosmic Events (« Événements cosmiques ») is a free, browser-based simulator: thirteen explorable 3D scenes of cosmic events (the Moon-forming impact of Theia, the Chicxulub asteroid, comet Shoemaker-Levy 9 hitting Jupiter, the Chelyabinsk meteor, the neutron-star merger GW170817, the black hole Cygnus X-1, a star torn apart by a black hole, falling into a black hole, Betelgeuse going supernova, Phobos becoming a ring around Mars, the Milky Way–Andromeda encounter, the death of the Sun, and one clearly labelled fiction: a small black hole dislodging Saturn). Each scene has a clock, a data panel, a journal that explains what is happening, and several viewpoints. The audience is the curious general public. The source language is **French**. You translate into one target language.
 
 ## Input
 
 `chunk-NN.json` (or `todo_<lang>.json`) is an array of entries:
 
 - `k`: the French source text. It is also the dictionary key: **copy it unchanged** as the key of your output.
-- `at`: where it appears (`file:line`, or `page:menu` / `page:theia` / `page:chicxulub` for fixed page text). The file name tells you the scene: `main.js` = Chicxulub, `theia.js` = Theia, `ev_kilonova.js` = neutron stars, `ev_cygnus.js` = Cygnus X-1, `ev_tde.js` = star torn apart, `ev_fall.js` = falling into a black hole, `ev_chelyabinsk.js`, `ev_sl9.js` = Shoemaker-Levy 9, `ev_phobos.js`, `ev_sun.js`, `ev_andromeda.js`, `ev_betelgeuse.js`, `kit.js` = shared interface.
+- `at`: where it appears (`file:line`, or `page:menu` / `page:theia` / `page:chicxulub` for fixed page text). The file name tells you the scene: `main.js` = Chicxulub, `theia.js` = Theia, `ev_kilonova.js` = neutron stars, `ev_cygnus.js` = Cygnus X-1, `ev_tde.js` = star torn apart, `ev_fall.js` = falling into a black hole, `ev_chelyabinsk.js`, `ev_sl9.js` = Shoemaker-Levy 9, `ev_phobos.js`, `ev_sun.js`, `ev_andromeda.js`, `ev_betelgeuse.js`, `ev_saturn.js` = the Saturn fiction, `kit.js` = shared interface.
 - `args`: present when `k` has placeholders `{0}`, `{1}`… : the code expressions that fill them, in order. Use it to understand what goes there (a number, a duration such as "3.5 days", a distance, a name, another translated phrase).
 
 ## Output

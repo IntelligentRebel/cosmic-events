@@ -51,6 +51,7 @@ void main(){vH=heat;vec4 mv=modelViewMatrix*vec4(position,1.);gl_Position=projec
   }
   const T0 = -Math.sqrt(2 * Math.pow(400, 3) / GM) / 3, T1 = 400 * DAY / TU, lt = (t) => Math.sign(t) * Math.log10(1 + Math.abs(t) / 30);
   const fall = (t) => t < TFB ? 0 : Math.pow(t / TFB, -5 / 3);
+  const O = new THREE.Vector3();
   const kit = createKit({
     title: T('Une étoile déchiquetée par un trou noir'), kicker: T('Rupture par effet de marée · au centre d’une galaxie'), h1: T('L’étoile déchiquetée'),
     intro: T('Une étoile comme le Soleil passe trop près d’un trou noir d’un million de masses solaires. La gravité tire plus fort sur sa face proche que sur sa face éloignée : en quelques heures, elle est étirée en un filament. La moitié s’échappe, l’autre revient nourrir le trou noir pendant des mois.'),
@@ -72,6 +73,7 @@ void main(){vH=heat;vec4 mv=modelViewMatrix*vec4(position,1.);gl_Position=projec
       { t: TFB, title: T('Le retour'), text: T('Quarante et un jours après, les débris les plus liés reviennent. Le filament se percute lui-même, chauffe, et s’enroule en disque. Le trou noir s’allume : il peut briller plus que toute sa galaxie.') },
       { t: TFB * 2.2, title: T('Le déclin'), text: T('Les débris suivants reviennent de plus loin, donc de moins en moins vite. Le flux décroît comme le temps à la puissance −5/3 : c’est cette courbe, vue au télescope, qui signe une étoile déchiquetée.') },
     ],
+    pois: [{ id: 'bh', label: T('Trou noir'), pos: () => O, r: 12 }, { id: 'star', label: T('L’étoile'), pos: (t) => t < TFB * 0.5 ? center : null, r: 1 }],
     clock: (t) => [(t < 0 ? TF('T − {0}', [fmtDur(Math.abs(t) * TU)]) : TF('T + {0}', [fmtDur(Math.abs(t) * TU)])), t < 0 ? T('avant le passage au plus près') : T('après le passage au plus près')],
     data: (t) => {
       const d = center.length(), v = Math.sqrt(2 * GM / d);

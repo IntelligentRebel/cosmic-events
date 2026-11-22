@@ -1,7 +1,7 @@
 <p align="center"><img src="docs/screenshots/01_menu.jpg" alt="Événements cosmiques" width="100%"></p>
 
 <h1 align="center">Événements cosmiques</h1>
-<p align="center"><b>Douze événements cosmiques où l’on peut entrer.</b><br>
+<p align="center"><b>Treize événements cosmiques où l’on peut entrer.</b><br>
 Collisions, effondrements et fins de mondes, simulés en 3D dans le navigateur, dans un seul fichier.</p>
 
 <p align="center"><a href="https://intelligentrebel.github.io/cosmic-events/"><b>▶ L’ouvrir dans le navigateur</b></a> · <a href="README.md">English version</a></p>
@@ -14,7 +14,7 @@ Chaque scène a une horloge que l’on peut ralentir dix mille fois ou pousser �
 
 <p align="center"><img src="docs/screenshots/02_fall.jpg" width="49%"> <img src="docs/screenshots/03_kilonova.jpg" width="49%"></p>
 
-## Les douze événements
+## Les treize événements
 
 | Quand | Événement | Ce que l’on voit |
 |---|---|---|
@@ -30,16 +30,19 @@ Chaque scène a une horloge que l’on peut ralentir dix mille fois ou pousser �
 | Dans 30 millions d’années | **L’anneau de Mars** | Phobos descend en spirale, se disloque à la limite de Roche et devient un anneau. |
 | Dans 4 milliards d’années | **Voie lactée contre Andromède** | 27 000 étoiles-tests intégrées en direct ; collision frontale ou frôlement, les deux scénarios. |
 | Dans 7,6 milliards d’années | **La mort du Soleil** | Océans évaporés, géante rouge qui emplit le ciel, planètes englouties, flash de l’hélium, naine blanche. |
+| Fiction | **Et si un trou noir délogeait Saturne ?** | Un trou noir de 300 mètres freine Saturne, qui tombe vers le Soleil et vient frôler la Terre. Onze corps intégrés pas à pas ; deux scénarios, dont un où la Lune est arrachée. Présenté clairement comme une fiction. |
 
 <p align="center"><img src="docs/screenshots/04_chicxulub.jpg" width="49%"> <img src="docs/screenshots/05_betelgeuse.jpg" width="49%"></p>
 <p align="center"><img src="docs/screenshots/06_andromeda.jpg" width="49%"> <img src="docs/screenshots/07_sun.jpg" width="49%"></p>
+<p align="center"><img src="docs/screenshots/08_saturn.jpg" width="70%"></p>
 
 ## Ce qu’il y a dedans
 
 - **Des points de vue libres** : depuis le sol, depuis l’espace, et depuis l’astre qui va frapper. On en change à tout moment, la scène ne redémarre pas.
+- **Points d’intérêt** : dans chaque scène, une liste « Centrer sur… » (la comète, le point d’impact, une planète…) et des flèches au bord de l’écran qui indiquent où ils se trouvent ; une case les masque.
 - **Le temps sous contrôle** : touches 1 à 9, un curseur, et un tempo automatique qui ralentit aux moments clés. Une liste de moments y mène directement.
 - **Franc sur ce que l’on sait** : chaque scène dit ce qui est mesuré ou calculé (trajectoires, calendriers, ordres de grandeur, courbure de la lumière autour des trous noirs) et ce qui est une mise en scène. Les chiffres clés viennent de sources publiées, listées plus bas.
-- **Un seul fichier, hors ligne** : tout le simulateur tient dans un fichier HTML d’environ 2,5 Mo, sans serveur, sans compte et sans accès réseau. Tout est procédural : il n’y a pas un seul fichier de texture.
+- **Un seul fichier, hors ligne** : tout le simulateur tient dans un fichier HTML d’environ 2,8 Mo, sans serveur, sans compte et sans accès réseau. Presque tout est procédural : les seuls fichiers image sont les cartes de Mars et de Phobos de la NASA.
 - **11 langues** : English, 简体中文, Deutsch, Español, Português, Русский, Français, 日本語, 한국어, Italiano, Polski. Le simulateur suit la langue du navigateur (l’anglais sinon) ; on la change depuis le menu.
 
 ## L’utiliser
@@ -67,7 +70,8 @@ Le code est écrit en français (variables, commentaires, textes). Chaque texte 
 - Cygnus X-1 : [Miller-Jones et al. 2021](https://arxiv.org/abs/2102.09091)
 - Tcheliabinsk : [synthèse Wikipédia des mesures publiées](https://en.wikipedia.org/wiki/Chelyabinsk_meteor)
 - Shoemaker-Levy 9 : [heures d’impact, NASA NSSDC](https://nssdc.gsfc.nasa.gov/planetary/impact.html)
-- Phobos : Black et Mittal 2015, [résumé](https://www.sciencedaily.com/releases/2015/11/151124143506.htm)
+- Phobos : Black et Mittal 2015, [résumé](https://www.sciencedaily.com/releases/2015/11/151124143506.htm) ; cartes de Mars et de Phobos : [NASA 3D Resources](https://github.com/nasa/NASA-3D-Resources)
+- La scène de Saturne est une fiction : aucune source publiée ne la décrit. Le point de départ est choisi, la suite est une intégration newtonienne à N corps (`src/nbody.js`)
 - Le Soleil : [Schröder et Smith 2008](https://arxiv.org/abs/0801.4031)
 - Andromède : [Sawala et al. 2025](https://arxiv.org/abs/2408.00064)
 - Bételgeuse : [Astronomy.com, d’après Goldberg et Bauer](https://www.astronomy.com/science/when-betelgeuse-goes-supernova-what-will-it-look-like-from-earth/)

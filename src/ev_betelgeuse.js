@@ -17,6 +17,7 @@ export function start() {
   const T0 = -3 * DAY, T1 = 1500 * YEAR, lt = (t) => Math.sign(t) * Math.log10(1 + Math.abs(t) / 3600), D = 900, bDir = dirOf(CAT[0], new THREE.Vector3());
   let time = 0, lastDist = 0;
   const radius = (t) => t < TB ? R0 : R0 + VEJ * (t - TB) / DAY;
+  const O = new THREE.Vector3();
   const kit = createKit({
     title: T('Bételgeuse en supernova'), kicker: T('Constellation d’Orion · à environ 700 années-lumière · un jour, d’ici 100 000 ans'), h1: T('La nuit où Bételgeuse explose'),
     intro: T('L’épaule d’Orion est une supergéante rouge en fin de vie. Quand son cœur s’effondrera, elle brillera pendant des mois autant qu’une demi-Lune, concentrée en un seul point : assez pour porter des ombres la nuit et se voir en plein jour. À cette distance, elle est sans danger.'),
@@ -39,6 +40,7 @@ export function start() {
       { t: TB + 3 * YEAR, title: T('Orion sans épaule'), text: T('Elle s’efface du ciel à l’œil nu au bout de quelques années. La constellation a changé de forme, pour la première fois depuis qu’on la dessine.') },
       { t: 300 * YEAR, title: T('Le reste'), text: T('Une coquille de gaz en expansion, riche en oxygène, silicium et fer tout neufs, qui ensemencera d’autres étoiles. Au centre, sans doute, une étoile à neutrons.') },
     ],
+    pois: [{ id: 'bet', label: T('Bételgeuse'), pos: (t, k) => k.view === 'earth' ? bet.position : O, r: (t) => radius(t) }, ...[['Rigel', 1], ['Sirius', 8], ['Aldébaran', 10]].map(([n, i]) => ({ id: n, label: { Rigel: T('Rigel'), Sirius: T('Sirius'), 'Aldébaran': T('Aldébaran') }[n], far: true, pos: (t, k) => k.view === 'earth' ? dirOf(CAT[i], new THREE.Vector3()).multiplyScalar(D) : null }))],
     clock: (t) => [(t < 0 ? TF('T − {0}', [fmtDur(Math.abs(t))]) : TF('T + {0}', [fmtDur(Math.abs(t))])), t < 0 ? T('avant l’effondrement du cœur') : T('après l’effondrement du cœur')],
     data: (t, k) => {
       const m = mag(t), venus = Math.pow(10, -0.4 * (m + 4.6)), R = radius(t);

@@ -22,7 +22,9 @@ const put = (tag, fn) => { html = html.replace(new RegExp('\\{\\{' + tag + '(?::
 put('style', () => read('src/style.css'));
 put('card', (id) => 'data:image/jpeg;base64,' + fs.readFileSync(R('assets/cards', id + '.jpg')).toString('base64'));
 put('tpl', (f) => read('src/' + f).trim());
-put('i18n', () => 'window.I18N_DICT=' + safe(JSON.stringify(dict)) + ';');
+// cartes réelles (NASA, domaine public) : assets/maps/<nom>.jpg → window.ASSETS.<nom>
+const maps = {}; for (const f of fs.readdirSync(R('assets/maps')).filter(f => f.endsWith('.jpg')).sort()) maps[f.slice(0, -4)] = 'data:image/jpeg;base64,' + fs.readFileSync(R('assets/maps', f)).toString('base64');
+put('i18n', () => 'window.I18N_DICT=' + safe(JSON.stringify(dict)) + ';window.ASSETS=' + JSON.stringify(maps) + ';');
 html = html.replace('{{bundle}}', () => safe(r.outputFiles[0].text));
 fs.mkdirSync(R('dist'), { recursive: true });
 if (pseudo) { fs.writeFileSync(R('dist/pseudo.html'), html); console.log('dist/pseudo.html'); process.exit(0); }

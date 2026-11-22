@@ -156,11 +156,13 @@ export function createKit(cfg) {
     ${optHtml}
     <div class="acts"><button id="pause">${T('Pause')}</button><button id="next">${T('Suivant')}</button><button id="again">${T('Rejouer')}</button><button id="menuBtn">${T('Menu')}</button></div>
     ${cfg.moments ? `<select id="moment2" class="sel" aria-label="${T('Aller à un moment')}"></select>` : ''}
+    ${(cfg.pois || []).length ? `<select id="focus" class="sel" aria-label="${T('Centrer sur…')}"></select><label class="chk"><input type="checkbox" id="arrows" checked> ${T('Flèches vers les points d’intérêt')}</label>` : ''}
     <hr>${segHtml(1)}
     <div id="distbox"><div class="head"><span class="caps">${T('Distance')}</span><span id="dlabel2"></span></div>
     <div class="row"><input type="range" id="dist2" min="0" max="1000" step="1" aria-label="${T('Distance')}"></div></div>
     <div class="note">${cfg.panelNote || T('Glisser pour tourner le regard, molette pour s’approcher. Rien ne relance la scène.')}</div>
   </div>
+  <div id="pois"></div>
   <div id="journal"></div>
   <div id="timeline"><div id="barfill"></div><div id="ticks"></div></div>
   <div id="help">${T('<b>glisser</b> regarder · <b>molette</b> distance / zoom · <b>1 à 9</b> vitesse · <b>+ −</b> ajuster · <b>P / Espace</b> pause · <b>N</b> moment suivant · <b>V</b> changer de vue · <b>R</b> rejouer · <b>H</b> masquer')}</div>
@@ -210,11 +212,49 @@ export function createKit(cfg) {
     kit.view = id; const d = { mode: 'orbit', yaw: 0, pitch: 0.2, dist: 10, min: 1, max: 100, fov: 55, ...V[id].cam, ...(keep ? saved[id] : null) };
     Object.assign(cam, { mode: d.mode, yaw: d.yaw, pitch: d.pitch, dist: d.dist, min: d.min, max: d.max, fov: d.fov }); cam.near = cam.far = null; cam.basis.identity();
     for (const bt of stage.querySelectorAll('[data-view]')) bt.classList.toggle('on', bt.dataset.view === id);
+    setFocus(null);
     $('distbox').style.display = d.mode === 'orbit' ? '' : 'none';
     if (cfg.onView) cfg.onView(id, kit);
   }
   for (const bt of stage.querySelectorAll('[data-view]')) bt.addEventListener('click', () => setView(bt.dataset.view, true));
   kit.setView = setView;
+
+  // ---- points d'intérêt : « centrer sur » et flèches qui disent où ils sont
+  const pois = cfg.pois || [], poiEls = []; let focus = null, arrowsOn = true;
+  const _pv = new THREE.Vector3(), _pq = new THREE.Quaternion();
+  function setFocus(p) {
+    focus = p || null; kit.focusId = focus ? focus.id : null; const s = $('focus'); if (s) s.value = focus ? focus.id : '';
+    // point lointain en vue orbitale : on ne peut pas tourner autour, on fait pivoter la caméra pour l'avoir en face, derrière le sujet
+    if (focus && cam.mode === 'orbit' && focus.far) { const q = focus.pos(sim.t, kit); if (q) { _pv.copy(cam.target).sub(q).normalize().applyQuaternion(_pq.copy(cam.basis).invert()); cam.yaw = Math.atan2(_pv.x, _pv.z) + 0.35; cam.pitch = clamp(Math.asin(clamp(_pv.y, -1, 1)) + 0.12, -1.5, 1.5); } focus = null; kit.focusId = null; if (s) s.value = ''; return; }
+    if (focus && cam.mode === 'orbit' && focus.r) { const r = typeof focus.r === 'function' ? focus.r(sim.t, kit) : focus.r; if (r > 0) cam.dist = clamp(r * 4, cam.min, cam.max); }
+  }
+  kit.setFocus = setFocus;
+  if ($('focus')) {
+    const s = $('focus'); s.add(new Option(T('Centrer sur…'), '')); for (const p of pois) s.add(new Option(p.label, p.id));
+    s.addEventListener('change', () => { setFocus(pois.find(p => p.id === s.value)); canvas.focus(); });
+    $('arrows').addEventListener('change', (e) => { arrowsOn = e.target.checked; });
+    for (const p of pois) { const e = el('div', { class: 'poi' }, `<i>➤</i><span>${p.label}</span>`); $('pois').appendChild(e); poiEls.push(e); }
+  }
+  function applyFocus() {
+    if (!focus) return; const p = focus.pos(sim.t, kit); if (!p) return;
+    if (cam.mode === 'orbit') { if (!focus.far) cam.target.copy(p); return; }
+    _pv.copy(p).sub(cam.pos).normalize().applyQuaternion(_pq.copy(cam.basis).invert()); cam.yaw = Math.atan2(_pv.x, -_pv.z); cam.pitch = Math.asin(clamp(_pv.y, -1, 1));
+  }
+  function drawPois() {
+    const w = window.innerWidth, h = window.innerHeight, used = [];
+    for (let i = 0; i < pois.length; i++) {
+      const e = poiEls[i], p = arrowsOn ? pois[i].pos(sim.t, kit) : null; if (!p) { e.style.display = 'none'; continue; }
+      _pv.copy(p).applyMatrix4(camera.matrixWorldInverse); const behind = _pv.z > 0; let x = _pv.x, y = _pv.y;
+      const k = 1 / (Math.abs(_pv.z) * Math.tan(camera.fov * Math.PI / 360) + 1e-30); let nx = x * k / camera.aspect, ny = y * k;
+      const on = !behind && Math.abs(nx) < 0.9 && Math.abs(ny) < 0.84; e.style.display = 'block'; e.classList.toggle('off', !on);
+      if (!on) { const l = Math.hypot(x / camera.aspect, y) || 1; let dx = x / camera.aspect / l, dy = y / l; const sc = Math.min(0.9 / (Math.abs(dx) + 1e-9), 0.8 / (Math.abs(dy) + 1e-9)); nx = dx * sc; ny = dy * sc;
+        e.firstChild.style.transform = `rotate(${-Math.atan2(y, x / camera.aspect)}rad)`; e.style.textAlign = nx > 0.5 ? 'right' : ''; }
+      // deux étiquettes au même endroit : la première de la liste (la plus importante) reste seule
+      const px = (nx * 0.5 + 0.5) * w, py = (-ny * 0.5 + 0.5) * h; let clash = false; for (const u of used) if (Math.abs(u[0] - px) < 70 && Math.abs(u[1] - py) < 20) { clash = true; break; }
+      if (clash) { e.style.display = 'none'; continue; } used.push([px, py]);
+      e.style.left = px + 'px'; e.style.top = py + 'px';
+    }
+  }
 
   // ---- vitesse
   const [sMin, sMax] = cfg.speedRange || [0.1, 1000];
@@ -263,7 +303,7 @@ export function createKit(cfg) {
   canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId); });
   canvas.addEventListener('pointerup', () => { drag = null; });
   canvas.addEventListener('pointermove', (e) => {
-    if (!drag) return; const k = (cam.mode === 'look' ? cam.fov / 55 : 1) * 0.0045, s = cam.mode === 'look' ? 1 : -1;
+    if (!drag) return; const k = (cam.mode === 'look' ? cam.fov / 55 : 1) * 0.0045, s = cam.mode === 'look' ? 1 : -1; if (cam.mode === 'look' && focus) setFocus(null);
     cam.yaw += (e.clientX - drag.x) * k * s; cam.pitch = clamp(cam.pitch + (e.clientY - drag.y) * k * (cam.mode === 'look' ? -1 : 1), -1.55, 1.55); drag.x = e.clientX; drag.y = e.clientY;
   });
   canvas.addEventListener('wheel', (e) => {
@@ -300,8 +340,9 @@ export function createKit(cfg) {
       sim.t += dt * sim.speed; if (sim.t >= cfg.t1) { sim.t = cfg.t1; } if (sim.t < cfg.t0) sim.t = cfg.t0;
     }
     cfg.update(sim.t, sim.paused || !kit.started ? 0 : dt, kit);
-    applyCamera();
+    applyFocus(); applyCamera();
     if (cfg.post) cfg.post(sim.t, kit);
+    if (pois.length) drawPois();
     hudT -= dt;
     if (hudT <= 0) {
       hudT = 0.1; const c = cfg.clock(sim.t); $('clock').textContent = c[0]; $('sub').textContent = c[1] || '';

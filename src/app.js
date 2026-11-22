@@ -15,6 +15,7 @@ const EVENTS = {
   cygnus: { title: T('Cygnus X-1'), load: kitEv(() => import('./ev_cygnus.js')) },
   tde: { title: T('L’étoile déchiquetée'), load: kitEv(() => import('./ev_tde.js')) },
   fall: { title: T('Tomber dans un trou noir'), load: kitEv(() => import('./ev_fall.js')) },
+  saturn: { title: T('Et si un trou noir délogeait Saturne ?'), load: kitEv(() => import('./ev_saturn.js')) },
 };
 const params = new URLSearchParams(location.hash.slice(1)), $ = (id) => document.getElementById(id);
 const APP = T('Événements cosmiques');
@@ -46,8 +47,10 @@ async function launch(id) {
   if (tpl) { $('stage').appendChild(tpl.content.cloneNode(true)); translateDom($('stage')); }
   document.title = ev.title + ' · ' + APP;
   document.body.classList.add('in-event');
-  const back = $('menuBtn');
-  if (back) back.addEventListener('click', () => { try { history.replaceState(null, '', location.pathname + location.search); } catch (_) { location.hash = ''; } location.reload(); });
+  const toMenu = () => { try { if (document.exitPointerLock) document.exitPointerLock(); history.replaceState(null, '', location.pathname + location.search); } catch (_) { location.hash = ''; } location.reload(); };
+  const back = $('menuBtn'); if (back) back.addEventListener('click', toMenu);
+  // retour au menu, toujours visible en haut à gauche
+  const bm = document.createElement('button'); bm.id = 'backMenu'; bm.textContent = '← ' + T('Menu'); bm.title = T('Retour au menu'); bm.addEventListener('click', toMenu); document.body.appendChild(bm);
   await ev.load();
   document.body.dataset.ready = id;
 }

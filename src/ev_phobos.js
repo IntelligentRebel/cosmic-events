@@ -4,11 +4,10 @@ const RM = 3389.5, A0 = 9376, AB = 1.6 * RM, TB = 30e6 * YEAR, GMM = 42828;
 const K = (Math.pow(A0, 6.5) - Math.pow(AB, 6.5)) / TB;
 const aOf = (t) => t < TB ? Math.pow(Math.pow(A0, 6.5) - K * t, 1 / 6.5) : AB;
 const period = (a) => 2 * Math.PI * Math.sqrt(a * a * a / GMM);
-const MARS = /* glsl */`precision highp float;varying vec3 vP,vN,vW;uniform vec3 uSun;uniform vec4 uHit[6];${NOISE}
-void main(){vec3 n=normalize(vP);float f=fbm(n*2.1+3.),g=fbm(n*7.+11.);
-  vec3 c=mix(vec3(.80,.47,.27),vec3(.36,.21,.15),smoothstep(.42,.62,f+.15*g));c=mix(c,vec3(.93,.66,.42),smoothstep(.55,.8,fbm3(n*3.7+20.))*.5);
-  c*=.8+.4*g;float cr=vnoise(n*38.);c*=1.-.18*smoothstep(.72,.8,cr);
-  float cap=smoothstep(.87,.93,abs(n.y)+.05*(g-.5));c=mix(c,vec3(.95,.93,.9),cap);
+// surface : la carte réelle de Mars (mosaïque Viking, NASA), avec un grain fin ajouté pour les vues rapprochées
+const MARS = /* glsl */`precision highp float;varying vec3 vP,vN,vW;varying vec2 vUv;uniform vec3 uSun;uniform vec4 uHit[6];uniform sampler2D uMap;${NOISE}
+void main(){vec3 n=normalize(vP);float g=fbm(n*60.+11.);
+  vec3 c=texture2D(uMap,vUv).rgb*vec3(1.02,.9,.82);c*=.9+.2*g;
   float lon=atan(n.z,n.x);
   for(int i=0;i<6;i++){vec4 h=uHit[i];if(h.w<=0.)continue;float dl=mod(lon-h.x+3.14159,6.28318)-3.14159;float e=dl*dl/(h.z*h.z*9.)+pow(n.y-h.y,2.)/(h.z*h.z);c=mix(c,vec3(.16,.09,.07),smoothstep(1.,.4,e)*h.w);}
   vec3 N=normalize(vN);float mu=dot(N,uSun);vec3 col=c*pow(max(mu,0.),.8)*1.15*smoothstep(-.03,.12,mu);
@@ -19,6 +18,7 @@ export function start() {
   let time = 0, ang = 0.6, mang = 0, lastT = null;
   const CH = [0.9, 2.1, 3.3, 4.4, 5.3, 0.2].map((lon, i) => ({ lon, t: TB + (300 + 2500 * i * i) * YEAR, lat: (i % 2 ? 1 : -1) * 0.015 * i }));
   const TE = TB + 6e7 * YEAR, lt = (t) => Math.log10(1 + t / (2 * DAY));
+  const O = new THREE.Vector3(), RINGP = new THREE.Vector3(), SUNP = SUN.clone().multiplyScalar(1e9);
   const kit = createKit({
     title: T('Phobos · la lune qui deviendra un anneau'), kicker: T('Mars · d’aujourd’hui à dans 90 millions d’années'), h1: T('L’anneau de Mars'),
     intro: T('Phobos tourne si près de Mars qu’elle en fait le tour en moins de huit heures. Les marées la freinent : elle descend, de plus en plus vite. Dans quelques dizaines de millions d’années, la gravité de Mars la brisera, et la planète rouge portera un anneau.'),
@@ -38,6 +38,7 @@ export function start() {
       { t: TB + 200 * YEAR, title: T('Mars a un anneau'), text: T('Aussi dense, au début, que l’un des grands anneaux de Saturne. Les blocs les plus solides, eux, continuent à descendre et frappent l’équateur en rasant le sol : ils laissent des cratères allongés.') },
       { t: TB + 3e6 * YEAR, title: T('La pluie'), text: T('L’anneau s’étale. Son bord intérieur atteint la haute atmosphère et retombe en pluies de météores le long de l’équateur. Selon l’altitude de la rupture, il dure d’un million à cent millions d’années.') },
     ],
+    pois: [{ id: 'mars', label: T('Mars'), pos: (t, k) => k.view === 'ground' ? null : O, r: RM * 1.5 }, { id: 'phobos', label: T('Phobos'), pos: (t) => t < TB + 20 * DAY ? ph.position : null, r: 30 }, { id: 'ring', label: T('L’anneau'), pos: (t) => t > TB + 20 * DAY ? RINGP.set(Math.cos(ang) * AB, 0, Math.sin(ang) * AB) : null, r: 600 }, { id: 'sun', label: T('Soleil'), far: true, pos: () => SUNP }],
     clock: (t) => t < 3 * DAY ? [TF('Aujourd’hui + {0}', [fmtDur(t)]), T('Phobos fait un tour en 7 h 39')] : [TF('Dans {0}', [fmtDur(t)]), t < TB ? T('la spirale') : T('après la rupture de Phobos')],
     data: (t) => {
       const a = aOf(t), P = period(a);
@@ -88,9 +89,10 @@ export function start() {
   const spreadOf = (dt) => clamp(0.03 + Math.pow(dt / (150 * DAY), 0.9), 0, 1), ringWide = (dt) => 16 + 500 * sstep(2, 6.3, Math.log10(1 + dt / YEAR)), lossOf = (dt) => 0.97 * sstep(5.8, 7.75, Math.log10(1 + dt / YEAR));
   const S = kit.scene, frameQ = new THREE.Quaternion(), r = rng(8);
   const stars = kit.addSky(makeStars({ n: 6000, seed: 21, band: 0.45, bright: 0.9 }));
-  const mu = { uSun: { value: SUN }, uHit: { value: CH.map(() => new THREE.Vector4()) } };
+  const tex = (n) => { const x = new THREE.TextureLoader().load(window.ASSETS[n]); x.colorSpace = THREE.SRGBColorSpace; x.anisotropy = 8; x.wrapS = THREE.RepeatWrapping; return x; };
+  const mu = { uSun: { value: SUN }, uHit: { value: CH.map(() => new THREE.Vector4()) }, uMap: { value: tex('mars') } };
   const mars = new THREE.Mesh(new THREE.SphereGeometry(RM, 160, 96), new THREE.ShaderMaterial({ uniforms: mu, fragmentShader: MARS,
-    vertexShader: 'varying vec3 vP,vN,vW;void main(){vP=position;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}' })); S.add(mars);
+    vertexShader: 'varying vec3 vP,vN,vW;varying vec2 vUv;void main(){vUv=uv;vP=position;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}' })); S.add(mars);
   const halo = new THREE.Mesh(new THREE.SphereGeometry(RM * 1.018, 96, 64), new THREE.ShaderMaterial({ uniforms: { uSun: { value: SUN } }, transparent: true, depthWrite: false, side: THREE.BackSide, blending: THREE.AdditiveBlending,
     vertexShader: 'varying vec3 vN,vW;void main(){vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}',
     fragmentShader: 'varying vec3 vN,vW;uniform vec3 uSun;void main(){float f=pow(max(dot(normalize(vN),normalize(vW-cameraPosition)),0.),5.);float d=smoothstep(-.2,.3,dot(normalize(vW),uSun));gl_FragColor=vec4(vec3(.9,.6,.4)*f*d*.45,1.);}' })); S.add(halo);
@@ -101,7 +103,7 @@ export function start() {
   for (let i = 0; i < pa.count; i++) { v.fromBufferAttribute(pa, i); let d = 1 + 0.07 * nz(v.x, v.y, v.z); const s = v.angleTo(st); d -= 0.2 * Math.exp(-Math.pow(s / 0.42, 2)) - 0.05 * Math.exp(-Math.pow((s - 0.5) / 0.1, 2));
     for (let c = 0; c < 9; c++) { const cc = new THREE.Vector3(Math.sin(c * 2.4) * Math.cos(c), Math.sin(c * 1.3), Math.cos(c * 2.4) * Math.cos(c)).normalize(); d -= 0.05 * Math.exp(-Math.pow(v.angleTo(cc) / 0.13, 2)); }
     pa.setXYZ(i, v.x * d * 13.5, v.y * d * 9, v.z * d * 11); } pg.computeVertexNormals();
-  const ph = new THREE.Mesh(pg, new THREE.MeshStandardMaterial({ color: 0x8a7d70, roughness: 1 })); S.add(ph);
+  const ph = new THREE.Mesh(pg, new THREE.MeshStandardMaterial({ color: 0xc9bdb0, roughness: 1, map: tex('phobos') })); S.add(ph);
   const mark = makeGlow(0xd8c8b8, 1, 0.8); S.add(mark);
   // anneau de débris
   const N = 60000, ra = new Float32Array(N * 3), rb = new Float32Array(N * 2);

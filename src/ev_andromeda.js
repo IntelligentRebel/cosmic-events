@@ -32,6 +32,7 @@ export function start() {
     autoRate: () => clamp((sim ? sim.sep() : 700) / 900 + 0.03, 0.05, 0.4) * G,
     moments: [{ label: T('Aujourd’hui'), t: 0 }, { label: T('Dans 2 milliards d’années'), t: 2 * G }, { label: T('Andromède emplit le ciel'), t: 3.6 * G, view: 'sky' }, { label: T('Premier passage'), t: 3.85 * G, view: 'far' }, { label: T('Les queues de marée'), t: 4.5 * G, view: 'far' }, { label: T('Second passage'), t: 5.2 * G, view: 'far' }, { label: T('Après : une elliptique'), t: 7.5 * G, view: 'far' }, { label: T('Le ciel dans 8 milliards d’années'), t: 8 * G, view: 'sky' }],
     journal: J_MERGE,
+    pois: [{ id: 'mw', label: T('Voie lactée'), pos: () => pA, r: 30 }, { id: 'm31', label: T('Andromède'), pos: () => pB, r: 40 }, { id: 'sun', label: T('Soleil'), pos: (t, k) => k.view === 'sky' ? null : sunP, r: 3 }],
     clock: (t) => [(held ? sim.t * G : t) < 1e6 * YEAR ? T('Aujourd’hui') : TF('Dans {0}', [fmtDur(held ? sim.t * G : t)]), held ? T('calcul des orbites en cours…') : T('chaque point : une étoile-test')],
     data: () => {
       if (!sim) return ''; const d = sim.sep(), ds = sunP.distanceTo(pB), ang = 2 * Math.atan(22 / Math.max(ds, 22)) * 180 / Math.PI, rs = sunP.distanceTo(pA);

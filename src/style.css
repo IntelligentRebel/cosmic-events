@@ -96,3 +96,13 @@
   #update{display:none;margin:0 0 22px;padding:10px 18px;border:1px solid #ffe2bd;border-radius:10px;font-size:13.5px;background:rgba(255,226,189,.08);text-align:center}
   #update a{color:#ffe2bd;font-weight:600}
   #menu footer a{color:inherit}
+
+  /* ---- points d'intérêt et retour au menu ---- */
+  .poi{position:absolute;display:none;pointer-events:none;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transform:translate(-9px,-50%);opacity:.92}
+  .poi i{display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;font-style:normal;vertical-align:middle;margin-right:6px;color:transparent;border:1px solid rgba(255,255,255,.8);border-radius:50%;box-sizing:border-box}
+  .poi.off{transform:translate(-50%,-50%)}
+  .poi.off i{color:#ffe2bd;border-color:transparent;font-size:15px}
+  #backMenu{position:fixed;left:24px;top:14px;z-index:6;padding:7px 16px;border-radius:40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:rgba(16,19,36,.6);backdrop-filter:blur(6px)}
+  #backMenu:hover{background:#ffe2bd;color:#1a1c2c;border-color:#ffe2bd}
+  body.in-event #top{top:56px}
+  #hud.noarrows #marker{display:none!important}

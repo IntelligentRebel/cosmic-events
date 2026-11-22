@@ -9,6 +9,7 @@ export function start() {
   let H = HOLES.sgr, rsKm = 2.953 * H.M, tu = rsKm / C;
   const setHole = (id) => { H = HOLES[id]; rsKm = 2.953 * H.M; tu = rsKm / C; };
   const lat = 0.2, dirOut = new THREE.Vector3(Math.cos(lat), Math.sin(lat), 0);
+  const O = new THREE.Vector3(), FAR = dirOut.clone().multiplyScalar(1e6);
   const kit = createKit({
     title: T('Tomber dans un trou noir'), kicker: T('Chute libre · relativité générale'), h1: T('Tomber dans un trou noir'),
     intro: T('Vous tombez en chute libre, tout droit, vers un trou noir. Les rayons lumineux sont calculés un par un dans l’espace-temps courbe : ce que vous voyez est ce qu’un observateur verrait, y compris après l’horizon.'),
@@ -32,6 +33,7 @@ export function start() {
       { t: tOf(0.5), title: T('Sous l’horizon'), text: T('Vous voyez toujours l’univers extérieur, derrière vous, de plus en plus sombre et rougi. L’espace vous emporte vers le centre plus vite que la lumière ne peut remonter.') },
       { t: tOf(0.1), title: T('La marée'), text: T('La gravité tire plus fort sur vos pieds que sur votre tête. Le ciel s’écrase en un anneau autour de vous. Dans un petit trou noir, cette marée vous aurait tué bien avant l’horizon.') },
     ],
+    pois: [{ id: 'bh', label: T('Trou noir'), pos: () => O, r: 4 }, { id: 'back', label: T('L’univers derrière vous'), far: true, pos: (t, k) => k.view === 'ride' ? FAR : null }, { id: 'probe', label: T('La sonde'), pos: (t, k) => k.view === 'far' ? probe.position : null, r: 1.5 }],
     clock: (t) => [TF('T − {0}', [fmtDur(-t * tu)]), TF('de temps propre avant la singularité · {0}', [H.name])],
     data: (t, k) => {
       const r = rOf(t), km = r * rsKm, v = Math.sqrt(1 / r), tide = rsKm * 1000 * C * C * 1e6 * 2 / Math.pow(km * 1000, 3) / 9.81;

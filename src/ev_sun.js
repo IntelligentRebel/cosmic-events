@@ -15,13 +15,14 @@ function sun(g) {
   const k = clamp((g - T_WD) / (T_END - T_WD), 0, 1); return { L: pl(300, 0.02, Math.pow(k, 0.3)), R: 0.0127, T: pl(110000, 15000, Math.pow(k, 0.5)), M: 0.54, ph: T('naine blanche') };
 }
 const bbRGB = (T) => { const t = clamp(T, 1000, 40000) / 100; return [t <= 66 ? 1 : clamp(1.292936 * Math.pow(t - 60, -0.1332), 0, 1), t <= 66 ? clamp(0.39008 * Math.log(t) - 0.63184, 0, 1) : clamp(1.129891 * Math.pow(t - 60, -0.0755), 0, 1), t >= 66 ? 1 : t <= 19 ? 0 : clamp(0.54321 * Math.log(t - 10) - 1.19625, 0, 1)]; };
-const PL = [{ n: 'Mercure', a: 0.387, c: 0x9a8f85 }, { n: 'Vénus', a: 0.723, c: 0xe6c78a }, { n: 'la Terre', a: 1, c: 0x5b8fd8 }, { n: 'Mars', a: 1.524, c: 0xc8623c }, { n: 'Jupiter', a: 5.203, c: 0xd9b48a }];
+const PL = [{ n: 'Mercure', label: T('Mercure'), a: 0.387, c: 0x9a8f85 }, { n: 'Vénus', label: T('Vénus'), a: 0.723, c: 0xe6c78a }, { n: 'la Terre', label: T('Terre'), a: 1, c: 0x5b8fd8 }, { n: 'Mars', label: T('Mars'), a: 1.524, c: 0xc8623c }, { n: 'Jupiter', label: T('Jupiter'), a: 5.203, c: 0xd9b48a }];
 const aOf = (p, g, s) => p.a / s.M * (p.n === 'la Terre' ? 1 - 0.27 * sstep(7.5875, 7.5897, g) : 1);
 for (const p of PL) { p.tE = Infinity; for (let g = 7; g < T_TIP; g += 2e-5) { const s = sun(g); if (s.R * RS / AU >= aOf(p, g, s)) { p.tE = g; break; } } }
 const T_EARTH = PL[2].tE;
 export function start() {
   const KEYS = [1.0, T_MS, 7.3, PL[0].tE, PL[1].tE, T_EARTH, T_TIP, T_HB, 7.65, T_AGB, T_WD, T_WD + 0.0003];
   const tmp = new THREE.Vector3(), Y = new THREE.Vector3(0, 1, 0); let time = 0;
+  const O = new THREE.Vector3();
   const kit = createKit({
     title: T('La mort du Soleil'), kicker: T('D’aujourd’hui à dans huit milliards d’années'), h1: T('La mort du Soleil'),
     intro: T('Le Soleil brûle son hydrogène depuis 4,6 milliards d’années et il lui en reste pour un peu plus de cinq. Avant cela, la Terre aura déjà perdu ses océans. Ensuite il enfle en géante rouge, 256 fois plus large qu’aujourd’hui, puis s’éteint en naine blanche.'),
@@ -43,6 +44,7 @@ export function start() {
       { t: (T_AGB - 1e-3) * G, title: T('Seconde enflure'), text: T('L’hélium s’épuise à son tour. L’étoile regonfle, pulse, et souffle ses couches externes dans l’espace.') },
       { t: T_WD * G, title: T('Naine blanche'), text: T('Il reste un cœur nu de carbone et d’oxygène : la moitié de la masse du Soleil dans le volume de la Terre, à 100 000 degrés. Il éclaire un moment le gaz éjecté, puis refroidit, sans fin. Nébuleuse brillante ou coquille à peine visible : le débat n’est pas tranché.') },
     ],
+    pois: [{ id: 'sun', label: T('Soleil'), pos: () => O, r: (t) => Math.max(sun(t / G).R * RS, 20) }, ...PL.map(p => ({ id: p.n, label: p.label, pos: (t, k) => t / G < p.tE && p.m.visible && !(k.view === 'earth' && p.n === 'la Terre') ? p.m.position : null, r: 6 }))],
     clock: (t) => [t < 1e6 * YEAR ? T('Aujourd’hui') : TF('Dans {0}', [fmtDur(t)]), TF('âge du Soleil : {0} milliards d’années', [fr(4.58 + t / G, 2)])],
     data: (t) => {
       const g = t / G, s = sun(g), E = PL[2], aE = aOf(E, g, s), gone = g >= T_EARTH, teq = 255 * Math.pow(s.L / (aE * aE), 0.25), ang = 2 * Math.asin(Math.min(1, s.R * RS / (aE * AU))) * 180 / Math.PI;
@@ -54,11 +56,12 @@ export function start() {
       time += dt; const g = t / G, s = sun(g), R = s.R * RS, [cr, cg, cb] = bbRGB(s.T);
       if (k.view === 'earth' && g >= T_EARTH) k.setView('system', true);
       const onEarth = k.view === 'earth', aE = aOf(PL[2], g, s) * AU;
-      star.scale.setScalar(R); const su = star.material.uniforms; su.uT.value = s.T; su.uTime.value = time * 0.6; su.uCells.value = clamp(60 / Math.pow(s.R, 0.55), 2.2, 26); su.uContrast.value = 0.3 + 0.5 * sstep(3, 100, s.R); su.uB.value = (onEarth ? 1.25 : 1.15) * (s.T < 4600 ? 0.8 : 1);
+      star.scale.setScalar(R); occ.scale.setScalar(R * 0.985); occ.visible = !onEarth; const su = star.material.uniforms; su.uT.value = s.T; su.uTime.value = time * 0.6; su.uCells.value = clamp(60 / Math.pow(s.R, 0.55), 2.2, 26); su.uContrast.value = 0.3 + 0.5 * sstep(3, 100, s.R); su.uB.value = (onEarth ? 1.25 : 1.15) * (s.T < 4600 ? 0.8 : 1);
       const cd = k.camera.position.length(); glow.scale.setScalar(Math.max(R * 4.5, onEarth ? aE * 0.09 * Math.sqrt(Math.min(s.L, 4)) : cd * 0.06)); glow.material.color.setRGB(cr, cg, cb); glow.material.opacity = onEarth ? 0.4 : 0.3;
       // planètes, orbites, zone habitable
       for (const p of PL) { const a = aOf(p, g, s) * AU, alive = g < p.tE; p.ring.visible = alive && !onEarth; p.ring.scale.setScalar(a); p.ang += dt * 0.5 / Math.pow(p.a, 1.5);
-        p.m.visible = alive && !(onEarth && p.n === 'la Terre'); p.m.position.set(Math.cos(p.ang) * a, 0, Math.sin(p.ang) * a); p.m.scale.setScalar(onEarth ? 0.4 : Math.max(0.012 * cd, 0.05));
+        p.m.visible = alive && !(onEarth && p.n === 'la Terre');
+        if (p.m.visible) { const cp = k.camera.position, dP = tmp.set(Math.cos(p.ang) * a, 0, Math.sin(p.ang) * a).sub(cp), dist = dP.length(), dS = cp.length(), cosA = -dP.dot(cp) / (dist * dS + 1e-9), sep = Math.acos(clamp(cosA, -1, 1)), rS = Math.asin(Math.min(1, Math.max(R, onEarth ? 0 : dS * 0.006) / dS)); if (dist > dS && sep < rS) p.m.visible = false; } p.m.position.set(Math.cos(p.ang) * a, 0, Math.sin(p.ang) * a); p.m.scale.setScalar(onEarth ? 0.4 : Math.max(0.012 * cd, 0.05));
         const burn = alive ? sstep(a * 0.75, a * 0.98, R) : 0; p.m.material.color.set(p.c).lerp(hot, burn);
         const age = g - p.tE; p.fl.visible = !onEarth && age > 0 && age < 3e-4; if (p.fl.visible) { p.fl.position.copy(p.m.position); p.fl.scale.setScalar(cd * 0.12 * Math.exp(-age / 1e-4)); } }
       if (onEarth) PL[2].ang = 0;
@@ -87,6 +90,8 @@ export function start() {
   const stars = kit.addSky(makeStars({ n: 6500, seed: 4, band: 0.45, bright: 0.9 }));
   const star = makeStar(1, { T: 5774, bright: 1.7, cells: 26, contrast: 0.3 }); S.add(star);
   const glow = makeGlow(0xffffff, 1, 0.5); S.add(glow);
+  // sphère invisible qui n'écrit que la profondeur : orbites et planètes passent derrière le Soleil au lieu d'être dessinées par-dessus
+  const occ = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 40), new THREE.MeshBasicMaterial({ colorWrite: false })); occ.renderOrder = -5; S.add(occ);
   const cg = new THREE.BufferGeometry().setFromPoints(Array.from({ length: 257 }, (_, i) => new THREE.Vector3(Math.cos(i / 256 * 6.28319), 0, Math.sin(i / 256 * 6.28319))));
   PL.forEach((p, i) => { p.ring = new THREE.Line(cg, new THREE.LineBasicMaterial({ color: p.c, transparent: true, opacity: 0.55 })); p.m = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), new THREE.MeshBasicMaterial({ color: p.c })); p.fl = makeGlow(0xffa050, 1, 1); p.fl.visible = false; p.ang = 0.7 + i * 1.9; S.add(p.ring, p.m, p.fl); });
   const hz = new THREE.Mesh(new THREE.RingGeometry(0.95, 1.37, 128), new THREE.MeshBasicMaterial({ color: 0x3fae6a, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false })); hz.rotation.x = -Math.PI / 2; S.add(hz);

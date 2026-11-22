@@ -13,6 +13,7 @@ const state = (t) => { // fréquence d'onde, séparation, phase orbitale
 export function start() {
   const lt = (t) => Math.sign(t) * Math.log10(1 + Math.abs(t) / 0.002), T0 = -100, T1 = 14 * DAY;
   let time = 0, lastDist = 0, osc = null, gain = null;
+  const O = new THREE.Vector3();
   const kit = createKit({
     title: T('GW170817 · la collision de deux étoiles à neutrons'), kicker: T('17 août 2017 · galaxie NGC 4993 · à 130 millions d’années-lumière'), h1: T('La forge de l’or'),
     intro: T('Deux étoiles à neutrons, chacune plus lourde que le Soleil et large de 24 kilomètres, tournent l’une autour de l’autre depuis des centaines de millions d’années. Il leur reste cent secondes. La scène passe du millième de seconde à la semaine : le tempo automatique ralentit jusqu’à 5 000 fois au moment du contact.'),
@@ -35,6 +36,7 @@ export function start() {
       { t: 3600, title: T('La kilonova'), text: T('Les éléments tout neufs sont radioactifs. Leur désintégration chauffe le nuage, qui brille comme des centaines de millions de Soleils. Onze heures après le signal, un télescope chilien repère le point nouveau.') },
       { t: 2 * DAY, title: T('Du bleu au rouge'), text: T('Le nuage se dilate et refroidit. Les éléments les plus lourds, opaques, ne laissent passer que le rouge et l’infrarouge. Bilan estimé : environ dix masses terrestres d’or et de platine.') },
     ],
+    pois: [{ id: 'c', label: T('Centre du système'), pos: () => O }, { id: 'a', label: T('Étoile à neutrons 1'), pos: (t) => t < T_C ? A.position : null, r: 30 }, { id: 'b', label: T('Étoile à neutrons 2'), pos: (t) => t < T_C ? B.position : null, r: 30 }],
     clock: (t) => [(t < 0 ? TF('T − {0}', [fmtDur(Math.abs(t))]) : TF('T + {0}', [fmtDur(Math.abs(t))])), t < 0 ? T('avant la fusion') : T('après la fusion')],
     data: (t) => {
       const s = state(t);

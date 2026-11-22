@@ -34,6 +34,7 @@ export function start() {
   const nextOf = (t) => F.findIndex(f => f.t > t), base = Date.UTC(1994, 6, 16, 20, 11, 0), fpos = new THREE.Vector3(), tmp = new THREE.Vector3();
   const fragPos = (f, t, out) => out.copy(SITE).addScaledVector(VIN, -V * Math.max(f.t - t, 0));
   let time = 0;
+  const O = new THREE.Vector3(), PF = new THREE.Vector3(), SUNP = new THREE.Vector3(Math.sin(0.17), 0.03, Math.cos(0.17)).multiplyScalar(1e10);
   const kit = createKit({
     title: T('Shoemaker-Levy 9 · la comète contre Jupiter'), kicker: T('16 au 22 juillet 1994 · à 770 millions de km de la Terre'), h1: T('La comète contre Jupiter'),
     intro: T('Deux ans plus tôt, Jupiter a brisé en un chapelet de fragments une comète qu’il retenait en orbite depuis des décennies. Une vingtaine reviennent, l’un après l’autre, à 60 kilomètres par seconde. C’est la première collision entre deux corps du système solaire que l’humanité observe en direct.'),
@@ -52,6 +53,7 @@ export function start() {
       { t: F[13].t, title: T('Q2 et Q1'), text: T('Vingt-huit minutes entre les deux. Le chapelet touche à sa fin, la bande de latitude 44° sud est constellée de taches sombres.') },
       { t: F[19].t, title: T('Fragment W'), text: T('Dernier impact, le 22 juillet. Les cicatrices resteront visibles des mois. L’épisode a rappelé que les impacts ne sont pas une affaire du passé, et que Jupiter en reçoit beaucoup à notre place.') },
     ],
+    pois: [{ id: 'jup', label: T('Jupiter'), pos: () => O, r: RJ * 1.3 }, { id: 'site', label: T('Point d’impact'), pos: () => SITE, r: 15000 }, { id: 'frag', label: T('Prochain fragment'), pos: (t) => { const i = nextOf(t); return i >= 0 ? fragPos(F[i], t, PF) : null; }, r: 2000 }, { id: 'sun', label: T('Soleil'), far: true, pos: () => SUNP }],
     clock: (t) => { const d = new Date(base + t * 1000); return [TF('{0} juillet 1994 · {1} h {2}', [d.getUTCDate(), String(d.getUTCHours()).padStart(2, '0'), String(d.getUTCMinutes()).padStart(2, '0')]), T('temps universel')]; },
     data: (t) => {
       const i = nextOf(t), l = lastOf(t); let s = '';

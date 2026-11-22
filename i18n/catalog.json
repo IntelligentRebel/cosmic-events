@@ -12,25 +12,25 @@
  "La forge de l’or": {
   "at": [
    "app.js:8",
-   "ev_kilonova.js:17"
+   "ev_kilonova.js:18"
   ]
  },
  "La comète contre Jupiter": {
   "at": [
    "app.js:9",
-   "ev_sl9.js:38"
+   "ev_sl9.js:39"
   ]
  },
  "Le matin de Tcheliabinsk": {
   "at": [
    "app.js:10",
-   "ev_chelyabinsk.js:40"
+   "ev_chelyabinsk.js:41"
   ]
  },
  "La nuit où Bételgeuse explose": {
   "at": [
    "app.js:11",
-   "ev_betelgeuse.js:21"
+   "ev_betelgeuse.js:22"
   ]
  },
  "Voie lactée contre Andromède": {
@@ -42,7 +42,7 @@
  "La mort du Soleil": {
   "at": [
    "app.js:13",
-   "ev_sun.js:26"
+   "ev_sun.js:27"
   ]
  },
  "L’anneau de Mars": {
@@ -54,40 +54,57 @@
  "Cygnus X-1": {
   "at": [
    "app.js:15",
-   "ev_cygnus.js:12"
+   "ev_cygnus.js:13"
   ]
  },
  "L’étoile déchiquetée": {
   "at": [
    "app.js:16",
-   "ev_tde.js:55"
+   "ev_tde.js:56"
   ]
  },
  "Tomber dans un trou noir": {
   "at": [
    "app.js:17",
-   "ev_fall.js:13"
+   "ev_fall.js:14"
+  ]
+ },
+ "Et si un trou noir délogeait Saturne ?": {
+  "at": [
+   "app.js:18",
+   "ev_saturn.js:109"
   ]
  },
  "Événements cosmiques": {
   "at": [
-   "app.js:20"
+   "app.js:21"
   ]
  },
  "La version {0} est disponible (vous avez la {1}).": {
   "at": [
-   "app.js:36"
+   "app.js:37"
   ],
   "args": "v, VERSION"
  },
  "La télécharger": {
   "at": [
-   "app.js:36"
+   "app.js:37"
   ]
  },
  "Ne plus vérifier": {
   "at": [
-   "app.js:36"
+   "app.js:37"
+  ]
+ },
+ "Menu": {
+  "at": [
+   "app.js:53",
+   "kit.js:157"
+  ]
+ },
+ "Retour au menu": {
+  "at": [
+   "app.js:53"
   ]
  },
  "Notre voisine": {
@@ -231,7 +248,8 @@
  },
  "Scénario": {
   "at": [
-   "ev_andromeda.js:28"
+   "ev_andromeda.js:28",
+   "ev_saturn.js:114"
   ]
  },
  "Collision frontale (scénario classique)": {
@@ -252,7 +270,7 @@
  "Aujourd’hui": {
   "at": [
    "ev_andromeda.js:33",
-   "ev_andromeda.js:35",
+   "ev_andromeda.js:36",
    "ev_phobos.js:29"
   ]
  },
@@ -276,693 +294,763 @@
    "ev_andromeda.js:33"
   ]
  },
- "Dans {0}": {
+ "Voie lactée": {
+  "at": [
+   "ev_andromeda.js:35"
+  ]
+ },
+ "Andromède": {
+  "at": [
+   "ev_andromeda.js:35"
+  ]
+ },
+ "Soleil": {
   "at": [
    "ev_andromeda.js:35",
-   "ev_phobos.js:41",
-   "ev_sun.js:46"
+   "ev_chelyabinsk.js:58",
+   "ev_phobos.js:41"
+  ]
+ },
+ "Dans {0}": {
+  "at": [
+   "ev_andromeda.js:36",
+   "ev_phobos.js:42",
+   "ev_sun.js:48"
   ],
   "args": "fmtDur(held ? sim.t * G : t)"
  },
  "calcul des orbites en cours…": {
   "at": [
-   "ev_andromeda.js:35"
+   "ev_andromeda.js:36"
   ]
  },
  "chaque point : une étoile-test": {
   "at": [
-   "ev_andromeda.js:35"
+   "ev_andromeda.js:36"
   ]
  },
  "Distance entre les deux cœurs : <b>{0} millions d’a.-l.</b>": {
   "at": [
-   "ev_andromeda.js:38"
+   "ev_andromeda.js:39"
   ],
   "args": "fr(d * KLY / 1000, d > 300 ? 2 : 3)"
  },
  "Vitesse relative : <b>{0} km/s</b>": {
   "at": [
-   "ev_andromeda.js:38"
+   "ev_andromeda.js:39"
   ],
   "args": "fr(sim.relv(), 0)"
  },
  "Distance entre les deux cœurs : <b>confondus</b>": {
   "at": [
-   "ev_andromeda.js:38"
+   "ev_andromeda.js:39"
   ]
  },
  "Andromède dans notre ciel : <b>{0}°</b> de large (pleine Lune : 0,5°)": {
   "at": [
-   "ev_andromeda.js:39"
+   "ev_andromeda.js:40"
   ],
   "args": "fr(ang, ang < 10 ? 1 : 0)"
  },
  "Les deux galaxies n’en font plus qu’une": {
   "at": [
-   "ev_andromeda.js:39"
+   "ev_andromeda.js:40"
   ]
  },
  "Soleil : à <b>{0} a.-l.</b> du cœur de la Voie lactée (aujourd’hui 27 000)": {
   "at": [
-   "ev_andromeda.js:39"
+   "ev_andromeda.js:40"
   ],
   "args": "fr(Math.round(rs * KLY) * 1000, 0)"
  },
  "{0} millions d’a.-l.": {
   "at": [
-   "ev_andromeda.js:41",
+   "ev_andromeda.js:42",
    "kit.js:32"
   ],
   "args": "fr(d * KLY / 1000, d < 300 ? 2 : 1)"
  },
  "Bételgeuse en supernova": {
   "at": [
-   "ev_betelgeuse.js:21"
+   "ev_betelgeuse.js:22"
   ]
  },
  "Constellation d’Orion · à environ 700 années-lumière · un jour, d’ici 100 000 ans": {
   "at": [
-   "ev_betelgeuse.js:21"
+   "ev_betelgeuse.js:22"
   ]
  },
  "L’épaule d’Orion est une supergéante rouge en fin de vie. Quand son cœur s’effondrera, elle brillera pendant des mois autant qu’une demi-Lune, concentrée en un seul point : assez pour porter des ombres la nuit et se voir en plein jour. À cette distance, elle est sans danger.": {
   "at": [
-   "ev_betelgeuse.js:22"
+   "ev_betelgeuse.js:23"
   ]
  },
  "La courbe de lumière est un modèle calé sur les estimations publiées : plateau de trois mois à l’éclat d’une demi-Lune, visible de jour environ un an, à l’œil nu plusieurs années. Délai de percée du choc, vitesse des éjectas et aspect du reste sont des ordres de grandeur. Positions des étoiles : valeurs de catalogue arrondies.": {
   "at": [
-   "ev_betelgeuse.js:23"
+   "ev_betelgeuse.js:24"
   ]
  },
  "Depuis la Terre": {
   "at": [
-   "ev_betelgeuse.js:24",
-   "ev_sun.js:29"
+   "ev_betelgeuse.js:25",
+   "ev_saturn.js:112",
+   "ev_sun.js:30"
   ]
  },
  "Près de l’étoile": {
   "at": [
-   "ev_betelgeuse.js:24"
+   "ev_betelgeuse.js:25"
   ]
  },
  "Tracer Orion": {
   "at": [
-   "ev_betelgeuse.js:25"
+   "ev_betelgeuse.js:26"
   ]
  },
  "Voir en plein jour": {
   "at": [
-   "ev_betelgeuse.js:25"
+   "ev_betelgeuse.js:26"
   ]
  },
  "Caméra qui suit l’explosion (vue rapprochée)": {
   "at": [
-   "ev_betelgeuse.js:25"
+   "ev_betelgeuse.js:26"
   ]
  },
  "La veille": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "L’effondrement du cœur": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Le choc perce la surface": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Trois jours après": {
   "at": [
-   "ev_betelgeuse.js:29",
-   "ev_tde.js:63"
+   "ev_betelgeuse.js:30",
+   "ev_tde.js:64"
   ]
  },
  "Un mois : le plateau": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Quatre mois : la chute": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Un an après": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Quatre ans : elle quitte l’œil nu": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Mille ans : la nébuleuse": {
   "at": [
-   "ev_betelgeuse.js:29"
+   "ev_betelgeuse.js:30"
   ]
  },
  "Une géante à bout de souffle": {
   "at": [
-   "ev_betelgeuse.js:32"
+   "ev_betelgeuse.js:33"
   ]
  },
  "Bételgeuse a moins de dix millions d’années et déjà plus de combustible. Elle est si enflée qu’à la place du Soleil elle engloberait Mars et la ceinture d’astéroïdes. Rien, en surface, n’annonce la suite.": {
   "at": [
-   "ev_betelgeuse.js:32"
+   "ev_betelgeuse.js:33"
   ]
  },
  "Le cœur cède": {
   "at": [
-   "ev_betelgeuse.js:33"
+   "ev_betelgeuse.js:34"
   ]
  },
  "Le cœur de fer, large comme la Terre, s’effondre en moins d’une seconde en une étoile à neutrons de vingt kilomètres. L’énergie part presque toute en neutrinos, qui traversent l’étoile sans s’arrêter. Vue de dehors, elle n’a pas changé.": {
   "at": [
-   "ev_betelgeuse.js:33"
+   "ev_betelgeuse.js:34"
   ]
  },
  "L’alerte": {
   "at": [
-   "ev_betelgeuse.js:34"
+   "ev_betelgeuse.js:35"
   ]
  },
  "Sur Terre, les détecteurs de neutrinos sont saturés en quelques secondes. Les astronomes ont plusieurs heures, peut-être un jour, pour pointer leurs télescopes : l’onde de choc doit encore traverser toute l’enveloppe.": {
   "at": [
-   "ev_betelgeuse.js:34"
+   "ev_betelgeuse.js:35"
   ]
  },
  "La percée": {
   "at": [
-   "ev_betelgeuse.js:35"
+   "ev_betelgeuse.js:36"
   ]
  },
  "Le choc atteint la surface. Elle passe de 3 600 à des dizaines de milliers de degrés : un éclair d’ultraviolets, puis l’étoile enfle de plusieurs milliers de kilomètres par seconde.": {
   "at": [
-   "ev_betelgeuse.js:35"
+   "ev_betelgeuse.js:36"
   ]
  },
  "Une demi-Lune en un point": {
   "at": [
-   "ev_betelgeuse.js:36"
+   "ev_betelgeuse.js:37"
   ]
  },
  "En quelques jours, elle surpasse Sirius, puis Vénus, puis tout sauf la Lune. La nuit, elle porte des ombres nettes. Le jour, on la trouve sans chercher.": {
   "at": [
-   "ev_betelgeuse.js:36"
+   "ev_betelgeuse.js:37"
   ]
  },
  "Le plateau": {
   "at": [
-   "ev_betelgeuse.js:37"
+   "ev_betelgeuse.js:38"
   ]
  },
  "Pendant trois mois, l’éclat tient : l’hydrogène de l’enveloppe se recombine couche après couche et libère la chaleur du choc. Des milliards de gens voient la même étoile nouvelle.": {
   "at": [
-   "ev_betelgeuse.js:37"
+   "ev_betelgeuse.js:38"
   ]
  },
  "La cendre radioactive": {
   "at": [
-   "ev_betelgeuse.js:38"
+   "ev_betelgeuse.js:39"
   ]
  },
  "L’enveloppe est devenue transparente. Ce qui brille encore, c’est le cobalt radioactif forgé dans l’explosion, qui s’éteint de moitié tous les 77 jours.": {
   "at": [
-   "ev_betelgeuse.js:38"
+   "ev_betelgeuse.js:39"
   ]
  },
  "Orion sans épaule": {
   "at": [
-   "ev_betelgeuse.js:39"
+   "ev_betelgeuse.js:40"
   ]
  },
  "Elle s’efface du ciel à l’œil nu au bout de quelques années. La constellation a changé de forme, pour la première fois depuis qu’on la dessine.": {
   "at": [
-   "ev_betelgeuse.js:39"
+   "ev_betelgeuse.js:40"
   ]
  },
  "Le reste": {
   "at": [
-   "ev_betelgeuse.js:40"
+   "ev_betelgeuse.js:41"
   ]
  },
  "Une coquille de gaz en expansion, riche en oxygène, silicium et fer tout neufs, qui ensemencera d’autres étoiles. Au centre, sans doute, une étoile à neutrons.": {
   "at": [
-   "ev_betelgeuse.js:40"
+   "ev_betelgeuse.js:41"
+  ]
+ },
+ "Bételgeuse": {
+  "at": [
+   "ev_betelgeuse.js:43"
+  ]
+ },
+ "Rigel": {
+  "at": [
+   "ev_betelgeuse.js:43"
+  ]
+ },
+ "Sirius": {
+  "at": [
+   "ev_betelgeuse.js:43"
+  ]
+ },
+ "Aldébaran": {
+  "at": [
+   "ev_betelgeuse.js:43"
   ]
  },
  "T − {0}": {
   "at": [
-   "ev_betelgeuse.js:42",
-   "ev_chelyabinsk.js:57",
-   "ev_cygnus.js:36"
+   "ev_betelgeuse.js:44",
+   "ev_chelyabinsk.js:59",
+   "ev_cygnus.js:38"
   ],
   "args": "fmtDur(Math.abs(t))"
  },
  "T + {0}": {
   "at": [
-   "ev_betelgeuse.js:42",
-   "ev_chelyabinsk.js:57",
-   "ev_cygnus.js:36"
+   "ev_betelgeuse.js:44",
+   "ev_chelyabinsk.js:59",
+   "ev_cygnus.js:38"
   ],
   "args": "fmtDur(Math.abs(t))"
  },
  "avant l’effondrement du cœur": {
   "at": [
-   "ev_betelgeuse.js:42"
+   "ev_betelgeuse.js:44"
   ]
  },
  "après l’effondrement du cœur": {
   "at": [
-   "ev_betelgeuse.js:42"
+   "ev_betelgeuse.js:44"
   ]
  },
  "la 10ᵉ étoile du ciel": {
   "at": [
-   "ev_betelgeuse.js:45"
+   "ev_betelgeuse.js:47"
   ]
  },
  "entre Rigel et Sirius": {
   "at": [
-   "ev_betelgeuse.js:45"
+   "ev_betelgeuse.js:47"
   ]
  },
  "plus que Sirius": {
   "at": [
-   "ev_betelgeuse.js:45"
+   "ev_betelgeuse.js:47"
   ]
  },
  "<b>{0} fois</b> Vénus": {
   "at": [
-   "ev_betelgeuse.js:45"
+   "ev_betelgeuse.js:47"
   ],
   "args": "fr(venus, 0)"
  },
  "<b>{0} fois</b> Vénus : l’éclat d’une demi-Lune": {
   "at": [
-   "ev_betelgeuse.js:45"
+   "ev_betelgeuse.js:47"
   ],
   "args": "fr(venus, 0)"
  },
  "Éclat vu de la Terre : <b>invisible à l’œil nu</b>": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "Éclat vu de la Terre : {0}": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ],
   "args": "cmp"
  },
  "En plein jour : <b>{0}</b> · ombres la nuit : <b>{1}</b>": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ],
   "args": "m < -4 ? T('visible') : T('invisible'), m < -6.5 ? T('nettes') : m < -4 ? T('faibles') : T('aucune')"
  },
  "visible": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "invisible": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "nettes": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "faibles": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "aucune": {
   "at": [
-   "ev_betelgeuse.js:46"
+   "ev_betelgeuse.js:48"
   ]
  },
  "Surface : <b>{0} K</b> · rayon : <b>{1} UA</b>": {
   "at": [
-   "ev_betelgeuse.js:47"
+   "ev_betelgeuse.js:49"
   ],
   "args": "fr(teff(t), 0), fr(R / AU, R / AU < 100 ? 1 : 0)"
  },
  "Nuage de débris : <b>{0}</b> de rayon, à 5 000 km/s": {
   "at": [
-   "ev_betelgeuse.js:47"
+   "ev_betelgeuse.js:49"
   ],
   "args": "fmtDist(R * 1e6)"
  },
  "Tcheliabinsk · 15 février 2013": {
   "at": [
-   "ev_chelyabinsk.js:40"
+   "ev_chelyabinsk.js:41"
   ]
  },
  "Oural, Russie · 9 h 20, heure locale · −15 °C": {
   "at": [
-   "ev_chelyabinsk.js:40"
+   "ev_chelyabinsk.js:41"
   ]
  },
  "Un astéroïde de 18 mètres et de 10 000 tonnes entre dans l’atmosphère à 19 km/s, sous un angle rasant. Personne ne l’a vu venir : il arrivait du côté du Soleil. Il lui reste douze secondes de vol lumineux. Vous êtes dans une rue de la ville.": {
   "at": [
-   "ev_chelyabinsk.js:41"
+   "ev_chelyabinsk.js:42"
   ]
  },
  "Trajectoire, vitesse, altitudes et délai de l’onde de choc suivent les mesures publiées. La ville est un décor générique, pas un plan de Tcheliabinsk ; l’allure du bolide et de la traînée est reconstituée d’après les vidéos.": {
   "at": [
-   "ev_chelyabinsk.js:42"
+   "ev_chelyabinsk.js:43"
   ]
  },
  "Dans la rue": {
   "at": [
-   "ev_chelyabinsk.js:43"
+   "ev_chelyabinsk.js:44"
   ]
  },
  "À côté du bolide": {
   "at": [
-   "ev_chelyabinsk.js:43"
+   "ev_chelyabinsk.js:44"
   ]
  },
  "Sur l’astéroïde": {
   "at": [
-   "ev_chelyabinsk.js:43"
+   "ev_chelyabinsk.js:44"
   ]
  },
  "Un matin ordinaire": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "Le bolide apparaît (9 h 20 min 21 s)": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "L’éclat maximal": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "La traînée, dix secondes après": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "L’onde de choc arrive": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "Après": {
   "at": [
-   "ev_chelyabinsk.js:47"
+   "ev_chelyabinsk.js:48"
   ]
  },
  "Vendredi matin": {
   "at": [
-   "ev_chelyabinsk.js:49"
+   "ev_chelyabinsk.js:50"
   ]
  },
  "Le Soleil vient de se lever. Les gens partent au travail, les enfants sont en classe. Le ciel est clair, il fait −15 °C.": {
   "at": [
-   "ev_chelyabinsk.js:49"
+   "ev_chelyabinsk.js:50"
   ]
  },
  "Une étoile en plein jour": {
   "at": [
-   "ev_chelyabinsk.js:50"
+   "ev_chelyabinsk.js:51"
   ]
  },
  "Au sud-est, un point lumineux apparaît à 97 km d’altitude et file vers l’ouest. Il parcourt 19 kilomètres par seconde : vingt fois la vitesse d’une balle de fusil.": {
   "at": [
-   "ev_chelyabinsk.js:50"
+   "ev_chelyabinsk.js:51"
   ]
  },
  "Plus brillant que le Soleil": {
   "at": [
-   "ev_chelyabinsk.js:51"
+   "ev_chelyabinsk.js:52"
   ]
  },
  "L’air comprimé devant lui chauffe et le brise. À 30 km d’altitude, il libère en une seconde l’énergie d’environ 500 kilotonnes de TNT, trente fois Hiroshima. Les ombres tournent dans les rues.": {
   "at": [
-   "ev_chelyabinsk.js:51"
+   "ev_chelyabinsk.js:52"
   ]
  },
  "Une traînée double": {
   "at": [
-   "ev_chelyabinsk.js:52"
+   "ev_chelyabinsk.js:53"
   ]
  },
  "Il ne reste qu’un sillage de fumée et de poussière, scindé en deux rouleaux, long de plus de cent kilomètres. Les gens s’approchent des fenêtres pour regarder. C’est le piège.": {
   "at": [
-   "ev_chelyabinsk.js:52"
+   "ev_chelyabinsk.js:53"
   ]
  },
  "Le son voyage lentement": {
   "at": [
-   "ev_chelyabinsk.js:53"
+   "ev_chelyabinsk.js:54"
   ]
  },
  "L’explosion a eu lieu à près de 50 km. La lumière a mis un instant ; l’onde de choc met environ deux minutes et demie. Personne ne le sait.": {
   "at": [
-   "ev_chelyabinsk.js:53"
+   "ev_chelyabinsk.js:54"
   ]
  },
  "L’onde de choc": {
   "at": [
-   "ev_chelyabinsk.js:54",
+   "ev_chelyabinsk.js:55",
    "main.js:653"
   ]
  },
  "Une détonation, puis une série de claquements. Les vitres de plus de 7 000 bâtiments éclatent. Près de 1 500 personnes sont blessées, presque toutes par le verre, parce qu’elles regardaient dehors.": {
   "at": [
-   "ev_chelyabinsk.js:54"
+   "ev_chelyabinsk.js:55"
   ]
  },
  "Ce qu’il en reste": {
   "at": [
-   "ev_chelyabinsk.js:55"
+   "ev_chelyabinsk.js:56"
   ]
  },
  "Le plus gros fragment, 654 kg, a troué la glace du lac Tchebarkoul, 70 km plus à l’ouest. Un objet de cette taille frappe la Terre quelques fois par siècle ; presque toujours au-dessus d’un océan ou d’un désert.": {
   "at": [
-   "ev_chelyabinsk.js:55"
+   "ev_chelyabinsk.js:56"
+  ]
+ },
+ "Le bolide": {
+  "at": [
+   "ev_chelyabinsk.js:58"
+  ]
+ },
+ "Tcheliabinsk": {
+  "at": [
+   "ev_chelyabinsk.js:58"
+  ]
+ },
+ "La traînée": {
+  "at": [
+   "ev_chelyabinsk.js:58"
   ]
  },
  "avant l’éclat maximal": {
   "at": [
-   "ev_chelyabinsk.js:57"
+   "ev_chelyabinsk.js:59"
   ]
  },
  "après l’éclat maximal": {
   "at": [
-   "ev_chelyabinsk.js:57"
+   "ev_chelyabinsk.js:59"
   ]
  },
  "Bolide : altitude <b>{0} km</b>, vitesse <b>{1} km/s</b>, à {2} km de vous": {
   "at": [
-   "ev_chelyabinsk.js:60"
+   "ev_chelyabinsk.js:62"
   ],
   "args": "fr(tmp.y, 1), fr(speed(t), 1), fr(tmp.length(), 0)"
  },
  "Éclat : <b>{0} %</b> du maximum (au pic : plus que le Soleil)": {
   "at": [
-   "ev_chelyabinsk.js:60"
+   "ev_chelyabinsk.js:62"
   ],
   "args": "fr(flare(t) * 100, 0)"
  },
  "Fragments en chute libre, invisibles, vers l’ouest": {
   "at": [
-   "ev_chelyabinsk.js:60"
+   "ev_chelyabinsk.js:62"
   ]
  },
  "Astéroïde encore invisible, dans la direction du Soleil levant": {
   "at": [
-   "ev_chelyabinsk.js:60"
+   "ev_chelyabinsk.js:62"
   ]
  },
  "Onde de choc : arrive dans <b>{0}</b>": {
   "at": [
-   "ev_chelyabinsk.js:61"
+   "ev_chelyabinsk.js:63"
   ],
   "args": "fmtDur(T_SHOCK - t)"
  },
  "Onde de choc passée : vitres brisées, alarmes": {
   "at": [
-   "ev_chelyabinsk.js:61"
+   "ev_chelyabinsk.js:63"
   ]
  },
  "Cygnus X-1 · le trou noir et la supergéante": {
   "at": [
-   "ev_cygnus.js:12"
+   "ev_cygnus.js:13"
   ]
  },
  "Constellation du Cygne · à 7 200 années-lumière": {
   "at": [
-   "ev_cygnus.js:12"
+   "ev_cygnus.js:13"
   ]
  },
  "Deux étoiles massives tournent l’une autour de l’autre. L’une s’effondre en trou noir, presque sans bruit. Depuis, elle avale le vent de sa compagne : le gaz s’enroule en disque, chauffe à des millions de degrés et repart en jets.": {
   "at": [
-   "ev_cygnus.js:13"
+   "ev_cygnus.js:14"
   ]
  },
  "Masses, tailles et orbite sont celles mesurées en 2021 (Miller-Jones et al.). L’étoile d’avant l’effondrement, la taille du disque et l’aspect du gaz sont une mise en scène : le vrai système brille surtout en rayons X.": {
   "at": [
-   "ev_cygnus.js:14"
+   "ev_cygnus.js:15"
   ]
  },
  "Autour du trou noir": {
   "at": [
-   "ev_cygnus.js:15",
-   "ev_tde.js:58"
+   "ev_cygnus.js:16",
+   "ev_tde.js:59"
   ]
  },
  "Depuis l’étoile compagne": {
   "at": [
-   "ev_cygnus.js:15"
+   "ev_cygnus.js:16"
   ]
  },
  "Avant : deux étoiles massives": {
   "at": [
-   "ev_cygnus.js:19"
+   "ev_cygnus.js:20"
   ]
  },
  "L’effondrement": {
   "at": [
-   "ev_cygnus.js:20"
+   "ev_cygnus.js:21"
   ]
  },
  "Aujourd’hui : le système entier": {
   "at": [
-   "ev_cygnus.js:21"
+   "ev_cygnus.js:22"
   ]
  },
  "Le disque de gaz": {
   "at": [
-   "ev_cygnus.js:22"
+   "ev_cygnus.js:23"
   ]
  },
  "Le cœur : 2 000 km": {
   "at": [
-   "ev_cygnus.js:23"
+   "ev_cygnus.js:24"
   ]
  },
  "Au ras de l’horizon": {
   "at": [
-   "ev_cygnus.js:24"
+   "ev_cygnus.js:25"
   ]
  },
  "Vu depuis la supergéante": {
   "at": [
-   "ev_cygnus.js:25"
+   "ev_cygnus.js:26"
   ]
  },
  "Deux géantes": {
   "at": [
-   "ev_cygnus.js:29"
+   "ev_cygnus.js:30"
   ]
  },
  "À droite, une supergéante bleue de 40 masses solaires. Au centre, sa compagne, plus évoluée, a brûlé tout son combustible. Son cœur de fer ne tient plus.": {
   "at": [
-   "ev_cygnus.js:29"
+   "ev_cygnus.js:30"
   ]
  },
  "Effondrement": {
   "at": [
-   "ev_cygnus.js:30"
+   "ev_cygnus.js:31"
   ]
  },
  "Le cœur s’écroule en moins d’une seconde. Pas de supernova : l’étoile tombe sur elle-même et s’éteint. C’est le scénario retenu pour Cygnus X-1, dont l’orbite n’a presque pas été bousculée.": {
   "at": [
-   "ev_cygnus.js:30"
+   "ev_cygnus.js:31"
   ]
  },
  "Un trou de 125 km": {
   "at": [
-   "ev_cygnus.js:31"
+   "ev_cygnus.js:32"
   ]
  },
  "Il reste 21 masses solaires dans une sphère plus petite que l’Île-de-France. Elle n’émet rien. Sa présence se lit sur le ciel qu’elle déforme.": {
   "at": [
-   "ev_cygnus.js:31"
+   "ev_cygnus.js:32"
   ]
  },
  "Le festin": {
   "at": [
-   "ev_cygnus.js:32"
+   "ev_cygnus.js:33"
   ]
  },
  "La supergéante souffle un vent puissant. Le trou noir en capte une partie, qui s’enroule en disque. Plus le gaz descend, plus il tourne vite et chauffe : au bord intérieur, des millions de degrés.": {
   "at": [
-   "ev_cygnus.js:32"
+   "ev_cygnus.js:33"
   ]
  },
  "Les jets": {
   "at": [
-   "ev_cygnus.js:33"
+   "ev_cygnus.js:34"
   ]
  },
  "Une partie du gaz n’entre jamais. Elle est éjectée le long de l’axe en deux jets fins, à une fraction notable de la vitesse de la lumière.": {
   "at": [
-   "ev_cygnus.js:33"
+   "ev_cygnus.js:34"
   ]
  },
  "Cinq ordres de grandeur": {
   "at": [
-   "ev_cygnus.js:34"
+   "ev_cygnus.js:35"
   ]
  },
  "La supergéante mesure 31 millions de kilomètres. Le trou noir, 125. Descendez avec la molette : chaque cran divise la distance, et il en faut beaucoup.": {
   "at": [
-   "ev_cygnus.js:34"
+   "ev_cygnus.js:35"
+  ]
+ },
+ "Étoile mourante": {
+  "at": [
+   "ev_cygnus.js:37"
+  ]
+ },
+ "Trou noir": {
+  "at": [
+   "ev_cygnus.js:37",
+   "ev_fall.js:18",
+   "ev_fall.js:36"
+  ]
+ },
+ "Supergéante bleue": {
+  "at": [
+   "ev_cygnus.js:37"
   ]
  },
  "avant l’effondrement (scénario)": {
   "at": [
-   "ev_cygnus.js:36"
+   "ev_cygnus.js:38"
   ]
  },
  "Jour {0}": {
   "at": [
-   "ev_cygnus.js:36"
+   "ev_cygnus.js:38"
   ],
   "args": "fr(t / DAY, 1)"
  },
  "de l’orbite · une révolution en 5,6 jours": {
   "at": [
-   "ev_cygnus.js:36"
+   "ev_cygnus.js:38"
   ]
  },
  "Trou noir : <b>21,2 masses solaires</b>, horizon de <b>125 km</b> de diamètre": {
   "at": [
-   "ev_cygnus.js:39"
+   "ev_cygnus.js:41"
   ]
  },
  "Compagne : 40,6 masses solaires, <b>31 millions de km</b> de diamètre": {
   "at": [
-   "ev_cygnus.js:39"
+   "ev_cygnus.js:41"
   ]
  },
  "Séparation : 0,244 UA (36,5 millions de km)": {
   "at": [
-   "ev_cygnus.js:39"
+   "ev_cygnus.js:41"
   ]
  },
  "Vous êtes à <b>{0}</b> du trou noir": {
   "at": [
-   "ev_cygnus.js:39"
+   "ev_cygnus.js:41"
   ],
   "args": "fmtDist(d * RS)"
  },
@@ -973,472 +1061,492 @@
  },
  "Chute libre · relativité générale": {
   "at": [
-   "ev_fall.js:13"
+   "ev_fall.js:14"
   ]
  },
  "Vous tombez en chute libre, tout droit, vers un trou noir. Les rayons lumineux sont calculés un par un dans l’espace-temps courbe : ce que vous voyez est ce qu’un observateur verrait, y compris après l’horizon.": {
   "at": [
-   "ev_fall.js:14"
+   "ev_fall.js:15"
   ]
  },
  "Le disque de gaz est une mise en scène (celui de Sagittarius A* est en réalité ténu et épais). La géométrie de la lumière, elle, est exacte pour un trou noir sans rotation.": {
   "at": [
-   "ev_fall.js:15"
+   "ev_fall.js:16"
   ]
  },
  "En chute libre": {
   "at": [
-   "ev_fall.js:16"
+   "ev_fall.js:17"
   ]
  },
  "Immobile, à distance": {
-  "at": [
-   "ev_fall.js:16"
-  ]
- },
- "Trou noir": {
   "at": [
    "ev_fall.js:17"
   ]
  },
  "Sagittarius A* (4,3 millions de Soleils)": {
   "at": [
-   "ev_fall.js:17"
+   "ev_fall.js:18"
   ]
  },
  "M87* (6,5 milliards de Soleils)": {
   "at": [
-   "ev_fall.js:17"
+   "ev_fall.js:18"
   ]
  },
  "Trou noir stellaire (10 Soleils)": {
   "at": [
-   "ev_fall.js:17"
+   "ev_fall.js:18"
   ]
  },
  "Disque de gaz (mise en scène)": {
   "at": [
-   "ev_fall.js:18"
+   "ev_fall.js:19"
   ]
  },
  "{0} / s": {
   "at": [
-   "ev_fall.js:22",
-   "ev_tde.js:61",
+   "ev_fall.js:23",
+   "ev_tde.js:62",
    "kit.js:37"
   ],
   "args": "fmtDur(s * tu)"
  },
  "Départ, à 40 rayons de l’horizon": {
   "at": [
-   "ev_fall.js:23"
+   "ev_fall.js:24"
   ]
  },
  "À 10 rayons": {
   "at": [
-   "ev_fall.js:23"
+   "ev_fall.js:24"
   ]
  },
  "Dernière orbite stable (3 rayons)": {
   "at": [
-   "ev_fall.js:23"
+   "ev_fall.js:24"
   ]
  },
  "Sphère de photons (1,5 rayon)": {
   "at": [
-   "ev_fall.js:23"
+   "ev_fall.js:24"
   ]
  },
  "Franchissement de l’horizon": {
   "at": [
-   "ev_fall.js:24"
+   "ev_fall.js:25"
   ]
  },
  "Sous l’horizon, à mi-chemin": {
   "at": [
-   "ev_fall.js:24"
+   "ev_fall.js:25"
   ]
  },
  "Derniers instants": {
   "at": [
-   "ev_fall.js:24"
+   "ev_fall.js:25"
   ]
  },
  "Chute libre": {
   "at": [
-   "ev_fall.js:27"
+   "ev_fall.js:28"
   ]
  },
  "Vous ne sentez rien : en chute libre, on ne pèse rien. Devant vous, un disque noir déforme le ciel. L’image du disque de gaz passe par-dessus et par-dessous : c’est sa face arrière, ramenée par la lumière courbée.": {
   "at": [
-   "ev_fall.js:27"
+   "ev_fall.js:28"
   ]
  },
  "Le ciel se referme": {
   "at": [
-   "ev_fall.js:28"
+   "ev_fall.js:29"
   ]
  },
  "Le trou noir grandit plus vite que votre distance ne diminue. Autour de lui, les étoiles sont repoussées et dédoublées : chaque étoile a une seconde image de l’autre côté.": {
   "at": [
-   "ev_fall.js:28"
+   "ev_fall.js:29"
   ]
  },
  "Dernière orbite stable": {
   "at": [
-   "ev_fall.js:29"
+   "ev_fall.js:30"
   ]
  },
  "À trois rayons, plus aucune orbite circulaire ne tient. Le gaz du disque plonge à partir d’ici : c’est son bord intérieur.": {
   "at": [
-   "ev_fall.js:29"
+   "ev_fall.js:30"
   ]
  },
  "Sphère de photons": {
   "at": [
-   "ev_fall.js:30"
+   "ev_fall.js:31"
   ]
  },
  "À un rayon et demi, la lumière elle-même peut tourner en rond. Un observateur immobile ici verrait sa propre nuque. Vous, vous passez.": {
   "at": [
-   "ev_fall.js:30"
+   "ev_fall.js:31"
   ]
  },
  "Horizon franchi": {
   "at": [
-   "ev_fall.js:31"
+   "ev_fall.js:32"
   ]
  },
  "Rien ne marque le passage : ni mur, ni éclair. Le noir ne vous entoure pas, il reste devant. Mais plus aucun chemin ne ramène dehors, même pour la lumière.": {
   "at": [
-   "ev_fall.js:31"
+   "ev_fall.js:32"
   ]
  },
  "Sous l’horizon": {
   "at": [
-   "ev_fall.js:32"
+   "ev_fall.js:33"
   ]
  },
  "Vous voyez toujours l’univers extérieur, derrière vous, de plus en plus sombre et rougi. L’espace vous emporte vers le centre plus vite que la lumière ne peut remonter.": {
   "at": [
-   "ev_fall.js:32"
+   "ev_fall.js:33"
   ]
  },
  "La marée": {
   "at": [
-   "ev_fall.js:33"
+   "ev_fall.js:34"
   ]
  },
  "La gravité tire plus fort sur vos pieds que sur votre tête. Le ciel s’écrase en un anneau autour de vous. Dans un petit trou noir, cette marée vous aurait tué bien avant l’horizon.": {
   "at": [
-   "ev_fall.js:33"
+   "ev_fall.js:34"
+  ]
+ },
+ "L’univers derrière vous": {
+  "at": [
+   "ev_fall.js:36"
+  ]
+ },
+ "La sonde": {
+  "at": [
+   "ev_fall.js:36"
   ]
  },
  "de temps propre avant la singularité · {0}": {
   "at": [
-   "ev_fall.js:35"
+   "ev_fall.js:37"
   ],
   "args": "H.name"
  },
  "imperceptible": {
   "at": [
-   "ev_fall.js:38"
+   "ev_fall.js:40"
   ]
  },
  "{0} g : supportable": {
   "at": [
-   "ev_fall.js:38"
+   "ev_fall.js:40"
   ],
   "args": "fr(tide, 2)"
  },
  "{0} g : dangereuse": {
   "at": [
-   "ev_fall.js:38"
+   "ev_fall.js:40"
   ],
   "args": "fr(tide, 0)"
  },
  "{0} g : mortelle, le corps est étiré": {
   "at": [
-   "ev_fall.js:38"
+   "ev_fall.js:40"
   ],
   "args": "fr(tide, 0)"
  },
  "Distance au centre : <b>{0}</b> ({1} rayons de l’horizon)": {
   "at": [
-   "ev_fall.js:39"
+   "ev_fall.js:41"
   ],
   "args": "fmtDist(km), fr(r, 2)"
  },
  "Vitesse face à un observateur immobile : <b>{0} %</b> de la lumière": {
   "at": [
-   "ev_fall.js:40"
+   "ev_fall.js:42"
   ],
   "args": "fr(v * 100, 1)"
  },
  "<b>Sous l’horizon</b> : aucun observateur immobile n’existe ici": {
   "at": [
-   "ev_fall.js:40"
+   "ev_fall.js:42"
   ]
  },
  "Marée entre la tête et les pieds (2 m) : <b>{0}</b>": {
   "at": [
-   "ev_fall.js:41"
+   "ev_fall.js:43"
   ],
   "args": "tideTxt"
  },
  "Vue de loin, la sonde ne franchit jamais l’horizon : sa lumière rougit et s’éteint.": {
   "at": [
-   "ev_fall.js:42"
+   "ev_fall.js:44"
   ]
  },
  "{0} rayons · {1}": {
   "at": [
-   "ev_fall.js:44"
+   "ev_fall.js:46"
   ],
   "args": "fr(d, 1), fmtDist(d * rsKm)"
  },
  "GW170817 · la collision de deux étoiles à neutrons": {
   "at": [
-   "ev_kilonova.js:17"
+   "ev_kilonova.js:18"
   ]
  },
  "17 août 2017 · galaxie NGC 4993 · à 130 millions d’années-lumière": {
   "at": [
-   "ev_kilonova.js:17"
+   "ev_kilonova.js:18"
   ]
  },
  "Deux étoiles à neutrons, chacune plus lourde que le Soleil et large de 24 kilomètres, tournent l’une autour de l’autre depuis des centaines de millions d’années. Il leur reste cent secondes. La scène passe du millième de seconde à la semaine : le tempo automatique ralentit jusqu’à 5 000 fois au moment du contact.": {
   "at": [
-   "ev_kilonova.js:18"
+   "ev_kilonova.js:19"
   ]
  },
  "Fréquence, séparation et calendrier viennent du signal mesuré par LIGO et Virgo. La forme des étoiles, des bras de matière et du jet est une mise en scène d’après les simulations publiées. Le son est la vraie fréquence de l’onde gravitationnelle.": {
   "at": [
-   "ev_kilonova.js:19"
+   "ev_kilonova.js:20"
   ]
  },
  "Dans l’espace": {
   "at": [
-   "ev_kilonova.js:20"
+   "ev_kilonova.js:21"
   ]
  },
  "Depuis une des étoiles": {
   "at": [
-   "ev_kilonova.js:20"
+   "ev_kilonova.js:21"
   ]
  },
  "Ondes gravitationnelles (amplitude très exagérée)": {
   "at": [
-   "ev_kilonova.js:21"
+   "ev_kilonova.js:22"
   ]
  },
  "Caméra qui suit l’échelle de la scène": {
   "at": [
-   "ev_kilonova.js:21"
+   "ev_kilonova.js:22"
   ]
  },
  "Cent secondes avant : 24 Hz": {
   "at": [
-   "ev_kilonova.js:25"
+   "ev_kilonova.js:26"
   ]
  },
  "Dix secondes avant": {
   "at": [
-   "ev_kilonova.js:25"
+   "ev_kilonova.js:26"
   ]
  },
  "Une seconde avant": {
   "at": [
-   "ev_kilonova.js:25"
+   "ev_kilonova.js:26"
   ]
  },
  "Le dernier dixième de seconde": {
   "at": [
-   "ev_kilonova.js:25"
+   "ev_kilonova.js:26"
   ]
  },
  "Le contact": {
   "at": [
-   "ev_kilonova.js:25",
+   "ev_kilonova.js:26",
    "theia.js:346"
   ]
  },
  "Trois millisecondes après : les bras": {
   "at": [
-   "ev_kilonova.js:26"
+   "ev_kilonova.js:27"
   ]
  },
  "Le jet (1,7 s après)": {
   "at": [
-   "ev_kilonova.js:26"
+   "ev_kilonova.js:27"
   ]
  },
  "Onze heures : la kilonova est repérée": {
   "at": [
-   "ev_kilonova.js:26"
+   "ev_kilonova.js:27"
   ]
  },
  "Quatre jours : elle rougit": {
   "at": [
-   "ev_kilonova.js:26"
+   "ev_kilonova.js:27"
   ]
  },
  "Dix jours après": {
   "at": [
-   "ev_kilonova.js:26"
+   "ev_kilonova.js:27"
   ]
  },
  "Cent dernières secondes": {
   "at": [
-   "ev_kilonova.js:29"
+   "ev_kilonova.js:30"
   ]
  },
  "Les deux étoiles sont à 400 km l’une de l’autre et font douze tours par seconde. Elles perdent de l’énergie en ondes gravitationnelles, donc se rapprochent, donc tournent plus vite. Sur Terre, LIGO vient de commencer à les entendre.": {
   "at": [
-   "ev_kilonova.js:29"
+   "ev_kilonova.js:30"
   ]
  },
  "L’emballement": {
   "at": [
-   "ev_kilonova.js:30"
+   "ev_kilonova.js:31"
   ]
  },
  "Dix secondes : 57 Hz. Le son monte. Chaque cuillère à café de ces étoiles pèse des centaines de millions de tonnes ; elles foncent l’une vers l’autre à un dixième de la vitesse de la lumière.": {
   "at": [
-   "ev_kilonova.js:30"
+   "ev_kilonova.js:31"
   ]
  },
  "Un dixième de seconde": {
   "at": [
-   "ev_kilonova.js:31"
+   "ev_kilonova.js:32"
   ]
  },
  "Cent cinquante tours par seconde. La marée de chacune commence à déformer l’autre. Le tempo ralentit : la suite se joue en millisecondes.": {
   "at": [
-   "ev_kilonova.js:31"
+   "ev_kilonova.js:32"
   ]
  },
  "Contact": {
   "at": [
-   "ev_kilonova.js:32",
+   "ev_kilonova.js:33",
    "theia.js:256",
    "theia.js:265"
   ]
  },
  "Les deux surfaces se touchent à près de 40 % de la vitesse de la lumière. En deux millisecondes, deux astres n’en font plus qu’un, qui tourne plus de mille fois par seconde.": {
   "at": [
-   "ev_kilonova.js:32"
+   "ev_kilonova.js:33"
   ]
  },
  "Les bras de matière": {
   "at": [
-   "ev_kilonova.js:33"
+   "ev_kilonova.js:34"
   ]
  },
  "La collision arrache des bras de matière ultra-dense, éjectés à 10 à 30 % de la vitesse de la lumière. Libérés de la pression, les neutrons s’agglutinent : en une seconde naissent or, platine, uranium.": {
   "at": [
-   "ev_kilonova.js:33"
+   "ev_kilonova.js:34"
   ]
  },
  "Le jet": {
   "at": [
-   "ev_kilonova.js:34"
+   "ev_kilonova.js:35"
   ]
  },
  "Le long de l’axe, un jet perce les débris presque à la vitesse de la lumière. 1,7 seconde après les ondes, le satellite Fermi reçoit un sursaut de rayons gamma : après 130 millions d’années de voyage, lumière et gravité arrivent ensemble.": {
   "at": [
-   "ev_kilonova.js:34"
+   "ev_kilonova.js:35"
   ]
  },
  "La kilonova": {
   "at": [
-   "ev_kilonova.js:35"
+   "ev_kilonova.js:36"
   ]
  },
  "Les éléments tout neufs sont radioactifs. Leur désintégration chauffe le nuage, qui brille comme des centaines de millions de Soleils. Onze heures après le signal, un télescope chilien repère le point nouveau.": {
   "at": [
-   "ev_kilonova.js:35"
+   "ev_kilonova.js:36"
   ]
  },
  "Du bleu au rouge": {
   "at": [
-   "ev_kilonova.js:36"
+   "ev_kilonova.js:37"
   ]
  },
  "Le nuage se dilate et refroidit. Les éléments les plus lourds, opaques, ne laissent passer que le rouge et l’infrarouge. Bilan estimé : environ dix masses terrestres d’or et de platine.": {
   "at": [
-   "ev_kilonova.js:36"
+   "ev_kilonova.js:37"
+  ]
+ },
+ "Centre du système": {
+  "at": [
+   "ev_kilonova.js:39"
+  ]
+ },
+ "Étoile à neutrons 1": {
+  "at": [
+   "ev_kilonova.js:39"
+  ]
+ },
+ "Étoile à neutrons 2": {
+  "at": [
+   "ev_kilonova.js:39"
   ]
  },
  "avant la fusion": {
   "at": [
-   "ev_kilonova.js:38"
+   "ev_kilonova.js:40"
   ]
  },
  "après la fusion": {
   "at": [
-   "ev_kilonova.js:38"
+   "ev_kilonova.js:40"
   ]
  },
  "Onde gravitationnelle : <b>{0} Hz</b> ({1} tours par seconde)": {
   "at": [
-   "ev_kilonova.js:41"
+   "ev_kilonova.js:43"
   ],
   "args": "fr(s.f, s.f < 100 ? 1 : 0), fr(s.f / 2, s.f < 100 ? 1 : 0)"
  },
  "Séparation : <b>{0} km</b> · chaque étoile : 24 km de diamètre": {
   "at": [
-   "ev_kilonova.js:41"
+   "ev_kilonova.js:43"
   ],
   "args": "fr(s.a, 0)"
  },
  "Vitesse relative : <b>{0} %</b> de la vitesse de la lumière": {
   "at": [
-   "ev_kilonova.js:41"
+   "ev_kilonova.js:43"
   ],
   "args": "fr(Math.PI * s.f * s.a / C * 100, 1)"
  },
  "Fusion : astre unique en rotation, <b>{0} tours par seconde</b>": {
   "at": [
-   "ev_kilonova.js:42"
+   "ev_kilonova.js:44"
   ],
   "args": "fr(s.f / 2, 0)"
  },
  "Matière éjectée : jusqu’à {0} du centre": {
   "at": [
-   "ev_kilonova.js:42"
+   "ev_kilonova.js:44"
   ],
   "args": "fmtDist(0.3 * C * Math.max(t, 0))"
  },
  "Nuage en expansion : <b>{0}</b> de rayon": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ],
   "args": "fmtDist(0.2 * C * t)"
  },
  "Vitesse : 10 à 30 % de la vitesse de la lumière": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ]
  },
  "Trop chaud et opaque : il brille en ultraviolet et en bleu": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ]
  },
  "Kilonova bleue, visible au télescope": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ]
  },
  "Kilonova rouge : les éléments lourds bloquent le bleu": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ]
  },
  "Astre central : sort incertain (étoile à neutrons géante, puis sans doute trou noir)": {
   "at": [
-   "ev_kilonova.js:43"
+   "ev_kilonova.js:45"
   ]
  },
  "Phobos · la lune qui deviendra un anneau": {
@@ -1591,243 +1699,645 @@
    "ev_phobos.js:39"
   ]
  },
- "Aujourd’hui + {0}": {
+ "Mars": {
+  "at": [
+   "ev_phobos.js:41",
+   "ev_saturn.js:14",
+   "ev_sun.js:18"
+  ]
+ },
+ "Phobos": {
   "at": [
    "ev_phobos.js:41"
+  ]
+ },
+ "L’anneau": {
+  "at": [
+   "ev_phobos.js:41"
+  ]
+ },
+ "Aujourd’hui + {0}": {
+  "at": [
+   "ev_phobos.js:42"
   ],
   "args": "fmtDur(t)"
  },
  "Phobos fait un tour en 7 h 39": {
   "at": [
-   "ev_phobos.js:41"
+   "ev_phobos.js:42"
   ]
  },
  "la spirale": {
   "at": [
-   "ev_phobos.js:41"
+   "ev_phobos.js:42"
   ]
  },
  "après la rupture de Phobos": {
   "at": [
-   "ev_phobos.js:41"
+   "ev_phobos.js:42"
   ]
  },
  "Phobos : à <b>{0} km</b> du sol ({1} rayons martiens)": {
   "at": [
-   "ev_phobos.js:44"
+   "ev_phobos.js:45"
   ],
   "args": "fr(a - RM, 0), fr(a / RM, 2)"
  },
  "Un tour en <b>{0}</b> · jour martien : 24 h 37": {
   "at": [
-   "ev_phobos.js:44"
+   "ev_phobos.js:45"
   ],
   "args": "fmtDur(P)"
  },
  "Taille dans le ciel martien : <b>{0}′</b> (notre Lune : 31′)": {
   "at": [
-   "ev_phobos.js:44"
+   "ev_phobos.js:45"
   ],
   "args": "fr(2 * Math.atan(11 / (a - RM)) * 180 / Math.PI * 60, 0)"
  },
  "Rupture dans {0}": {
   "at": [
-   "ev_phobos.js:44"
+   "ev_phobos.js:45"
   ],
   "args": "fmtDur(TB - t)"
  },
  "Anneau à <b>{0} km</b> du sol, large de <b>{1} km</b>": {
   "at": [
-   "ev_phobos.js:46"
+   "ev_phobos.js:47"
   ],
   "args": "fr(AB - RM, 0), fr(2 * w, 0)"
  },
  "Arc fermé à {0} %": {
   "at": [
-   "ev_phobos.js:46"
+   "ev_phobos.js:47"
   ],
   "args": "fr(clamp(spreadOf(dt), 0, 1) * 100, 0)"
  },
  "Anneau fermé": {
   "at": [
-   "ev_phobos.js:46"
+   "ev_phobos.js:47"
   ]
  },
  "matière restante : <b>{0} %</b>": {
   "at": [
-   "ev_phobos.js:46"
+   "ev_phobos.js:47"
   ],
   "args": "fr((1 - lossOf(dt)) * 100, 0)"
  },
  "Blocs tombés sur Mars : {0} sur {1} (mise en scène)": {
   "at": [
-   "ev_phobos.js:46"
+   "ev_phobos.js:47"
   ],
   "args": "CH.filter(c => c.t < t).length, CH.length"
  },
+ "Mercure": {
+  "at": [
+   "ev_saturn.js:13",
+   "ev_sun.js:18"
+  ]
+ },
+ "Vénus": {
+  "at": [
+   "ev_saturn.js:13",
+   "ev_sun.js:18"
+  ]
+ },
+ "Terre": {
+  "at": [
+   "ev_saturn.js:14",
+   "ev_sun.js:18"
+  ]
+ },
+ "Lune": {
+  "at": [
+   "ev_saturn.js:14"
+  ]
+ },
+ "Jupiter": {
+  "at": [
+   "ev_saturn.js:15",
+   "ev_sl9.js:56",
+   "ev_sun.js:18"
+  ]
+ },
+ "Saturne": {
+  "at": [
+   "ev_saturn.js:15"
+  ]
+ },
+ "Uranus": {
+  "at": [
+   "ev_saturn.js:15"
+  ]
+ },
+ "Neptune": {
+  "at": [
+   "ev_saturn.js:16"
+  ]
+ },
+ "Titan": {
+  "at": [
+   "ev_saturn.js:16"
+  ]
+ },
+ "Un visiteur invisible": {
+  "at": [
+   "ev_saturn.js:73"
+  ]
+ },
+ "Un trou noir ne brille pas. Celui-ci pèse cinquante fois Jupiter dans une sphère de 300 mètres : aucun télescope ne le verrait arriver. On ne le détecterait que par ses effets, des planètes lointaines qui dévient de leur route.": {
+  "at": [
+   "ev_saturn.js:73"
+  ]
+ },
+ "Le passage": {
+  "at": [
+   "ev_saturn.js:74"
+  ]
+ },
+ "Il traverse le plan des planètes juste derrière Saturne, à 44 millions de km. Pendant quelques semaines, sa gravité tire la planète en arrière, contre le sens de sa course.": {
+  "at": [
+   "ev_saturn.js:74"
+  ]
+ },
+ "Saturne freinée": {
+  "at": [
+   "ev_saturn.js:75"
+  ]
+ },
+ "Saturne avançait à 9,6 km/s, la vitesse qui la maintenait à 9,5 UA du Soleil. Il lui en reste moins de la moitié. Trop lente pour tenir son orbite, elle commence à tomber vers le Soleil.": {
+  "at": [
+   "ev_saturn.js:75"
+  ]
+ },
+ "Le trou noir repart": {
+  "at": [
+   "ev_saturn.js:76"
+  ]
+ },
+ "Il passe à 4,9 UA du Soleil et ressort par le sud du système solaire, sans rien toucher. Il a aussi bousculé Uranus et Neptune ; Jupiter et les planètes intérieures n’ont presque rien senti.": {
+  "at": [
+   "ev_saturn.js:76"
+  ]
+ },
+ "La chute": {
+  "at": [
+   "ev_saturn.js:77"
+  ]
+ },
+ "La nouvelle orbite de Saturne est une ellipse très allongée : 10 UA au plus loin, 0,94 UA au plus près, un tour en 12,8 ans. Elle coupe désormais les orbites de Jupiter, de Mars et de la Terre.": {
+  "at": [
+   "ev_saturn.js:77"
+  ]
+ },
+ "Une nouvelle lumière": {
+  "at": [
+   "ev_saturn.js:78"
+  ]
+ },
+ "Saturne approche à 15 km/s. Elle dépasse Vénus en éclat, puis montre à l’œil nu un disque et des anneaux. Si près du Soleil, la glace de ses anneaux commence à se sublimer.": {
+  "at": [
+   "ev_saturn.js:78"
+  ]
+ },
+ "Au plus près": {
+  "at": [
+   "ev_saturn.js:79",
+   "ev_saturn.js:80",
+   "ev_tde.js:70"
+  ]
+ },
+ "Saturne passe à 2,2 millions de km, moins de six fois la distance de la Lune. Son disque couvre six fois la largeur de la pleine Lune, ses anneaux quatorze. Sa marée sur la Terre vaut plus de quarante fois celle de la Lune.": {
+  "at": [
+   "ev_saturn.js:79"
+  ]
+ },
+ "Saturne passe à 5 millions de km, treize fois la distance de la Lune. Son disque est deux fois et demie plus large que la pleine Lune, ses anneaux six fois. Sa marée sur la Terre dépasse trois fois celle de la Lune.": {
+  "at": [
+   "ev_saturn.js:80"
+  ]
+ },
+ "La Lune arrachée": {
+  "at": [
+   "ev_saturn.js:81"
+  ]
+ },
+ "Avec Saturne si proche, la zone où la Terre peut retenir un satellite se réduit à 330 000 km. La Lune, à 384 000 km, se retrouve dehors : elle quitte notre orbite et devient une petite planète qui tourne seule autour du Soleil.": {
+  "at": [
+   "ev_saturn.js:81"
+  ]
+ },
+ "La Lune reste": {
+  "at": [
+   "ev_saturn.js:82"
+  ]
+ },
+ "À cette distance, la Terre peut encore retenir un satellite jusqu’à 770 000 km : la Lune, à 384 000 km, reste avec nous, sur une orbite plus allongée qu’avant.": {
+  "at": [
+   "ev_saturn.js:82"
+  ]
+ },
+ "La Terre déviée": {
+  "at": [
+   "ev_saturn.js:83",
+   "ev_saturn.js:84"
+  ]
+ },
+ "Saturne pèse 95 Terres : en quelques jours, elle a changé notre orbite. La Terre s’éloigne maintenant jusqu’à 1,34 UA du Soleil, où elle reçoit 45 % de lumière en moins, et l’année dure 464 jours.": {
+  "at": [
+   "ev_saturn.js:83"
+  ]
+ },
+ "Saturne pèse 95 Terres : en quelques jours, elle a changé notre orbite. La Terre s’éloigne maintenant jusqu’à 1,14 UA du Soleil, où elle reçoit 24 % de lumière en moins, et l’année dure 407 jours.": {
+  "at": [
+   "ev_saturn.js:84"
+  ]
+ },
+ "Ce que le calcul ne dit pas": {
+  "at": [
+   "ev_saturn.js:85"
+  ]
+ },
+ "Marées géantes, séismes, climat : rien de cela n’est simulé. La scène ne calcule que la gravité entre onze points, et c’est déjà elle qui décide de la longueur de l’année et du sort de la Lune.": {
+  "at": [
+   "ev_saturn.js:85"
+  ]
+ },
+ "Saturne revient": {
+  "at": [
+   "ev_saturn.js:86",
+   "ev_saturn.js:95"
+  ]
+ },
+ "Saturne repasse au plus près du Soleil à peu près tous les treize ans. La Terre n’est pas au rendez-vous à chaque fois, mais les deux orbites continuent de se croiser.": {
+  "at": [
+   "ev_saturn.js:86"
+  ]
+ },
+ "Jupiter s’en mêle": {
+  "at": [
+   "ev_saturn.js:87"
+  ]
+ },
+ "Saturne passe près de Jupiter, qui dévie sa route. Chaque rencontre modifie les orbites, et une différence infime au départ donne une suite tout autre : au-delà de quelques décennies, ce calcul n’est plus qu’une histoire possible parmi d’autres.": {
+  "at": [
+   "ev_saturn.js:87"
+  ]
+ },
+ "Le trou noir arrive": {
+  "at": [
+   "ev_saturn.js:91"
+  ]
+ },
+ "Le passage près de Saturne": {
+  "at": [
+   "ev_saturn.js:91"
+  ]
+ },
+ "Saturne commence à tomber": {
+  "at": [
+   "ev_saturn.js:92"
+  ]
+ },
+ "Saturne croise l’orbite de Jupiter": {
+  "at": [
+   "ev_saturn.js:92"
+  ]
+ },
+ "Saturne grandit dans notre ciel": {
+  "at": [
+   "ev_saturn.js:93"
+  ]
+ },
+ "Au plus près, vu de la Terre": {
+  "at": [
+   "ev_saturn.js:93"
+  ]
+ },
+ "La Terre vue de Saturne": {
+  "at": [
+   "ev_saturn.js:94"
+  ]
+ },
+ "La nouvelle orbite de la Terre": {
+  "at": [
+   "ev_saturn.js:94"
+  ]
+ },
+ "Quarante ans plus tard": {
+  "at": [
+   "ev_saturn.js:95"
+  ]
+ },
+ "Le trou noir, de près": {
+  "at": [
+   "ev_saturn.js:95"
+  ]
+ },
+ "Fiction · Saturne délogée par un trou noir": {
+  "at": [
+   "ev_saturn.js:109"
+  ]
+ },
+ "Fiction · un scénario calculé, pas une prévision": {
+  "at": [
+   "ev_saturn.js:109"
+  ]
+ },
+ "Ceci est une fiction. Un trou noir de 0,05 masse solaire, moins de 300 mètres de diamètre, traverse le système solaire à 40 km/s et frôle Saturne. La planète perd plus de la moitié de sa vitesse, tombe vers le Soleil et vient croiser l’orbite de la Terre. À partir de ce point de départ, tout est calculé : la gravité de onze corps, pas à pas.": {
+  "at": [
+   "ev_saturn.js:110"
+  ]
+ },
+ "Aucun trou noir de cette masse n’a jamais été observé (il devrait être « primordial », né juste après le Big Bang : une hypothèse), et aucun objet de ce genre n’est connu près du Soleil. Sa trajectoire et la position de la Terre ont été choisies pour que Saturne passe près de nous. Orbites de départ simplifiées : circulaires, dans un même plan. Les anneaux et Titan sont supposés intacts ; marées, climat et collisions ne sont pas simulés.": {
+  "at": [
+   "ev_saturn.js:111"
+  ]
+ },
+ "Le système solaire": {
+  "at": [
+   "ev_saturn.js:112",
+   "ev_sun.js:30"
+  ]
+ },
+ "Près de Saturne": {
+  "at": [
+   "ev_saturn.js:113"
+  ]
+ },
+ "Près du trou noir": {
+  "at": [
+   "ev_saturn.js:113"
+  ]
+ },
+ "Saturne passe à 2 millions de km : la Lune est arrachée": {
+  "at": [
+   "ev_saturn.js:114"
+  ]
+ },
+ "Saturne passe à 5 millions de km : la Lune reste": {
+  "at": [
+   "ev_saturn.js:114"
+  ]
+ },
+ "Fiction. Tailles et distances réelles : les planètes sont des points tant qu’on ne s’en approche pas. « Depuis la Terre » : vue du centre de la Terre, sans atmosphère.": {
+  "at": [
+   "ev_saturn.js:119"
+  ]
+ },
+ "avant le passage du trou noir près de Saturne": {
+  "at": [
+   "ev_saturn.js:121"
+  ]
+ },
+ "après le passage du trou noir · fiction": {
+  "at": [
+   "ev_saturn.js:121"
+  ]
+ },
+ "Trou noir : <b>0,05 masse solaire</b>, 52 fois Jupiter · horizon de <b>295 m</b> de diamètre": {
+  "at": [
+   "ev_saturn.js:126"
+  ]
+ },
+ "Vitesse : {0} km/s · à {1} du Soleil": {
+  "at": [
+   "ev_saturn.js:126"
+  ],
+  "args": "fr(len(vb) * KMS, 1), fmtDist(len(bh) * AU)"
+ },
+ "Il n’émet rien. Seule la déformation des étoiles derrière lui le trahit.": {
+  "at": [
+   "ev_saturn.js:126"
+  ]
+ },
+ "Trou noir : à <b>{0}</b> de Saturne": {
+  "at": [
+   "ev_saturn.js:130"
+  ],
+  "args": "fmtDist(len(sub(bh, sa, _c)) * AU)"
+ },
+ "Saturne : {0} km/s": {
+  "at": [
+   "ev_saturn.js:130"
+  ],
+  "args": "fr(vs, 1)"
+ },
+ "Saturne : à <b>{0} UA</b> du Soleil · {1} km/s": {
+  "at": [
+   "ev_saturn.js:130"
+  ],
+  "args": "fr(rs, 2), fr(vs, 1)"
+ },
+ "Saturne vue de la Terre : à <b>{0}</b> · disque de <b>{1}°</b> (Lune : 0,52°)": {
+  "at": [
+   "ev_saturn.js:131"
+  ],
+  "args": "fmtDist(d * AU), fr(ang, ang < 0.1 ? 3 : 2)"
+ },
+ "Éclat : magnitude <b>{0}</b> (pleine Lune : −12,7 ; ordre de grandeur, sans les anneaux)": {
+  "at": [
+   "ev_saturn.js:132"
+  ],
+  "args": "fr(mag, 1)"
+ },
+ "marée : <b>{0} ×</b> celle de la Lune": {
+  "at": [
+   "ev_saturn.js:132"
+  ],
+  "args": "fr(tide, tide < 10 ? 1 : 0)"
+ },
+ "Orbite de la Terre : <b>{0} à {1} UA</b> · année de <b>{2} jours</b>": {
+  "at": [
+   "ev_saturn.js:133"
+  ],
+  "args": "fr(elE.q, 2), fr(elE.Q, 2), fr(elE.P * 365.25, 0)"
+ },
+ "Lune : à <b>{0}</b> de la Terre": {
+  "at": [
+   "ev_saturn.js:134"
+  ],
+  "args": "fmtDist(dm * AU)"
+ },
+ "Lune : à <b>{0}</b> de la Terre, arrachée": {
+  "at": [
+   "ev_saturn.js:134"
+  ],
+  "args": "fmtDist(dm * AU)"
+ },
  "Shoemaker-Levy 9 · la comète contre Jupiter": {
-  "at": [
-   "ev_sl9.js:38"
-  ]
- },
- "16 au 22 juillet 1994 · à 770 millions de km de la Terre": {
-  "at": [
-   "ev_sl9.js:38"
-  ]
- },
- "Deux ans plus tôt, Jupiter a brisé en un chapelet de fragments une comète qu’il retenait en orbite depuis des décennies. Une vingtaine reviennent, l’un après l’autre, à 60 kilomètres par seconde. C’est la première collision entre deux corps du système solaire que l’humanité observe en direct.": {
   "at": [
    "ev_sl9.js:39"
   ]
  },
- "Les heures d’impact sont celles retenues par la NASA. Les fragments tombent juste derrière le bord de Jupiter vu de la Terre ; seule la sonde Galileo les a vus directement. Taille des cicatrices et allure des panaches : mise en scène d’après les images de Hubble.": {
+ "16 au 22 juillet 1994 · à 770 millions de km de la Terre": {
+  "at": [
+   "ev_sl9.js:39"
+  ]
+ },
+ "Deux ans plus tôt, Jupiter a brisé en un chapelet de fragments une comète qu’il retenait en orbite depuis des décennies. Une vingtaine reviennent, l’un après l’autre, à 60 kilomètres par seconde. C’est la première collision entre deux corps du système solaire que l’humanité observe en direct.": {
   "at": [
    "ev_sl9.js:40"
   ]
  },
- "Depuis la Terre (libre)": {
+ "Les heures d’impact sont celles retenues par la NASA. Les fragments tombent juste derrière le bord de Jupiter vu de la Terre ; seule la sonde Galileo les a vus directement. Taille des cicatrices et allure des panaches : mise en scène d’après les images de Hubble.": {
   "at": [
    "ev_sl9.js:41"
+  ]
+ },
+ "Depuis la Terre (libre)": {
+  "at": [
+   "ev_sl9.js:42"
   ]
  },
  "Au-dessus du point d’impact": {
   "at": [
-   "ev_sl9.js:41"
+   "ev_sl9.js:42"
   ]
  },
  "Sur le prochain fragment": {
   "at": [
-   "ev_sl9.js:41"
+   "ev_sl9.js:42"
   ]
  },
  "Le chapelet approche": {
   "at": [
-   "ev_sl9.js:44"
+   "ev_sl9.js:45"
   ]
  },
  "Impact du fragment {0} (le plus violent)": {
   "at": [
-   "ev_sl9.js:44"
+   "ev_sl9.js:45"
   ],
   "args": "n"
  },
  "Impact du fragment {0}": {
   "at": [
-   "ev_sl9.js:44"
+   "ev_sl9.js:45"
   ],
   "args": "n"
  },
  "Les cicatrices, deux jours après": {
   "at": [
-   "ev_sl9.js:45"
+   "ev_sl9.js:46"
   ]
  },
  "Un collier de perles": {
   "at": [
-   "ev_sl9.js:47"
+   "ev_sl9.js:48"
   ]
  },
  "En juillet 1992, la comète est passée si près de Jupiter que la marée l’a rompue. Découverte en mars 1993 par Carolyn et Eugene Shoemaker et David Levy, elle forme un train de fragments, dont les plus gros font jusqu’à 2 km.": {
   "at": [
-   "ev_sl9.js:47"
+   "ev_sl9.js:48"
   ]
  },
  "Fragment A": {
   "at": [
-   "ev_sl9.js:48"
+   "ev_sl9.js:49"
   ]
  },
  "Premier impact, côté nuit, juste derrière le bord visible depuis la Terre. Boule de feu à 24 000 K. Quelques minutes plus tard, un panache dépasse du limbe : il monte à 3 000 km.": {
   "at": [
-   "ev_sl9.js:48"
+   "ev_sl9.js:49"
   ]
  },
  "La tache": {
   "at": [
-   "ev_sl9.js:49"
+   "ev_sl9.js:50"
   ]
  },
  "La rotation de Jupiter amène le site face à la Terre. Surprise générale : une tache sombre, nette, visible dans un télescope d’amateur. Personne n’avait prédit de marque durable.": {
   "at": [
-   "ev_sl9.js:49"
+   "ev_sl9.js:50"
   ]
  },
  "Fragment G": {
   "at": [
-   "ev_sl9.js:50"
+   "ev_sl9.js:51"
   ]
  },
  "Le plus violent : environ 6 millions de mégatonnes de TNT, 600 fois l’arsenal nucléaire mondial. La cicatrice dépasse 12 000 km, presque le diamètre de la Terre.": {
   "at": [
-   "ev_sl9.js:50"
+   "ev_sl9.js:51"
   ]
  },
  "K, puis L": {
   "at": [
-   "ev_sl9.js:51"
+   "ev_sl9.js:52"
   ]
  },
  "Deux autres géants à douze heures d’écart. Jupiter fait un tour en moins de dix heures : chaque fragment tombe au même endroit du ciel, mais sur une longitude différente de la planète.": {
   "at": [
-   "ev_sl9.js:51"
+   "ev_sl9.js:52"
   ]
  },
  "Q2 et Q1": {
   "at": [
-   "ev_sl9.js:52"
+   "ev_sl9.js:53"
   ]
  },
  "Vingt-huit minutes entre les deux. Le chapelet touche à sa fin, la bande de latitude 44° sud est constellée de taches sombres.": {
   "at": [
-   "ev_sl9.js:52"
+   "ev_sl9.js:53"
   ]
  },
  "Fragment W": {
   "at": [
-   "ev_sl9.js:53"
+   "ev_sl9.js:54"
   ]
  },
  "Dernier impact, le 22 juillet. Les cicatrices resteront visibles des mois. L’épisode a rappelé que les impacts ne sont pas une affaire du passé, et que Jupiter en reçoit beaucoup à notre place.": {
   "at": [
-   "ev_sl9.js:53"
+   "ev_sl9.js:54"
+  ]
+ },
+ "Point d’impact": {
+  "at": [
+   "ev_sl9.js:56"
+  ]
+ },
+ "Prochain fragment": {
+  "at": [
+   "ev_sl9.js:56"
   ]
  },
  "{0} juillet 1994 · {1} h {2}": {
   "at": [
-   "ev_sl9.js:55"
+   "ev_sl9.js:57"
   ],
   "args": "d.getUTCDate(), String(d.getUTCHours()).padStart(2, '0'), String(d.getUTCMinutes()).padStart(2, '0')"
  },
  "temps universel": {
   "at": [
-   "ev_sl9.js:55"
+   "ev_sl9.js:57"
   ]
  },
  "Prochain : fragment <b>{0}</b>, dans <b>{1}</b>, à {2} de Jupiter": {
   "at": [
-   "ev_sl9.js:58"
+   "ev_sl9.js:60"
   ],
   "args": "f.n, fmtDur(f.t - t), fmtDist(V * (f.t - t))"
  },
  "Tous les fragments sont tombés": {
   "at": [
-   "ev_sl9.js:58"
+   "ev_sl9.js:60"
   ]
  },
  "Vitesse d’impact : <b>60 km/s</b> (216 000 km/h)": {
   "at": [
-   "ev_sl9.js:59"
+   "ev_sl9.js:61"
   ]
  },
  "Impacts : <b>{0}</b> sur {1} observés": {
   "at": [
-   "ev_sl9.js:59"
+   "ev_sl9.js:61"
   ],
   "args": "l + 1, F.length"
  },
  "Fragment {0} : panache à <b>{1} km</b> au-dessus des nuages": {
   "at": [
-   "ev_sl9.js:60"
+   "ev_sl9.js:62"
   ],
   "args": "F[l].n, fr(plumeH(t - F[l].t), 0)"
  },
@@ -1874,381 +2384,376 @@
  },
  "D’aujourd’hui à dans huit milliards d’années": {
   "at": [
-   "ev_sun.js:26"
+   "ev_sun.js:27"
   ]
  },
  "Le Soleil brûle son hydrogène depuis 4,6 milliards d’années et il lui en reste pour un peu plus de cinq. Avant cela, la Terre aura déjà perdu ses océans. Ensuite il enfle en géante rouge, 256 fois plus large qu’aujourd’hui, puis s’éteint en naine blanche.": {
   "at": [
-   "ev_sun.js:27"
-  ]
- },
- "Luminosité, rayon, température et masse suivent les jalons du modèle de Schröder et Smith (2008) ; entre deux jalons, la scène interpole. Le sort de la Terre est celui de ce modèle : engloutie de justesse. L’aspect du sol et du ciel est une mise en scène.": {
-  "at": [
    "ev_sun.js:28"
   ]
  },
- "Le système solaire": {
+ "Luminosité, rayon, température et masse suivent les jalons du modèle de Schröder et Smith (2008) ; entre deux jalons, la scène interpole. Le sort de la Terre est celui de ce modèle : engloutie de justesse. L’aspect du sol et du ciel est une mise en scène.": {
   "at": [
    "ev_sun.js:29"
   ]
  },
  "Dans 1 milliard d’années : les océans s’évaporent": {
   "at": [
-   "ev_sun.js:32"
+   "ev_sun.js:33"
   ]
  },
  "Dans 5,4 milliards : fin de l’hydrogène": {
   "at": [
-   "ev_sun.js:32"
+   "ev_sun.js:33"
   ]
  },
  "La géante rouge enfle": {
   "at": [
-   "ev_sun.js:32"
+   "ev_sun.js:33"
   ]
  },
  "Mercure englouti": {
   "at": [
-   "ev_sun.js:32"
+   "ev_sun.js:33"
   ]
  },
  "Derniers instants de la Terre": {
   "at": [
-   "ev_sun.js:33"
+   "ev_sun.js:34"
   ]
  },
  "Le sommet : 256 fois le Soleil": {
   "at": [
-   "ev_sun.js:33"
+   "ev_sun.js:34"
   ]
  },
  "Après le flash de l’hélium": {
   "at": [
-   "ev_sun.js:33"
+   "ev_sun.js:34"
   ]
  },
  "Seconde géante rouge": {
   "at": [
-   "ev_sun.js:33"
+   "ev_sun.js:34"
   ]
  },
  "Nébuleuse et naine blanche": {
   "at": [
-   "ev_sun.js:33"
+   "ev_sun.js:34"
   ]
  },
  "Une étoile stable": {
   "at": [
-   "ev_sun.js:35"
+   "ev_sun.js:36"
   ]
  },
  "Le Soleil gagne environ 1 % de luminosité tous les 100 millions d’années. C’est lent, mais suffisant pour condamner la Terre bien avant la fin de l’étoile.": {
   "at": [
-   "ev_sun.js:35"
+   "ev_sun.js:36"
   ]
  },
  "La Terre sort de la zone habitable": {
   "at": [
-   "ev_sun.js:36"
+   "ev_sun.js:37"
   ]
  },
  "Dans environ un milliard d’années, le Soleil chauffe assez pour que la vapeur d’eau monte dans la haute atmosphère et s’échappe dans l’espace. Les océans disparaissent.": {
   "at": [
-   "ev_sun.js:36"
+   "ev_sun.js:37"
   ]
  },
  "Plus d’hydrogène au cœur": {
   "at": [
-   "ev_sun.js:37"
+   "ev_sun.js:38"
   ]
  },
  "Le cœur n’est plus que de l’hélium. Il se contracte, chauffe, et l’hydrogène brûle désormais dans une coquille autour de lui. L’étoile, paradoxalement, enfle.": {
   "at": [
-   "ev_sun.js:37"
+   "ev_sun.js:38"
   ]
  },
  "Géante rouge": {
   "at": [
-   "ev_sun.js:38"
+   "ev_sun.js:39"
   ]
  },
  "La surface refroidit et rougit, mais elle est si vaste que l’étoile brille des centaines de fois plus. Elle perd sa matière en vent : un tiers de sa masse au total. Moins retenues, les planètes s’éloignent.": {
   "at": [
-   "ev_sun.js:38"
+   "ev_sun.js:39"
   ]
  },
  "Mercure, puis Vénus": {
   "at": [
-   "ev_sun.js:39"
+   "ev_sun.js:40"
   ]
  },
  "La surface du Soleil atteint l’orbite de Mercure, puis celle de Vénus, pourtant élargies. Freinées par le gaz, les planètes spiralent et se dissolvent.": {
   "at": [
-   "ev_sun.js:39"
+   "ev_sun.js:40"
   ]
  },
  "La Terre": {
   "at": [
-   "ev_sun.js:40"
+   "ev_sun.js:41"
   ]
  },
  "L’orbite terrestre s’est élargie à 1,5 UA, ce qui aurait dû suffire. Mais la marée que la Terre soulève sur la géante la freine. Dans ce modèle, il lui aurait fallu partir de 1,15 UA pour survivre.": {
   "at": [
-   "ev_sun.js:40"
+   "ev_sun.js:41"
   ]
  },
  "Flash de l’hélium": {
   "at": [
-   "ev_sun.js:41"
+   "ev_sun.js:42"
   ]
  },
  "Au sommet, 2 730 fois la luminosité actuelle. Le cœur atteint 100 millions de degrés et l’hélium s’allume d’un coup. L’étoile se dégonfle en quelques centaines de milliers d’années.": {
   "at": [
-   "ev_sun.js:41"
+   "ev_sun.js:42"
   ]
  },
  "Cent millions d’années de répit": {
   "at": [
-   "ev_sun.js:42"
+   "ev_sun.js:43"
   ]
  },
  "Dix fois plus large qu’aujourd’hui, le Soleil brûle tranquillement son hélium en carbone et en oxygène. Mars et Jupiter, elles, sont toujours là.": {
   "at": [
-   "ev_sun.js:42"
+   "ev_sun.js:43"
   ]
  },
  "Seconde enflure": {
   "at": [
-   "ev_sun.js:43"
+   "ev_sun.js:44"
   ]
  },
  "L’hélium s’épuise à son tour. L’étoile regonfle, pulse, et souffle ses couches externes dans l’espace.": {
   "at": [
-   "ev_sun.js:43"
+   "ev_sun.js:44"
   ]
  },
  "Naine blanche": {
   "at": [
-   "ev_sun.js:44"
+   "ev_sun.js:45"
   ]
  },
  "Il reste un cœur nu de carbone et d’oxygène : la moitié de la masse du Soleil dans le volume de la Terre, à 100 000 degrés. Il éclaire un moment le gaz éjecté, puis refroidit, sans fin. Nébuleuse brillante ou coquille à peine visible : le débat n’est pas tranché.": {
   "at": [
-   "ev_sun.js:44"
+   "ev_sun.js:45"
   ]
  },
  "âge du Soleil : {0} milliards d’années": {
   "at": [
-   "ev_sun.js:46"
+   "ev_sun.js:48"
   ],
   "args": "fr(4.58 + t / G, 2)"
  },
  "Phase : <b>{0}</b>": {
   "at": [
-   "ev_sun.js:49"
+   "ev_sun.js:51"
   ],
   "args": "s.ph"
  },
  "Luminosité : <b>{0}</b> fois l’actuelle · rayon : <b>{1}</b> fois ({2} UA)": {
   "at": [
-   "ev_sun.js:49"
+   "ev_sun.js:51"
   ],
   "args": "fr(s.L, s.L < 10 ? 2 : 0), fr(s.R, s.R < 10 ? 2 : 0), fr(s.R * RS / AU, 2)"
  },
  "Surface : {0} K · masse : {1} %": {
   "at": [
-   "ev_sun.js:49"
+   "ev_sun.js:51"
   ],
   "args": "fr(s.T, 0), fr(s.M * 100, 0)"
  },
  "Terre : engloutie": {
   "at": [
-   "ev_sun.js:50"
+   "ev_sun.js:52"
   ]
  },
  "Terre : orbite à {0} UA, équilibre thermique <b>{1} °C</b> (hors effet de serre)": {
   "at": [
-   "ev_sun.js:50"
+   "ev_sun.js:52"
   ],
   "args": "fr(aE, 2), fr(teq - 273, 0)"
  },
  "Soleil dans le ciel : <b>{0}°</b> de large (aujourd’hui 0,53°)": {
   "at": [
-   "ev_sun.js:50"
+   "ev_sun.js:52"
   ],
   "args": "fr(ang, ang < 10 ? 2 : 0)"
  },
  "Une étoile déchiquetée par un trou noir": {
   "at": [
-   "ev_tde.js:55"
+   "ev_tde.js:56"
   ]
  },
  "Rupture par effet de marée · au centre d’une galaxie": {
   "at": [
-   "ev_tde.js:55"
+   "ev_tde.js:56"
   ]
  },
  "Une étoile comme le Soleil passe trop près d’un trou noir d’un million de masses solaires. La gravité tire plus fort sur sa face proche que sur sa face éloignée : en quelques heures, elle est étirée en un filament. La moitié s’échappe, l’autre revient nourrir le trou noir pendant des mois.": {
   "at": [
-   "ev_tde.js:56"
+   "ev_tde.js:57"
   ]
  },
  "Orbites et calendrier sont calculés (dispersion d’énergie figée au rayon de marée, retour en 41 jours, déclin en t puissance −5/3). L’aspect du gaz et la formation du disque sont une mise en scène.": {
   "at": [
-   "ev_tde.js:57"
+   "ev_tde.js:58"
   ]
  },
  "Suivre l’étoile": {
   "at": [
-   "ev_tde.js:58"
+   "ev_tde.js:59"
   ]
  },
  "Approche, 15 heures avant": {
   "at": [
-   "ev_tde.js:62"
+   "ev_tde.js:63"
   ]
  },
  "Rayon de marée : l’étoile cède": {
   "at": [
-   "ev_tde.js:62"
+   "ev_tde.js:63"
   ]
  },
  "Passage au plus près": {
   "at": [
-   "ev_tde.js:62"
+   "ev_tde.js:63"
   ]
  },
  "Deux heures après : elle s’allonge": {
   "at": [
-   "ev_tde.js:63"
+   "ev_tde.js:64"
   ]
  },
  "Retour des premiers débris (41 jours)": {
   "at": [
-   "ev_tde.js:63"
+   "ev_tde.js:64"
   ]
  },
  "Le pic de luminosité": {
   "at": [
-   "ev_tde.js:64"
+   "ev_tde.js:65"
   ]
  },
  "Six mois après": {
   "at": [
-   "ev_tde.js:64"
+   "ev_tde.js:65"
   ]
  },
  "Une étoile égarée": {
   "at": [
-   "ev_tde.js:67"
+   "ev_tde.js:68"
   ]
  },
  "Une rencontre avec une autre étoile l’a déviée vers le centre de la galaxie. Elle tombe sur une orbite presque parabolique vers un trou noir qu’elle ne voit pas : il n’y a pas encore de disque.": {
   "at": [
-   "ev_tde.js:67"
+   "ev_tde.js:68"
   ]
  },
  "Rayon de marée": {
   "at": [
-   "ev_tde.js:68"
+   "ev_tde.js:69"
   ]
  },
  "À 70 millions de kilomètres, la marée du trou noir dépasse la gravité qui tient l’étoile. Elle commence à s’allonger. Plus rien ne peut la sauver.": {
-  "at": [
-   "ev_tde.js:68"
-  ]
- },
- "Au plus près": {
   "at": [
    "ev_tde.js:69"
   ]
  },
  "Elle passe à 44 millions de kilomètres du centre, à 26 % de la vitesse de la lumière. Chaque morceau part sur sa propre orbite, selon qu’il était du côté proche ou éloigné.": {
   "at": [
-   "ev_tde.js:69"
+   "ev_tde.js:70"
   ]
  },
  "Spaghettification": {
   "at": [
-   "ev_tde.js:70"
+   "ev_tde.js:71"
   ]
  },
  "L’étoile n’existe plus. C’est un filament de gaz qui s’étire et se refroidit. La moitié proche du trou noir a perdu de l’énergie : elle est capturée. L’autre moitié s’échappe à plus de 6 000 km/s.": {
   "at": [
-   "ev_tde.js:70"
+   "ev_tde.js:71"
   ]
  },
  "Le silence": {
   "at": [
-   "ev_tde.js:71"
+   "ev_tde.js:72"
   ]
  },
  "Pendant des semaines, rien. Les débris capturés montent sur de longues ellipses avant de retomber. Vu de loin, le centre de la galaxie est toujours noir.": {
   "at": [
-   "ev_tde.js:71"
+   "ev_tde.js:72"
   ]
  },
  "Le retour": {
   "at": [
-   "ev_tde.js:72"
+   "ev_tde.js:73"
   ]
  },
  "Quarante et un jours après, les débris les plus liés reviennent. Le filament se percute lui-même, chauffe, et s’enroule en disque. Le trou noir s’allume : il peut briller plus que toute sa galaxie.": {
   "at": [
-   "ev_tde.js:72"
+   "ev_tde.js:73"
   ]
  },
  "Le déclin": {
   "at": [
-   "ev_tde.js:73"
+   "ev_tde.js:74"
   ]
  },
  "Les débris suivants reviennent de plus loin, donc de moins en moins vite. Le flux décroît comme le temps à la puissance −5/3 : c’est cette courbe, vue au télescope, qui signe une étoile déchiquetée.": {
   "at": [
-   "ev_tde.js:73"
+   "ev_tde.js:74"
+  ]
+ },
+ "L’étoile": {
+  "at": [
+   "ev_tde.js:76"
   ]
  },
  "avant le passage au plus près": {
   "at": [
-   "ev_tde.js:75"
+   "ev_tde.js:77"
   ]
  },
  "après le passage au plus près": {
   "at": [
-   "ev_tde.js:75"
+   "ev_tde.js:77"
   ]
  },
  "Étoile : à <b>{0}</b> du trou noir, <b>{1} %</b> de la vitesse de la lumière": {
   "at": [
-   "ev_tde.js:78"
+   "ev_tde.js:80"
   ],
   "args": "fmtDist(d * RSKM), fr(v * 100, 1)"
  },
  "Trou noir : 1 million de masses solaires, horizon de 5,9 millions de km de diamètre": {
   "at": [
-   "ev_tde.js:79"
+   "ev_tde.js:81"
   ]
  },
  "Débris revenus : <b>{0} %</b> de l’étoile (au plus la moitié)": {
   "at": [
-   "ev_tde.js:79"
+   "ev_tde.js:81"
   ],
   "args": "fr(returned * 100, 1)"
  },
  "Flux de matière qui retombe : <b>{0}</b>": {
   "at": [
-   "ev_tde.js:80"
+   "ev_tde.js:82"
   ],
   "args": "t < TFB ? T('nul') : TF('{0} % du pic', [fr(fall(t) * 100, t > TFB * 4 ? 1 : 0)])"
  },
  "nul": {
   "at": [
-   "ev_tde.js:80"
+   "ev_tde.js:82"
   ]
  },
  "{0} % du pic": {
   "at": [
-   "ev_tde.js:80"
+   "ev_tde.js:82"
   ],
   "args": "fr(fall(t) * 100, t > TFB * 4 ? 1 : 0)"
  },
@@ -2422,7 +2927,7 @@
  "Pause": {
   "at": [
    "kit.js:157",
-   "kit.js:310"
+   "kit.js:351"
   ]
  },
  "Suivant": {
@@ -2435,55 +2940,61 @@
    "kit.js:157"
   ]
  },
- "Menu": {
-  "at": [
-   "kit.js:157"
-  ]
- },
  "Aller à un moment": {
   "at": [
    "kit.js:158"
   ]
  },
+ "Centrer sur…": {
+  "at": [
+   "kit.js:159",
+   "kit.js:233"
+  ]
+ },
+ "Flèches vers les points d’intérêt": {
+  "at": [
+   "kit.js:159"
+  ]
+ },
  "Distance": {
   "at": [
-   "kit.js:160",
-   "kit.js:161"
+   "kit.js:161",
+   "kit.js:162"
   ]
  },
  "Glisser pour tourner le regard, molette pour s’approcher. Rien ne relance la scène.": {
   "at": [
-   "kit.js:162"
+   "kit.js:163"
   ]
  },
  "<b>glisser</b> regarder · <b>molette</b> distance / zoom · <b>1 à 9</b> vitesse · <b>+ −</b> ajuster · <b>P / Espace</b> pause · <b>N</b> moment suivant · <b>V</b> changer de vue · <b>R</b> rejouer · <b>H</b> masquer": {
   "at": [
-   "kit.js:166"
+   "kit.js:168"
   ]
  },
  "Commencer à": {
   "at": [
-   "kit.js:172"
+   "kit.js:174"
   ]
  },
  "Moment de départ": {
   "at": [
-   "kit.js:172"
+   "kit.js:174"
   ]
  },
  "Entrer": {
   "at": [
-   "kit.js:173"
+   "kit.js:175"
   ]
  },
  "auto": {
   "at": [
-   "kit.js:308"
+   "kit.js:349"
   ]
  },
  "Reprendre": {
   "at": [
-   "kit.js:310"
+   "kit.js:351"
   ]
  },
  "Début": {
@@ -3864,7 +4375,7 @@
   ],
   "args": "nx.label"
  },
- "Simulateur · douze événements · vues libres": {
+ "Simulateur · treize événements · vues libres": {
   "at": [
    "page:menu"
   ]
@@ -3900,36 +4411,6 @@
   ]
  },
  "Sur Terre · en orbite · sur l’astéroïde": {
-  "at": [
-   "page:menu"
-  ]
- },
- "Juillet 1994": {
-  "at": [
-   "page:menu"
-  ]
- },
- "Shoemaker-Levy 9, brisée en vingt fragments, frappe Jupiter à 60 km/s. Panaches de 3 000 km et cicatrices grandes comme la Terre, heure par heure.": {
-  "at": [
-   "page:menu"
-  ]
- },
- "Depuis la Terre · au-dessus de l’impact · sur un fragment": {
-  "at": [
-   "page:menu"
-  ]
- },
- "15 février 2013": {
-  "at": [
-   "page:menu"
-  ]
- },
- "Un astéroïde de 18 mètres explose à 30 km d’altitude, plus brillant que le Soleil. Les ombres tournent dans les rues ; l’onde de choc arrive deux minutes et demie plus tard.": {
-  "at": [
-   "page:menu"
-  ]
- },
- "Dans la rue · à côté du bolide · sur l’astéroïde": {
   "at": [
    "page:menu"
   ]
@@ -4054,9 +4535,64 @@
    "page:menu"
   ]
  },
+ "Fiction calculée": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Un trou noir de 300 mètres traverse le système solaire et freine Saturne, qui tombe vers le Soleil et vient frôler la Terre. Onze corps calculés pas à pas : des anneaux dans notre ciel, une année rallongée, la Lune arrachée.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Le système solaire · depuis la Terre · près de Saturne · près du trou noir": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Juillet 1994": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Shoemaker-Levy 9, brisée en vingt fragments, frappe Jupiter à 60 km/s. Panaches de 3 000 km et cicatrices grandes comme la Terre, heure par heure.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Depuis la Terre · au-dessus de l’impact · sur un fragment": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "15 février 2013": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Un astéroïde de 18 mètres explose à 30 km d’altitude, plus brillant que le Soleil. Les ombres tournent dans les rues ; l’onde de choc arrive deux minutes et demie plus tard.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Dans la rue · à côté du bolide · sur l’astéroïde": {
+  "at": [
+   "page:menu"
+  ]
+ },
  "Les images sont tirées des scènes elles-mêmes. Dans chaque scène, ce qui est mesuré ou calculé est distingué de ce qui est mis en scène. Tout tient dans ce seul fichier, sans connexion.": {
   "at": [
    "page:menu"
+  ]
+ },
+ "L’astéroïde": {
+  "at": [
+   "page:chicxulub"
+  ]
+ },
+ "Le point d’impact": {
+  "at": [
+   "page:chicxulub"
   ]
  },
  "Sur Terre": {
@@ -4134,6 +4670,11 @@
    "page:theia"
   ]
  },
+ "Theia": {
+  "at": [
+   "page:theia"
+  ]
+ },
  "Espace": {
   "at": [
    "page:theia"
@@ -4170,11 +4711,6 @@
   ]
  },
  "Il y a 4,5 milliards d’années · la proto-Terre": {
-  "at": [
-   "page:theia"
-  ]
- },
- "Theia": {
   "at": [
    "page:theia"
   ]

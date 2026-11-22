@@ -1,7 +1,7 @@
 <p align="center"><img src="docs/screenshots/01_menu.jpg" alt="Cosmic Events" width="100%"></p>
 
 <h1 align="center">Cosmic Events</h1>
-<p align="center"><b>Twelve cosmic events you can walk into.</b><br>
+<p align="center"><b>Thirteen cosmic events you can walk into.</b><br>
 Collisions, collapses and ends of worlds, simulated in 3D in your browser, from a single file.</p>
 
 <p align="center"><a href="https://intelligentrebel.github.io/cosmic-events/"><b>▶ Open it in your browser</b></a> · <a href="README.fr.md">Version française</a></p>
@@ -14,7 +14,7 @@ Each scene has a clock you can slow down ten thousand times or speed up to a hun
 
 <p align="center"><img src="docs/screenshots/02_fall.jpg" width="49%"> <img src="docs/screenshots/03_kilonova.jpg" width="49%"></p>
 
-## The twelve events
+## The thirteen events
 
 | When | Event | What you see |
 |---|---|---|
@@ -30,16 +30,19 @@ Each scene has a clock you can slow down ten thousand times or speed up to a hun
 | In 30 million years | **The ring of Mars** | Phobos spirals in, breaks up at the Roche limit and becomes a ring. |
 | In 4 billion years | **Milky Way against Andromeda** | 27,000 test stars integrated live; head-on collision or near miss, both scenarios. |
 | In 7.6 billion years | **The death of the Sun** | Oceans gone, red giant filling the sky, planets engulfed, helium flash, white dwarf. |
+| Fiction | **What if a black hole dislodged Saturn?** | A 300-metre black hole brakes Saturn, which falls sunward and brushes past Earth. Eleven bodies integrated step by step; two scenarios, one where the Moon is torn away. Clearly labelled as fiction. |
 
 <p align="center"><img src="docs/screenshots/04_chicxulub.jpg" width="49%"> <img src="docs/screenshots/05_betelgeuse.jpg" width="49%"></p>
 <p align="center"><img src="docs/screenshots/06_andromeda.jpg" width="49%"> <img src="docs/screenshots/07_sun.jpg" width="49%"></p>
+<p align="center"><img src="docs/screenshots/08_saturn.jpg" width="70%"></p>
 
 ## What is in it
 
 - **Free viewpoints**: from the ground, from space, and from the body that is about to hit. Change at any time, the scene does not restart.
+- **Points of interest**: a “Center on…” list in every scene (the comet, the impact site, a planet…) and arrows at the edge of the screen that show where they are; one tick hides them.
 - **Time under control**: keys 1 to 9, a slider, and an automatic tempo that slows down at the key moments. A list of moments jumps straight to them.
 - **Honest about what is known**: each scene says what is measured or computed (trajectories, timings, orders of magnitude, the bending of light around the black holes) and what is an artistic rendering. Key figures come from published sources, listed below.
-- **One file, offline**: the whole simulator is a single HTML file of about 2.5 MB, with no server, no account and no network access. Everything is procedural: there is not a single texture file.
+- **One file, offline**: the whole simulator is a single HTML file of about 2.8 MB, with no server, no account and no network access. Almost everything is procedural: the only image files are NASA's maps of Mars and Phobos.
 - **11 languages**: English, 简体中文, Deutsch, Español, Português, Русский, Français, 日本語, 한국어, Italiano, Polski. It follows your browser's language (English otherwise); you can change it from the menu.
 
 ## Use it
@@ -67,7 +70,8 @@ The source is written in French (variables, comments, texts). Every displayed te
 - Cygnus X-1: [Miller-Jones et al. 2021](https://arxiv.org/abs/2102.09091)
 - Chelyabinsk: [Wikipedia summary of the published measurements](https://en.wikipedia.org/wiki/Chelyabinsk_meteor)
 - Shoemaker-Levy 9: [NASA NSSDC impact times](https://nssdc.gsfc.nasa.gov/planetary/impact.html)
-- Phobos: Black & Mittal 2015, [summary](https://www.sciencedaily.com/releases/2015/11/151124143506.htm)
+- Phobos: Black & Mittal 2015, [summary](https://www.sciencedaily.com/releases/2015/11/151124143506.htm); maps of Mars and Phobos: [NASA 3D Resources](https://github.com/nasa/NASA-3D-Resources)
+- The Saturn scene is fiction: no published source describes it. The starting point is chosen, the rest is a Newtonian N-body integration (`src/nbody.js`)
 - The Sun: [Schröder & Smith 2008](https://arxiv.org/abs/0801.4031)
 - Andromeda: [Sawala et al. 2025](https://arxiv.org/abs/2408.00064)
 - Betelgeuse: [Astronomy.com on the Goldberg & Bauer estimates](https://www.astronomy.com/science/when-betelgeuse-goes-supernova-what-will-it-look-like-from-earth/)
