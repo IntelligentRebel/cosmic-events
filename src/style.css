@@ -106,3 +106,4 @@
   #backMenu:hover{background:#ffe2bd;color:#1a1c2c;border-color:#ffe2bd}
   body.in-event #top{top:56px}
   #hud.noarrows #marker{display:none!important}
+  .rng{display:block;font-size:11px;letter-spacing:.06em;color:var(--dim,#a9b0c4);margin:6px 0 2px}.rng span{text-transform:uppercase}.rng b{float:right;color:#fff;font-weight:600;font-size:13px;letter-spacing:0}.rng input{display:block;width:100%;margin-top:4px}

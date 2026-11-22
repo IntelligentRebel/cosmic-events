@@ -81,36 +81,54 @@
    "ev_rogue.js:72"
   ]
  },
+ "Une explosion nucléaire, à votre distance": {
+  "at": [
+   "app.js:20",
+   "ev_nuke.js:116"
+  ]
+ },
+ "DART : dévier un astéroïde": {
+  "at": [
+   "app.js:21",
+   "ev_dart.js:22"
+  ]
+ },
+ "La jeune Lune": {
+  "at": [
+   "app.js:22",
+   "ev_moon.js:47"
+  ]
+ },
  "Événements cosmiques": {
   "at": [
-   "app.js:22"
+   "app.js:25"
   ]
  },
  "La version {0} est disponible (vous avez la {1}).": {
   "at": [
-   "app.js:38"
+   "app.js:41"
   ],
   "args": "v, VERSION"
  },
  "La télécharger": {
   "at": [
-   "app.js:38"
+   "app.js:41"
   ]
  },
  "Ne plus vérifier": {
   "at": [
-   "app.js:38"
+   "app.js:41"
   ]
  },
  "Menu": {
   "at": [
-   "app.js:54",
-   "kit.js:157"
+   "app.js:57",
+   "kit.js:159"
   ]
  },
  "Retour au menu": {
   "at": [
-   "app.js:54"
+   "app.js:57"
   ]
  },
  "Notre voisine": {
@@ -278,7 +296,7 @@
   "at": [
    "ev_andromeda.js:33",
    "ev_andromeda.js:36",
-   "ev_phobos.js:29"
+   "ev_moon.js:55"
   ]
  },
  "Dans 2 milliards d’années": {
@@ -315,7 +333,7 @@
   "at": [
    "ev_andromeda.js:35",
    "ev_chelyabinsk.js:58",
-   "ev_phobos.js:41"
+   "ev_dart.js:20"
   ]
  },
  "Dans {0}": {
@@ -400,8 +418,8 @@
  "Depuis la Terre": {
   "at": [
    "ev_betelgeuse.js:25",
-   "ev_rogue.js:76",
-   "ev_saturn.js:113"
+   "ev_moon.js:50",
+   "ev_rogue.js:76"
   ]
  },
  "Près de l’étoile": {
@@ -744,7 +762,8 @@
  },
  "L’onde de choc arrive": {
   "at": [
-   "ev_chelyabinsk.js:48"
+   "ev_chelyabinsk.js:48",
+   "ev_nuke.js:109"
   ]
  },
  "Après": {
@@ -1060,6 +1079,252 @@
    "ev_cygnus.js:41"
   ],
   "args": "fmtDist(d * RS)"
+ },
+ "Dimorphos": {
+  "at": [
+   "ev_dart.js:18"
+  ]
+ },
+ "Didymos": {
+  "at": [
+   "ev_dart.js:18"
+  ]
+ },
+ "DART": {
+  "at": [
+   "ev_dart.js:18"
+  ]
+ },
+ "Où serait Dimorphos sans l’impact": {
+  "at": [
+   "ev_dart.js:19"
+  ]
+ },
+ "LICIACube": {
+  "at": [
+   "ev_dart.js:19"
+  ]
+ },
+ "Terre (11 millions de km)": {
+  "at": [
+   "ev_dart.js:20"
+  ]
+ },
+ "DART · 26 septembre 2022": {
+  "at": [
+   "ev_dart.js:22"
+  ]
+ },
+ "Astéroïde double Didymos · à 11 millions de km de la Terre · 23 h 14 TU": {
+  "at": [
+   "ev_dart.js:22"
+  ]
+ },
+ "Pour la première fois, l’humanité essaie de déplacer un corps céleste. Une sonde d’une demi-tonne vise Dimorphos, une lune de 160 mètres qui tourne autour de l’astéroïde Didymos, et la percute à plus de 6 km par seconde. Ni l’un ni l’autre ne menaçait la Terre : c’est une répétition générale.": {
+  "at": [
+   "ev_dart.js:23"
+  ]
+ },
+ "Distances, vitesses, calendrier de l’approche et changement d’orbite suivent les mesures publiées. Le relief des deux astéroïdes, le cône de débris et la queue de poussière sont une mise en scène d’après les images de DART, de LICIACube et de Hubble. Les deux orbites sont tracées circulaires.": {
+  "at": [
+   "ev_dart.js:24"
+  ]
+ },
+ "À bord de DART": {
+  "at": [
+   "ev_dart.js:25"
+  ]
+ },
+ "Près de Dimorphos": {
+  "at": [
+   "ev_dart.js:25"
+  ]
+ },
+ "Le système double": {
+  "at": [
+   "ev_dart.js:25"
+  ]
+ },
+ "Pilotage automatique (T − 4 h)": {
+  "at": [
+   "ev_dart.js:29"
+  ]
+ },
+ "Dimorphos apparaît (T − 1 h)": {
+  "at": [
+   "ev_dart.js:29"
+  ]
+ },
+ "Les deux astéroïdes dans le champ": {
+  "at": [
+   "ev_dart.js:29"
+  ]
+ },
+ "Les dix dernières secondes": {
+  "at": [
+   "ev_dart.js:29"
+  ]
+ },
+ "L’impact, vu de côté": {
+  "at": [
+   "ev_dart.js:30"
+  ]
+ },
+ "Le cône de débris": {
+  "at": [
+   "ev_dart.js:30"
+  ]
+ },
+ "Une nouvelle orbite": {
+  "at": [
+   "ev_dart.js:30"
+  ]
+ },
+ "La queue de poussière": {
+  "at": [
+   "ev_dart.js:30"
+  ]
+ },
+ "Seul aux commandes": {
+  "at": [
+   "ev_dart.js:32"
+  ]
+ },
+ "À 11 millions de km, un ordre envoyé de la Terre mettrait 36 secondes à arriver : trop long. Quatre heures avant l’impact, DART passe en pilotage automatique. Sa caméra ne distingue encore qu’un point, Didymos.": {
+  "at": [
+   "ev_dart.js:32"
+  ]
+ },
+ "La cible apparaît": {
+  "at": [
+   "ev_dart.js:33"
+  ]
+ },
+ "Une heure avant l’impact, à 22 000 km, la caméra détecte enfin Dimorphos. Vingt minutes avant, DART se verrouille sur elle et cesse de viser Didymos.": {
+  "at": [
+   "ev_dart.js:33"
+  ]
+ },
+ "Deux mondes": {
+  "at": [
+   "ev_dart.js:34"
+  ]
+ },
+ "À deux minutes et demie de la fin, Didymos et Dimorphos tiennent pour la dernière fois dans la même image. DART franchit en un cinquième de seconde la distance qui les sépare.": {
+  "at": [
+   "ev_dart.js:34"
+  ]
+ },
+ "Un tas de gravats": {
+  "at": [
+   "ev_dart.js:35"
+  ]
+ },
+ "La surface se révèle : pas de roche lisse, mais un amas de blocs. Dimorphos est un tas de gravats à peine tenu par sa propre gravité. La dernière image complète est prise à 12 km, deux secondes avant le choc.": {
+  "at": [
+   "ev_dart.js:35"
+  ]
+ },
+ "L’impact": {
+  "at": [
+   "ev_dart.js:36"
+  ]
+ },
+ "Une demi-tonne lancée à 22 000 km/h frappe presque de face, contre le sens de l’orbite. L’énergie est celle d’environ trois tonnes de TNT. Pour un astéroïde de plusieurs millions de tonnes, c’est une pichenette.": {
+  "at": [
+   "ev_dart.js:36"
+  ]
+ },
+ "Le témoin": {
+  "at": [
+   "ev_dart.js:37"
+  ]
+ },
+ "Moins de trois minutes plus tard, le petit satellite italien LICIACube passe à 57 km et photographie un cône de débris qui s’ouvre en éventail : plus de mille tonnes de roche éjectées.": {
+  "at": [
+   "ev_dart.js:37"
+  ]
+ },
+ "Une queue de comète": {
+  "at": [
+   "ev_dart.js:38"
+  ]
+ },
+ "La lumière du Soleil repousse les poussières les plus fines. En quelques jours, la traînée dépasse 10 000 km ; elle atteindra au moins 30 000 km.": {
+  "at": [
+   "ev_dart.js:38"
+  ]
+ },
+ "Le verdict": {
+  "at": [
+   "ev_dart.js:39"
+  ]
+ },
+ "Il fallait un changement d’au moins 73 secondes pour parler de succès ; le choc seul, sans débris, en aurait donné environ sept minutes. Les télescopes en mesurent 33. Les débris projetés vers l’arrière ont poussé l’astéroïde bien plus que la sonde elle-même, comme le recul d’un canon.": {
+  "at": [
+   "ev_dart.js:39"
+  ]
+ },
+ "Ce que ça change": {
+  "at": [
+   "ev_dart.js:40"
+  ]
+ },
+ "Seule l’orbite de Dimorphos autour de Didymos a changé, pas la route du couple autour du Soleil. Mais un corps céleste a été déplacé de façon mesurable, et la méthode fonctionne mieux que prévu. La mission européenne Hera, partie en 2024, doit ausculter le cratère sur place.": {
+  "at": [
+   "ev_dart.js:40"
+  ]
+ },
+ "avant l’impact": {
+  "at": [
+   "ev_dart.js:43",
+   "main.js:946"
+  ]
+ },
+ "après l’impact": {
+  "at": [
+   "ev_dart.js:43",
+   "main.js:1155"
+  ]
+ },
+ "DART : à <b>{0}</b> de Dimorphos · 6,1 km/s": {
+  "at": [
+   "ev_dart.js:45"
+  ],
+  "args": "fmtDist(d / 1000)"
+ },
+ "Dimorphos : 160 m, à 1,2 km de Didymos (780 m) · un tour en 11 h 55 min": {
+  "at": [
+   "ev_dart.js:45"
+  ]
+ },
+ "Champ de la caméra : {0}° (la vraie : 0,29°)": {
+  "at": [
+   "ev_dart.js:45"
+  ],
+  "args": "fr(fovNow, fovNow < 3 ? 2 : 0)"
+ },
+ "Dimorphos : un tour en <b>11 h 22 min</b>, 33 minutes de moins · vitesse réduite de 2,7 mm/s": {
+  "at": [
+   "ev_dart.js:47"
+  ]
+ },
+ "Avance sur l’ancienne orbite : <b>{0}</b>": {
+  "at": [
+   "ev_dart.js:47"
+  ],
+  "args": "fmtDur(lead)"
+ },
+ "orbite resserrée de {0} m": {
+  "at": [
+   "ev_dart.js:47"
+  ],
+  "args": "fr(A0 - A1, 0)"
+ },
+ "Débris : plus de 1 000 tonnes · queue de poussière de plus de 10 000 km": {
+  "at": [
+   "ev_dart.js:48"
+  ]
  },
  "trou noir stellaire": {
   "at": [
@@ -1554,6 +1819,665 @@
  "Astre central : sort incertain (étoile à neutrons géante, puis sans doute trou noir)": {
   "at": [
    "ev_kilonova.js:45"
+  ]
+ },
+ "La jeune Lune · les 4,5 milliards d’années qui ont suivi l’impact": {
+  "at": [
+   "ev_moon.js:47"
+  ]
+ },
+ "Après Theia · la Lune s’éloigne, la Terre ralentit": {
+  "at": [
+   "ev_moon.js:47"
+  ]
+ },
+ "La Lune est née tout près de la Terre, quinze fois plus près qu’aujourd’hui : un disque énorme dans le ciel, au-dessus d’un monde qui tournait sur lui-même en cinq heures. Depuis, les marées la repoussent et freinent la Terre. La scène parcourt ces 4,5 milliards d’années.": {
+  "at": [
+   "ev_moon.js:48"
+  ]
+ },
+ "Repères tirés de modèles et de roches : formation vers quatre rayons terrestres, jour de 13 heures il y a 3,2 milliards d’années, de 22 heures il y a 620 millions d’années. Entre ces repères, la distance suit une loi de marée simple ; la durée du jour se déduit de la distance par conservation du moment cinétique, sans l’effet du Soleil. L’aspect de la Terre, du ciel et de la Lune ancienne est une mise en scène. La rotation est accélérée : un jour dure une minute à l’écran aujourd’hui, treize secondes au début.": {
+  "at": [
+   "ev_moon.js:49"
+  ]
+ },
+ "Depuis l’espace": {
+  "at": [
+   "ev_moon.js:50"
+  ]
+ },
+ "Cent ans après l’impact": {
+  "at": [
+   "ev_moon.js:54"
+  ]
+ },
+ "Mille ans après": {
+  "at": [
+   "ev_moon.js:54"
+  ]
+ },
+ "Dix mille ans après, vu de l’espace": {
+  "at": [
+   "ev_moon.js:54"
+  ]
+ },
+ "Les premiers océans": {
+  "at": [
+   "ev_moon.js:54"
+  ]
+ },
+ "Il y a 3,2 milliards d’années": {
+  "at": [
+   "ev_moon.js:55"
+  ]
+ },
+ "Il y a 620 millions d’années, vu de l’espace": {
+  "at": [
+   "ev_moon.js:55"
+  ]
+ },
+ "Une Lune toute neuve": {
+  "at": [
+   "ev_moon.js:57"
+  ]
+ },
+ "Dans les modèles, les débris de l’impact se rassemblent en quelques années au plus, juste au-delà de la distance où la marée de la Terre les aurait empêchés de s’agglomérer. La Lune naît à environ quatre rayons terrestres : quinze fois plus près qu’aujourd’hui.": {
+  "at": [
+   "ev_moon.js:57"
+  ]
+ },
+ "Un ciel occupé": {
+  "at": [
+   "ev_moon.js:58"
+  ]
+ },
+ "Elle occupe quinze à vingt fois sa largeur actuelle, selon sa hauteur dans le ciel, et luit d’un rouge sombre : sa surface est encore un océan de magma. Celle de la Terre aussi.": {
+  "at": [
+   "ev_moon.js:58"
+  ]
+ },
+ "Des jours de cinq heures": {
+  "at": [
+   "ev_moon.js:59"
+  ]
+ },
+ "La Terre tourne sur elle-même en cinq heures. La Lune, si proche, y soulève des marées plus de mille fois plus fortes qu’aujourd’hui, d’abord dans la roche en fusion. Ce frottement freine la Terre et, en retour, pousse la Lune vers le large.": {
+  "at": [
+   "ev_moon.js:59"
+  ]
+ },
+ "La fuite": {
+  "at": [
+   "ev_moon.js:60"
+  ]
+ },
+ "L’éloignement est d’abord très rapide, puis ralentit : la force de marée chute avec le cube de la distance. En cent mille ans, dans ce calcul, la Lune a plus que doublé sa distance.": {
+  "at": [
+   "ev_moon.js:60"
+  ]
+ },
+ "La croûte": {
+  "at": [
+   "ev_moon.js:61"
+  ]
+ },
+ "La surface de la Terre se fige en quelques millions d’années. Sous une atmosphère épaisse de vapeur d’eau et de gaz carbonique, la pluie finit par tomber : les premiers océans.": {
+  "at": [
+   "ev_moon.js:61"
+  ]
+ },
+ "De l’eau, déjà": {
+  "at": [
+   "ev_moon.js:62"
+  ]
+ },
+ "Les plus vieux minéraux connus, des zircons d’Australie âgés de 4,4 milliards d’années, se sont formés en présence d’eau liquide. La Lune a figé sa croûte claire ; elle est encore à moins de la moitié de sa distance actuelle.": {
+  "at": [
+   "ev_moon.js:62"
+  ]
+ },
+ "Les mers de la Lune": {
+  "at": [
+   "ev_moon.js:63"
+  ]
+ },
+ "Entre 3,9 et 3,1 milliards d’années avant nous, de la lave remplit les grands bassins d’impact de la face visible : ce sont les taches sombres que l’on voit encore à l’œil nu.": {
+  "at": [
+   "ev_moon.js:63"
+  ]
+ },
+ "Des jours de treize heures": {
+  "at": [
+   "ev_moon.js:64"
+  ]
+ },
+ "Il y a 3,2 milliards d’années, des dépôts de marée fossiles indiquent une Lune à 70 % de sa distance actuelle et un jour d’environ 13 heures.": {
+  "at": [
+   "ev_moon.js:64"
+  ]
+ },
+ "Le ciel devient bleu": {
+  "at": [
+   "ev_moon.js:65"
+  ]
+ },
+ "Des bactéries produisent de l’oxygène depuis longtemps ; vers 2,4 milliards d’années avant nous, il s’accumule enfin dans l’air. La couleur du ciel avant cette date est une supposition.": {
+  "at": [
+   "ev_moon.js:65"
+  ]
+ },
+ "Des jours de vingt-deux heures": {
+  "at": [
+   "ev_moon.js:66"
+  ]
+ },
+ "Il y a 620 millions d’années, d’autres dépôts de marée donnent un jour d’environ 22 heures : l’année comptait 400 jours.": {
+  "at": [
+   "ev_moon.js:66"
+  ]
+ },
+ "La Lune s’éloigne encore de 3,8 cm par an, mesurés au laser grâce aux réflecteurs laissés par les missions Apollo. C’est près de deux fois le rythme moyen du passé : les océans actuels freinent la Terre particulièrement bien. Un jour dure 24 heures, pour l’instant.": {
+  "at": [
+   "ev_moon.js:67"
+  ]
+ },
+ "Lune": {
+  "at": [
+   "ev_moon.js:69",
+   "ev_saturn.js:15"
+  ]
+ },
+ "Terre": {
+  "at": [
+   "ev_moon.js:69",
+   "ev_saturn.js:15",
+   "ev_sun.js:18"
+  ]
+ },
+ "Orbite actuelle de la Lune": {
+  "at": [
+   "ev_moon.js:70"
+  ]
+ },
+ "Limite de Roche": {
+  "at": [
+   "ev_moon.js:70"
+  ]
+ },
+ "Il y a {0}": {
+  "at": [
+   "ev_moon.js:71"
+  ],
+  "args": "fmtDur(ag * YEAR)"
+ },
+ "{0} après l’impact de Theia": {
+  "at": [
+   "ev_moon.js:71"
+  ],
+  "args": "fmtDur(t)"
+ },
+ "Lune : à <b>{0}</b> de la Terre ({1} rayons terrestres) · {2} % de la distance actuelle": {
+  "at": [
+   "ev_moon.js:74"
+  ],
+  "args": "fmtDist(a), fr(a / RE, 1), fr(a / A_NOW * 100, 0)"
+ },
+ "Dans le ciel : <b>{0}°</b> de large, {1} fois la Lune d’aujourd’hui": {
+  "at": [
+   "ev_moon.js:75"
+  ],
+  "args": "fr(ang, ang < 1 ? 2 : 1), fr(ang / 0.518, ang / 0.518 < 2 ? 2 : 1)"
+ },
+ "Jour : <b>{0}</b> · un tour de Lune : {1}": {
+  "at": [
+   "ev_moon.js:76"
+  ],
+  "args": "fmtDur(dayLen(a)), fmtDur(monthLen(a))"
+ },
+ "Force de marée : <b>{0} fois</b> celle d’aujourd’hui": {
+  "at": [
+   "ev_moon.js:77"
+  ],
+  "args": "fr(tide, tide < 10 ? 1 : 0)"
+ },
+ "éloignement mesuré : 3,8 cm par an": {
+  "at": [
+   "ev_moon.js:77"
+  ]
+ },
+ "éloignement moyen : {0} m par an": {
+  "at": [
+   "ev_moon.js:77"
+  ],
+  "args": "fr(rate / 100, rate < 1000 ? 1 : 0)"
+ },
+ "éloignement moyen : {0} cm par an": {
+  "at": [
+   "ev_moon.js:77"
+  ],
+  "args": "fr(rate, rate < 10 ? 1 : 0)"
+ },
+ "{0} kt": {
+  "at": [
+   "ev_nuke.js:80"
+  ],
+  "args": "fr(w, w < 10 ? 1 : 0)"
+ },
+ "{0} Mt": {
+  "at": [
+   "ev_nuke.js:80"
+  ],
+  "args": "fr(w / 1000, w < 10000 ? 1 : 0)"
+ },
+ "{0} km": {
+  "at": [
+   "ev_nuke.js:81",
+   "kit.js:28"
+  ],
+  "args": "fr(m / 1000, 1)"
+ },
+ "brûlures au troisième degré sur la peau exposée": {
+  "at": [
+   "ev_nuke.js:91"
+  ]
+ },
+ "brûlures au deuxième degré": {
+  "at": [
+   "ev_nuke.js:91"
+  ]
+ },
+ "brûlures au premier degré, comme un fort coup de soleil": {
+  "at": [
+   "ev_nuke.js:91"
+  ]
+ },
+ "une chaleur nette sur la peau, sans brûlure": {
+  "at": [
+   "ev_nuke.js:91"
+  ]
+ },
+ "une chaleur à peine perceptible": {
+  "at": [
+   "ev_nuke.js:91"
+  ]
+ },
+ "même le béton armé est détruit": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "la plupart des bâtiments sont détruits": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "les maisons s’effondrent": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "murs soufflés, maisons gravement endommagées": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "vitres brisées, blessures par éclats de verre": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "des vitres peuvent casser": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "un grondement lointain, sans dégâts": {
+  "at": [
+   "ev_nuke.js:92"
+  ]
+ },
+ "Une nuit d’été à Honolulu": {
+  "at": [
+   "ev_nuke.js:94"
+  ]
+ },
+ "Des hôtels ont organisé des soirées sur les toits pour regarder l’essai. La fusée est partie de l’atoll Johnston, à 1 450 km. La bombe de 1,4 mégatonne doit exploser à 400 km d’altitude, là où vole aujourd’hui la Station spatiale.": {
+  "at": [
+   "ev_nuke.js:94"
+  ]
+ },
+ "Le ciel s’allume": {
+  "at": [
+   "ev_nuke.js:95",
+   "main.js:646"
+  ]
+ },
+ "Un éclair blanc, puis une aurore artificielle : les électrons de l’explosion suivent les lignes du champ magnétique terrestre. L’allure et les couleurs sont reconstituées d’après les récits ; à l’atoll Johnston, le spectacle a duré près de sept minutes.": {
+  "at": [
+   "ev_nuke.js:95"
+  ]
+ },
+ "L’impulsion": {
+  "at": [
+   "ev_nuke.js:96"
+  ]
+ },
+ "Au même instant, une impulsion électromagnétique traverse Hawaï : environ 300 lampadaires s’éteignent, des alarmes se déclenchent, une liaison téléphonique entre les îles tombe en panne.": {
+  "at": [
+   "ev_nuke.js:96"
+  ]
+ },
+ "Pas de souffle": {
+  "at": [
+   "ev_nuke.js:97"
+  ]
+ },
+ "Aucune onde de choc n’arrivera : à 400 km d’altitude, il n’y a presque pas d’air pour la porter. L’énergie part en rayonnement et en particules chargées.": {
+  "at": [
+   "ev_nuke.js:97"
+  ]
+ },
+ "Jusqu’en Nouvelle-Zélande": {
+  "at": [
+   "ev_nuke.js:98"
+  ]
+ },
+ "L’aurore est vue jusqu’en Nouvelle-Zélande, à l’autre bout du Pacifique. Aux îles Kwajalein, une lueur rouge persiste au moins 90 minutes.": {
+  "at": [
+   "ev_nuke.js:98"
+  ]
+ },
+ "Une ceinture de radiations en plus": {
+  "at": [
+   "ev_nuke.js:99"
+  ]
+ },
+ "Les électrons piégés forment une ceinture de radiations artificielle. Trois satellites tombent en panne presque aussitôt, au moins six autres dans les mois suivants, dont Telstar 1.": {
+  "at": [
+   "ev_nuke.js:99"
+  ]
+ },
+ "Avant": {
+  "at": [
+   "ev_nuke.js:101"
+  ]
+ },
+ "Une bombe de {0} va exploser à {1} de vous, à {2} d’altitude. Tout ce qui suit découle de lois d’échelle publiées après les essais atmosphériques.": {
+  "at": [
+   "ev_nuke.js:101"
+  ],
+  "args": "yStr(W), dStr(D), dStr(H)"
+ },
+ "L’éclair": {
+  "at": [
+   "ev_nuke.js:102",
+   "ev_nuke.js:109"
+  ]
+ },
+ "La lumière arrive en même temps que l’explosion. Un premier éclair, très bref, puis une seconde impulsion bien plus longue qui porte presque toute la chaleur. Regarder dans cette direction suffit à éblouir, parfois à brûler la rétine.": {
+  "at": [
+   "ev_nuke.js:102"
+  ]
+ },
+ "La chaleur": {
+  "at": [
+   "ev_nuke.js:103"
+  ]
+ },
+ "À cette distance, vous recevez {0} cal/cm² en quelques secondes : {1}.": {
+  "at": [
+   "ev_nuke.js:103"
+  ],
+  "args": "fr(Q, Q < 10 ? 1 : 0), burnLabel()"
+ },
+ "Le silence": {
+  "at": [
+   "ev_nuke.js:104",
+   "ev_tde.js:72"
+  ]
+ },
+ "Le souffle voyage à peine plus vite que le son. Il lui faut {0} pour vous atteindre. La boule de feu monte, sans un bruit.": {
+  "at": [
+   "ev_nuke.js:104"
+  ],
+  "args": "fmtDur(tArr)"
+ },
+ "Le souffle": {
+  "at": [
+   "ev_nuke.js:105"
+  ]
+ },
+ "Surpression de {0} kPa, vent à {1} km/h : {2}.": {
+  "at": [
+   "ev_nuke.js:105"
+  ],
+  "args": "fr(pObs * KPA, pObs * KPA < 10 ? 1 : 0), fr(windU(pObs) * 3.6, 0), blastLabel()"
+ },
+ "Puis l’air revient en sens inverse, vers le pied du nuage.": {
+  "at": [
+   "ev_nuke.js:105"
+  ]
+ },
+ "Le champignon": {
+  "at": [
+   "ev_nuke.js:106"
+  ]
+ },
+ "Le nuage monte vers {0} km d’altitude en une dizaine de minutes. L’explosion a eu lieu en l’air : la boule de feu n’a pas touché le sol, les retombées locales sont faibles et les débris radioactifs partent en haute atmosphère.": {
+  "at": [
+   "ev_nuke.js:106"
+  ],
+  "args": "fr(HT / 1000, 0)"
+ },
+ "La racine cubique": {
+  "at": [
+   "ev_nuke.js:107"
+  ]
+ },
+ "Mille fois plus puissant ne porte que dix fois plus loin : les distances de souffle croissent comme la racine cubique de la puissance. Déplacez les deux curseurs pour le vérifier.": {
+  "at": [
+   "ev_nuke.js:107"
+  ]
+ },
+ "Avant l’explosion": {
+  "at": [
+   "ev_nuke.js:109"
+  ]
+ },
+ "La boule de feu": {
+  "at": [
+   "ev_nuke.js:109"
+  ]
+ },
+ "Le champignon, vu de loin": {
+  "at": [
+   "ev_nuke.js:109"
+  ]
+ },
+ "Dix minutes après": {
+  "at": [
+   "ev_nuke.js:109"
+  ]
+ },
+ "Explosion nucléaire · à la distance de votre choix": {
+  "at": [
+   "ev_nuke.js:116"
+  ]
+ },
+ "Essais atmosphériques, 1945-1962 · lois d’échelle publiées": {
+  "at": [
+   "ev_nuke.js:116"
+  ]
+ },
+ "Choisissez la puissance, de 1 kilotonne à 100 mégatonnes, et la distance à laquelle vous vous trouvez. La scène calcule ce qui vous atteint, et quand : l’éclair, la chaleur, puis le souffle, bien plus tard. Quatre bombes réelles servent de repères, ainsi que l’essai Starfish Prime, tiré dans l’espace en 1962.": {
+  "at": [
+   "ev_nuke.js:117"
+  ]
+ },
+ "Explosion en l’air, par temps clair, sur terrain plat et dégagé : dans une ville, les immeubles font écran à la chaleur et le relief change le souffle. Chaleur, surpression et délais suivent les lois d’échelle de Glasstone et Dolan (1977), fiables à dix ou vingt pour cent près jusqu’à 20 mégatonnes ; au-delà, elles sous-estiment la chaleur (pour la Tsar Bomba, des brûlures au troisième degré étaient possibles à 100 km). L’allure de la boule de feu et du nuage est une mise en scène. Hiroshima et Nagasaki ont fait à elles deux environ 200 000 morts avant la fin de 1945.": {
+  "at": [
+   "ev_nuke.js:118"
+  ]
+ },
+ "À votre distance": {
+  "at": [
+   "ev_nuke.js:119"
+  ]
+ },
+ "Vue d’ensemble": {
+  "at": [
+   "ev_nuke.js:119"
+  ]
+ },
+ "Repère": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Hiroshima, 1945 · 15 kt": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Nagasaki, 1945 · 21 kt": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Castle Bravo, 1954 · 15 Mt": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Tsar Bomba, 1961 · 50 Mt": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Starfish Prime, 1962 · 1,4 Mt à 400 km d’altitude": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Réglage libre": {
+  "at": [
+   "ev_nuke.js:121"
+  ]
+ },
+ "Puissance": {
+  "at": [
+   "ev_nuke.js:122"
+  ]
+ },
+ "Votre distance": {
+  "at": [
+   "ev_nuke.js:123"
+  ]
+ },
+ "Point zéro": {
+  "at": [
+   "ev_nuke.js:135"
+  ]
+ },
+ "La boule de feu, puis le nuage": {
+  "at": [
+   "ev_nuke.js:135"
+  ]
+ },
+ "Vous": {
+  "at": [
+   "ev_nuke.js:135"
+  ]
+ },
+ "Starfish Prime": {
+  "at": [
+   "ev_nuke.js:136"
+  ]
+ },
+ "Maisons détruites (34 kPa)": {
+  "at": [
+   "ev_nuke.js:137"
+  ]
+ },
+ "Vitres brisées (7 kPa)": {
+  "at": [
+   "ev_nuke.js:137"
+  ]
+ },
+ "Brûlures au 3ᵉ degré": {
+  "at": [
+   "ev_nuke.js:137"
+  ]
+ },
+ "avant l’explosion": {
+  "at": [
+   "ev_nuke.js:138"
+  ]
+ },
+ "après l’explosion": {
+  "at": [
+   "ev_nuke.js:138"
+  ]
+ },
+ "Starfish Prime · 9 juillet 1962 (le 8 à 23 h, heure d’Honolulu) · <b>1,4 Mt</b> à <b>400 km</b> d’altitude": {
+  "at": [
+   "ev_nuke.js:140"
+  ]
+ },
+ "Vous êtes à Honolulu, à 1 450 km : l’explosion est à 10° au-dessus de l’horizon": {
+  "at": [
+   "ev_nuke.js:140"
+  ]
+ },
+ "Souffle : aucun, il n’y a presque pas d’air à cette altitude": {
+  "at": [
+   "ev_nuke.js:140"
+  ]
+ },
+ "Impulsion électromagnétique : environ 300 lampadaires éteints à Hawaï": {
+  "at": [
+   "ev_nuke.js:140"
+  ]
+ },
+ "Bombe de <b>{0}</b> à <b>{1}</b> de vous · explosion à {2} d’altitude": {
+  "at": [
+   "ev_nuke.js:142"
+  ],
+  "args": "yStr(W), dStr(D), dStr(H)"
+ },
+ "Chaleur reçue : <b>{0} cal/cm²</b> · {1}": {
+  "at": [
+   "ev_nuke.js:143"
+  ],
+  "args": "fr(Q, Q < 10 ? 1 : 0), burnLabel()"
+ },
+ "au pic, <b>{0} fois</b> le plein soleil": {
+  "at": [
+   "ev_nuke.js:143"
+  ],
+  "args": "fr(suns, suns < 10 ? 1 : 0)"
+ },
+ "Souffle : arrive dans <b>{0}</b> · {1} kPa, vent à {2} km/h": {
+  "at": [
+   "ev_nuke.js:144"
+  ],
+  "args": "fmtDur(tArr - Math.max(t, 0)), fr(kpa, kpa < 10 ? 1 : 0), fr(windU(pObs) * 3.6, 0)"
+ },
+ "Souffle passé : <b>{0} kPa</b>, vent à {1} km/h · {2}": {
+  "at": [
+   "ev_nuke.js:144"
+  ],
+  "args": "fr(kpa, kpa < 10 ? 1 : 0), fr(windU(pObs) * 3.6, 0), blastLabel()"
+ },
+ "Boule de feu : <b>{0}</b> de diamètre · sommet du nuage vers {1} km (ordre de grandeur)": {
+  "at": [
+   "ev_nuke.js:145"
+  ],
+  "args": "dStr(Math.max(dia, 0)), fr(HT / 1000, 0)"
+ },
+ "Rayonnement initial : dose mortelle à cette distance": {
+  "at": [
+   "ev_nuke.js:146"
   ]
  },
  "Phobos · la lune qui deviendra un anneau": {
@@ -2155,17 +3079,6 @@
   "at": [
    "ev_saturn.js:14",
    "ev_sun.js:18"
-  ]
- },
- "Terre": {
-  "at": [
-   "ev_saturn.js:15",
-   "ev_sun.js:18"
-  ]
- },
- "Lune": {
-  "at": [
-   "ev_saturn.js:15"
   ]
  },
  "Jupiter": {
@@ -2963,11 +3876,6 @@
    "ev_tde.js:71"
   ]
  },
- "Le silence": {
-  "at": [
-   "ev_tde.js:72"
-  ]
- },
  "Pendant des semaines, rien. Les débris capturés montent sur de longues ellipses avant de retomber. Vu de loin, le centre de la galaxie est toujours noir.": {
   "at": [
    "ev_tde.js:72"
@@ -3123,12 +4031,6 @@
   ],
   "args": "sig(km * 1000)"
  },
- "{0} km": {
-  "at": [
-   "kit.js:28"
-  ],
-  "args": "sig(km)"
- },
  "{0} × 10 000 km": {
   "at": [
    "kit.js:29"
@@ -3185,101 +4087,101 @@
  },
  "Vitesse du temps": {
   "at": [
-   "kit.js:152",
-   "kit.js:153"
+   "kit.js:154",
+   "kit.js:155"
   ]
  },
  "Ralentir": {
   "at": [
-   "kit.js:153"
+   "kit.js:155"
   ]
  },
  "Accélérer": {
   "at": [
-   "kit.js:153"
+   "kit.js:155"
   ]
  },
  "Tempo automatique (ralentit aux moments clés)": {
   "at": [
-   "kit.js:154"
+   "kit.js:156"
   ]
  },
  "Son": {
   "at": [
-   "kit.js:155"
+   "kit.js:157"
   ]
  },
  "Pause": {
   "at": [
-   "kit.js:157",
-   "kit.js:351"
+   "kit.js:159",
+   "kit.js:358"
   ]
  },
  "Suivant": {
   "at": [
-   "kit.js:157"
+   "kit.js:159"
   ]
  },
  "Rejouer": {
   "at": [
-   "kit.js:157"
+   "kit.js:159"
   ]
  },
  "Aller à un moment": {
   "at": [
-   "kit.js:158"
+   "kit.js:160"
   ]
  },
  "Centrer sur…": {
   "at": [
-   "kit.js:159",
-   "kit.js:233"
+   "kit.js:161",
+   "kit.js:235"
   ]
  },
  "Flèches vers les points d’intérêt": {
   "at": [
-   "kit.js:159"
+   "kit.js:161"
   ]
  },
  "Distance": {
   "at": [
-   "kit.js:161",
-   "kit.js:162"
+   "kit.js:163",
+   "kit.js:164"
   ]
  },
  "Glisser pour tourner le regard, molette pour s’approcher. Rien ne relance la scène.": {
   "at": [
-   "kit.js:163"
+   "kit.js:165"
   ]
  },
  "<b>glisser</b> regarder · <b>molette</b> distance / zoom · <b>1 à 9</b> vitesse · <b>+ −</b> ajuster · <b>P / Espace</b> pause · <b>N</b> moment suivant · <b>V</b> changer de vue · <b>R</b> rejouer · <b>H</b> masquer": {
   "at": [
-   "kit.js:168"
+   "kit.js:170"
   ]
  },
  "Commencer à": {
   "at": [
-   "kit.js:174"
+   "kit.js:176"
   ]
  },
  "Moment de départ": {
   "at": [
-   "kit.js:174"
+   "kit.js:176"
   ]
  },
  "Entrer": {
   "at": [
-   "kit.js:175"
+   "kit.js:177"
   ]
  },
  "auto": {
   "at": [
-   "kit.js:349"
+   "kit.js:356"
   ]
  },
  "Reprendre": {
   "at": [
-   "kit.js:351"
+   "kit.js:358"
   ]
  },
  "Début": {
@@ -3673,11 +4575,6 @@
    "main.js:645"
   ]
  },
- "Le ciel s’allume": {
-  "at": [
-   "main.js:646"
-  ]
- },
  "Les éjectas rentrent dans l’atmosphère par milliards. Chaque traînée chauffe l’air : le ciel devient un gril.": {
   "at": [
    "main.js:646"
@@ -3790,11 +4687,6 @@
    "main.js:943",
    "main.js:1132",
    "theia.js:609"
-  ]
- },
- "avant l’impact": {
-  "at": [
-   "main.js:946"
   ]
  },
  "dans l’atmosphère": {
@@ -3954,11 +4846,6 @@
    "main.js:1153"
   ],
   "args": "fmtKm(w.alt), fmtKm(-t * PH.V), (-t).toFixed(1).replace('.', DEC)"
- },
- "après l’impact": {
-  "at": [
-   "main.js:1155"
-  ]
  },
  "L’astéroïde n’existe plus.<br>Passez <b>En orbite</b> pour voir la suite : le temps continue.": {
   "at": [
@@ -4660,7 +5547,7 @@
   ],
   "args": "nx.label"
  },
- "Simulateur · quatorze événements · vues libres": {
+ "Simulateur · dix-sept événements · vues libres": {
   "at": [
    "page:menu"
   ]
@@ -4681,6 +5568,21 @@
   ]
  },
  "Sur Terre · dans l’espace · depuis Theia": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "De −4,5 milliards d’années à aujourd’hui": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Juste après l’impact, la Lune est quinze fois plus proche : un disque énorme et rougeoyant au-dessus d’une Terre qui tourne en cinq heures. Puis les marées l’éloignent et allongent les jours, jusqu’à nous.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Depuis la Terre · depuis l’espace": {
   "at": [
    "page:menu"
   ]
@@ -4841,6 +5743,31 @@
   ]
  },
  "Le système solaire · en suivant le Soleil · depuis la Terre · près du trou noir": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Choisissez la puissance et la distance : l’éclair, la chaleur, puis le souffle, calculés par les lois d’échelle des essais atmosphériques. Avec Hiroshima, la Tsar Bomba et Starfish Prime, tirée dans l’espace.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "À votre distance · vue d’ensemble": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "26 septembre 2022": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Une sonde d’une demi-tonne percute la lune d’un astéroïde à 22 000 km/h et raccourcit son orbite de 33 minutes. La première fois que l’humanité déplace un corps céleste.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "À bord de DART · près de Dimorphos · le système double": {
   "at": [
    "page:menu"
   ]

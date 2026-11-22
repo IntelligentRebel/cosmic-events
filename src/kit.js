@@ -142,7 +142,9 @@ export function createKit(cfg) {
   const views = cfg.views, V = Object.fromEntries(views.map(v => [v.id, v]));
   const segHtml = (suf) => views.length > 1 ? `<div class="seg"${suf ? '' : ' style="margin-top:16px"'}>${views.map(v => `<button data-view="${v.id}">${v.label}</button>`).join('')}</div>` : '';
   const opts = cfg.options || [];
-  const optHtml = opts.map(o => o.type === 'select'
+  const optHtml = opts.map(o => o.type === 'range'
+    ? `<label class="rng"><span>${o.label}</span><b data-optv="${o.id}"></b><input type="range" data-opt="${o.id}" min="${o.min}" max="${o.max}" step="${o.step || 'any'}" aria-label="${o.label}"></label>`
+    : o.type === 'select'
     ? `<select class="sel" data-opt="${o.id}" aria-label="${o.label}">${o.choices.map(c => `<option value="${c[0]}">${c[1]}</option>`).join('')}</select>`
     : `<label class="chk"><input type="checkbox" data-opt="${o.id}"${o.value ? ' checked' : ''}> ${o.label}</label>`).join('');
   stage.innerHTML = `<canvas id="c"></canvas><div id="veil"></div>
@@ -203,7 +205,7 @@ export function createKit(cfg) {
   const cam = { mode: 'orbit', yaw: 0, pitch: 0.2, dist: 10, min: 1, max: 100, fov: 55, target: new THREE.Vector3(), pos: new THREE.Vector3(), basis: new THREE.Quaternion(), near: null, far: null };
   const kit = { THREE, renderer, scene, camera, composer, bloom, sim, cam, view: null, opt: {}, $, cfg, ac: null, soundOn: false, started: false,
     addSky(o) { skies.push(o); scene.add(o); resize(); return o; } };
-  for (const o of opts) kit.opt[o.id] = hash.has('o_' + o.id) ? (o.type === 'select' ? hash.get('o_' + o.id) : hash.get('o_' + o.id) === '1') : o.value;
+  for (const o of opts) kit.opt[o.id] = hash.has('o_' + o.id) ? (o.type === 'range' ? +hash.get('o_' + o.id) : o.type === 'select' ? hash.get('o_' + o.id) : hash.get('o_' + o.id) === '1') : o.value;
 
   // ---- vues
   const saved = {};
@@ -278,10 +280,15 @@ export function createKit(cfg) {
   $('ticks').innerHTML = moments.map(m => `<i style="left:${clamp(prog(m.t), 0, 1) * 100}%" title="${m.label}"></i>`).join('');
 
   // ---- options
+  const optShow = {};
   for (const e of stage.querySelectorAll('[data-opt]')) {
-    const id = e.dataset.opt; if (e.tagName === 'SELECT') e.value = kit.opt[id]; else e.checked = !!kit.opt[id];
-    e.addEventListener('change', () => { kit.opt[id] = e.tagName === 'SELECT' ? e.value : e.checked; if (cfg.onOpt) cfg.onOpt(id, kit.opt[id], kit); });
+    const id = e.dataset.opt, o = opts.find(q => q.id === id), rng = e.type === 'range', lab = stage.querySelector(`[data-optv="${id}"]`);
+    const show = () => { if (rng) { e.value = kit.opt[id]; if (lab) lab.innerHTML = o.fmt ? o.fmt(kit.opt[id]) : kit.opt[id]; } else if (e.tagName === 'SELECT') e.value = kit.opt[id]; else e.checked = !!kit.opt[id]; };
+    show(); optShow[id] = show;
+    e.addEventListener(rng ? 'input' : 'change', () => { kit.opt[id] = rng ? +e.value : e.tagName === 'SELECT' ? e.value : e.checked; if (rng && lab) lab.innerHTML = o.fmt ? o.fmt(kit.opt[id]) : kit.opt[id]; if (cfg.onOpt) cfg.onOpt(id, kit.opt[id], kit); });
   }
+  // réglage d'une option depuis la scène (préréglages) : met à jour le contrôle sans rappeler onOpt
+  kit.setOpt = (id, v) => { kit.opt[id] = v; if (optShow[id]) optShow[id](); };
   if ($('snd')) $('snd').addEventListener('change', (e) => { kit.soundOn = e.target.checked; });
 
   // ---- actions

@@ -17,6 +17,9 @@ const EVENTS = {
   fall: { title: T('Tomber dans un trou noir'), load: kitEv(() => import('./ev_fall.js')) },
   saturn: { title: T('Et si un trou noir délogeait Saturne ?'), load: kitEv(() => import('./ev_saturn.js')) },
   rogue: { title: T('Et si un trou noir emportait le Soleil ?'), load: kitEv(() => import('./ev_rogue.js')) },
+  nuke: { title: T('Une explosion nucléaire, à votre distance'), load: kitEv(() => import('./ev_nuke.js')) },
+  dart: { title: T('DART : dévier un astéroïde'), load: kitEv(() => import('./ev_dart.js')) },
+  moon: { title: T('La jeune Lune'), load: kitEv(() => import('./ev_moon.js')) },
 };
 const params = new URLSearchParams(location.hash.slice(1)), $ = (id) => document.getElementById(id);
 const APP = T('Événements cosmiques');
