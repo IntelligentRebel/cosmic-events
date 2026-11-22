@@ -1,0 +1,37 @@
+<canvas id="c"></canvas>
+<div id="veil"></div>
+<div id="hud">
+  <div id="top">
+    <div class="caps">Dernier matin du Crétacé</div>
+    <div id="clock">T − 01:00</div>
+    <div id="sub">avant l’impact</div>
+    <div id="data"></div>
+  </div>
+  <div id="panel">
+    <div class="head"><span class="caps">Vitesse du temps</span><span id="speed">×1</span></div>
+    <div class="row"><button class="sq" id="minus" aria-label="Ralentir">−</button><input type="range" id="spd" min="0" max="1000" step="1" value="250" aria-label="Vitesse du temps"><button class="sq" id="plus" aria-label="Accélérer">+</button></div>
+    <div class="acts"><button id="pause">Pause</button><button id="next">Suivant</button><button id="again">Rejouer</button><button id="menuBtn">Menu</button></div>
+    <hr>
+    <div class="seg"><button id="mGround2" class="on">Sur Terre</button><button id="mOrbit2">En orbite</button><button id="mRide2">Astéroïde</button></div>
+    <div class="head"><span class="caps">Distance à l’impact</span><span id="dlabel2">800 km</span></div>
+    <div class="row"><input type="range" id="dist2" min="0" max="1000" step="1" value="400" aria-label="Distance au point d’impact"></div>
+    <div class="note">Sur Terre, changer la distance relance la scène. En orbite, le curseur vous déplace sans rien relancer. Échap libère la souris pour atteindre ce panneau.</div>
+  </div>
+  <div id="marker"><div id="mlabel"></div></div>
+  <div id="journal"></div>
+  <div id="timeline"><div id="barfill"></div><div id="ticks"></div></div>
+  <div id="help"><b>ZQSD / flèches</b> marcher · <b>souris</b> regarder · <b>Maj</b> courir · <b>Espace</b> sauter · <b>F</b> voler · <b>Espace / C</b> monter, descendre · <b>molette / clic droit</b> zoom · <b>1 à 9</b> temps ×1 à ×600 · <b>+ −</b> ajuster · <b>N</b> événement suivant · <b>P</b> pause · <b>R</b> recommencer · <b>H</b> masquer · <b>M</b> son</div>
+</div>
+<div id="start">
+  <div class="caps">Il y a 66 millions d’années · un banc de sable au sud-est du Yucatán</div>
+  <h1>Dernier matin du Crétacé</h1>
+  <p>Dans soixante secondes, un astéroïde d’une douzaine de kilomètres touchera la Terre au nord-ouest. Il est déjà visible dans le ciel, à côté de la Lune. Vous êtes libre de marcher, nager, voler, et de rester après.</p>
+  <div class="seg" style="margin-top:18px"><button id="mGround" class="on">Sur Terre</button><button id="mOrbit">En orbite</button><button id="mRide">Sur l’astéroïde</button></div>
+  <div id="pick">
+    <div class="head"><span class="caps">Votre distance au point d’impact</span><span id="dlabel">800 km</span></div>
+    <input type="range" id="dist" min="0" max="1000" step="1" value="400" aria-label="Distance au point d’impact" style="width:100%">
+    <div class="ends"><span id="endL">0 km · dans le cratère</span><span id="endR">2 000 km</span></div>
+    <div id="dinfo"></div>
+  </div>
+  <button id="go">Entrer</button>
+</div>

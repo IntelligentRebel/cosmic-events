@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Événements cosmiques</title>
+<style>{{style}}</style>
+</head>
+<body>
+<div id="menu">
+  <div id="langbox"></div>
+  <div class="caps">Simulateur · douze événements · vues libres</div>
+  <h1>Événements cosmiques</h1>
+  <p class="lead">Collisions, effondrements, fins de mondes : passés, récents ou à venir. Choisissez un événement, puis d’où vous le regardez, du sol, de l’espace ou depuis l’astre lui-même.</p>
+  <div id="update"></div>
+  <div id="cards">
+    <button class="card" data-event="theia">
+      <div class="pic" style="background-image:url({{card:theia}})"></div>
+      <div class="txt"><div class="when">Il y a 4,5 milliards d’années</div><h2>Theia, la naissance de la Lune</h2><p>Une planète de la taille de Mars percute la proto-Terre. La Terre fond entièrement, un disque de débris se forme, puis la Lune : à suivre jusqu’à aujourd’hui.</p><div class="views">Sur Terre · dans l’espace · depuis Theia</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="chicxulub">
+      <div class="pic" style="background-image:url({{card:chicxulub}})"></div>
+      <div class="txt"><div class="when">Il y a 66 millions d’années</div><h2>Dernier matin du Crétacé</h2><p>Un astéroïde de douze kilomètres frappe le Yucatán. Boule de feu, séisme, pluie d’éjectas, onde de choc et tsunami, à la distance de votre choix.</p><div class="views">Sur Terre · en orbite · sur l’astéroïde</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="sl9">
+      <div class="pic" style="background-image:url({{card:sl9}})"></div>
+      <div class="txt"><div class="when">Juillet 1994</div><h2>La comète contre Jupiter</h2><p>Shoemaker-Levy 9, brisée en vingt fragments, frappe Jupiter à 60 km/s. Panaches de 3 000 km et cicatrices grandes comme la Terre, heure par heure.</p><div class="views">Depuis la Terre · au-dessus de l’impact · sur un fragment</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="chelyabinsk">
+      <div class="pic" style="background-image:url({{card:chelyabinsk}})"></div>
+      <div class="txt"><div class="when">15 février 2013</div><h2>Le matin de Tcheliabinsk</h2><p>Un astéroïde de 18 mètres explose à 30 km d’altitude, plus brillant que le Soleil. Les ombres tournent dans les rues ; l’onde de choc arrive deux minutes et demie plus tard.</p><div class="views">Dans la rue · à côté du bolide · sur l’astéroïde</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="kilonova">
+      <div class="pic" style="background-image:url({{card:kilonova}})"></div>
+      <div class="txt"><div class="when">17 août 2017</div><h2>La forge de l’or</h2><p>Deux étoiles à neutrons spiralent, se touchent à 40 % de la vitesse de la lumière et fusionnent. Ondes gravitationnelles audibles, jet, puis la kilonova où naissent l’or et le platine.</p><div class="views">Dans l’espace · depuis une des étoiles · avec le son</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="cygnus">
+      <div class="pic" style="background-image:url({{card:cygnus}})"></div>
+      <div class="txt"><div class="when">À 7 200 années-lumière</div><h2>Cygnus X-1</h2><p>Une étoile massive s’effondre en trou noir, puis avale le vent de sa compagne supergéante. Du système entier jusqu’au ras de l’horizon : cinq ordres de grandeur à descendre.</p><div class="views">Autour du trou noir · depuis l’étoile compagne</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="tde">
+      <div class="pic" style="background-image:url({{card:tde}})"></div>
+      <div class="txt"><div class="when">Au centre d’une galaxie</div><h2>L’étoile déchiquetée</h2><p>Un soleil passe trop près d’un trou noir d’un million de masses solaires. Étiré en filament en quelques heures, il revient nourrir le monstre quarante et un jours plus tard.</p><div class="views">Autour du trou noir · en suivant l’étoile</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="fall">
+      <div class="pic" style="background-image:url({{card:fall}})"></div>
+      <div class="txt"><div class="when">Relativité générale</div><h2>Tomber dans un trou noir</h2><p>Chute libre jusqu’à la singularité, avec la lumière calculée rayon par rayon. Ce que l’on voit avant l’horizon, à l’horizon, et après.</p><div class="views">En chute libre · immobile à distance · trois trous noirs</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="betelgeuse">
+      <div class="pic" style="background-image:url({{card:betelgeuse}})"></div>
+      <div class="txt"><div class="when">Un jour, d’ici 100 000 ans</div><h2>La nuit où Bételgeuse explose</h2><p>L’épaule d’Orion devient supernova : une demi-Lune concentrée en un point, des ombres la nuit, une étoile visible en plein jour. Puis mille ans de nébuleuse.</p><div class="views">Depuis la Terre · près de l’étoile</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="phobos">
+      <div class="pic" style="background-image:url({{card:phobos}})"></div>
+      <div class="txt"><div class="when">Dans 30 millions d’années</div><h2>L’anneau de Mars</h2><p>Phobos descend en spirale, franchit la limite de Roche et se disloque. En quelques mois, Mars porte un anneau, visible depuis son sol.</p><div class="views">Autour de Mars · près de Phobos · sur Mars</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="andromeda">
+      <div class="pic" style="background-image:url({{card:andromeda}})"></div>
+      <div class="txt"><div class="when">Dans 4 milliards d’années</div><h2>Voie lactée contre Andromède</h2><p>27 000 étoiles-tests calculées en direct : collision frontale ou simple frôlement, les deux scénarios se valent aujourd’hui. À voir de loin, ou depuis le Soleil.</p><div class="views">Les deux galaxies · le ciel depuis le Soleil</div><span class="cta">Entrer</span></div>
+    </button>
+    <button class="card" data-event="sun">
+      <div class="pic" style="background-image:url({{card:sun}})"></div>
+      <div class="txt"><div class="when">Dans 7,6 milliards d’années</div><h2>La mort du Soleil</h2><p>Océans évaporés, géante rouge qui emplit le ciel, Mercure, Vénus puis la Terre englouties, flash de l’hélium, naine blanche.</p><div class="views">Depuis la Terre · le système solaire</div><span class="cta">Entrer</span></div>
+    </button>
+  </div>
+  <footer>Les images sont tirées des scènes elles-mêmes. Dans chaque scène, ce qui est mesuré ou calculé est distingué de ce qui est mis en scène. Tout tient dans ce seul fichier, sans connexion.<br><span id="credits"></span></footer>
+</div>
+<div id="stage"></div>
+<template id="tpl-chicxulub">
+{{tpl:scene-chicxulub.html}}
+</template>
+<template id="tpl-theia">
+{{tpl:scene-theia.html}}
+</template>
+<div id="err"></div>
+<script>
+window.addEventListener('error',function(e){var d=document.getElementById('err');d.style.display='block';d.textContent=(e.message||e);});
+window.addEventListener('unhandledrejection',function(e){var d=document.getElementById('err');d.style.display='block';d.textContent=((e.reason&&e.reason.message)||e.reason);});
+</script>
+<script>{{i18n}}</script>
+<script>{{bundle}}</script>
+</body>
+</html>

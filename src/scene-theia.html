@@ -1,0 +1,46 @@
+<canvas id="c"></canvas>
+<div id="veil"></div>
+<div id="hud">
+  <div id="top">
+    <div class="caps">Theia · la naissance de la Lune</div>
+    <div id="clock">T −</div>
+    <div id="sub"></div>
+    <div id="data"></div>
+  </div>
+  <div id="panel">
+    <div class="head"><span class="caps">Vitesse du temps</span><span id="speed">×1</span></div>
+    <div class="row"><button class="sq" id="minus" aria-label="Ralentir">−</button><input type="range" id="spd" min="0" max="1000" step="1" value="1000" aria-label="Vitesse maximale du temps"><button class="sq" id="plus" aria-label="Accélérer">+</button></div>
+    <label class="chk"><input type="checkbox" id="auto" checked> Tempo automatique (ralentit près de l’impact)</label>
+    <label class="chk"><input type="checkbox" id="tide"> Montrer la marée lunaire, exagérée (vue de l’espace)</label>
+    <div class="acts"><button id="pause">Pause</button><button id="next">Suivant</button><button id="again">Rejouer</button><button id="menuBtn">Menu</button></div>
+    <select id="moment2" class="sel" aria-label="Aller à un moment"></select>
+    <hr>
+    <div class="seg"><button id="mGround2" class="on">Sur Terre</button><button id="mOrbit2">Espace</button><button id="mRide2">Sur Theia</button></div>
+    <div class="head"><span class="caps" id="dcap2">Distance</span><span id="dlabel2"></span></div>
+    <div class="row"><input type="range" id="dist2" min="0" max="1000" step="1" value="260" aria-label="Distance"></div>
+    <hr>
+    <div class="seg"><button id="sRand2" class="on">Theia inconnue</button><button id="sMars2">Mars (fiction)</button></div>
+    <div class="acts" style="margin-top:0"><button id="reroll2">Autre surface au hasard</button></div>
+    <div class="note">Rien ne relance la scène : vue, distance et surface changent en direct. Échap libère la souris.</div>
+  </div>
+  <div id="marker"><div id="mlabel"></div></div>
+  <div id="journal"></div>
+  <div id="timeline"><div id="barfill"></div><div id="ticks"></div></div>
+  <div id="help"><b>ZQSD / flèches</b> se déplacer · <b>souris</b> regarder · <b>Maj</b> vite · <b>Espace / C</b> monter, descendre · <b>F</b> voler (au sol) · <b>molette / clic droit</b> zoom · <b>1 à 9</b> vitesse maximale · <b>+ −</b> ajuster · <b>N</b> événement suivant · <b>P</b> pause · <b>R</b> rejouer · <b>H</b> masquer</div>
+</div>
+<div id="start">
+  <div class="caps">Il y a 4,5 milliards d’années · la proto-Terre</div>
+  <h1>Theia</h1>
+  <p>Une planète de la taille de Mars va percuter la Terre. De ce choc naîtra la Lune. La scène commence cinq jours avant, quand Theia a dans le ciel la taille de notre Lune, et peut se poursuivre jusqu’à aujourd’hui.</p>
+  <div class="seg" style="margin-top:16px"><button id="mGround" class="on">Sur Terre</button><button id="mOrbit">Dans l’espace</button><button id="mRide">Depuis Theia</button></div>
+  <div id="pick">
+    <div class="head"><span class="caps" id="dcap">Distance</span><span id="dlabel"></span></div>
+    <input type="range" id="dist" min="0" max="1000" step="1" value="260" aria-label="Distance" style="width:100%">
+    <div class="ends"><span id="endL"></span><span id="endR"></span></div>
+    <div id="dinfo"></div>
+  </div>
+  <div class="seg" style="margin-top:6px"><button id="sRand" class="on">Theia inconnue</button><button id="sMars">Mars (fiction)</button></div>
+  <p id="swarn" style="font-size:12.5px;opacity:.8;max-width:560px;min-height:38px"></p>
+  <label class="caps" style="display:flex;align-items:center;gap:10px;margin-top:4px">Commencer à <select id="moment" class="sel" style="width:300px;margin:0" aria-label="Moment de départ"></select></label>
+  <button id="go">Entrer</button>
+</div>
