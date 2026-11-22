@@ -16,6 +16,7 @@ const EVENTS = {
   tde: { title: T('L’étoile déchiquetée'), load: kitEv(() => import('./ev_tde.js')) },
   fall: { title: T('Tomber dans un trou noir'), load: kitEv(() => import('./ev_fall.js')) },
   saturn: { title: T('Et si un trou noir délogeait Saturne ?'), load: kitEv(() => import('./ev_saturn.js')) },
+  rogue: { title: T('Et si un trou noir emportait le Soleil ?'), load: kitEv(() => import('./ev_rogue.js')) },
 };
 const params = new URLSearchParams(location.hash.slice(1)), $ = (id) => document.getElementById(id);
 const APP = T('Événements cosmiques');

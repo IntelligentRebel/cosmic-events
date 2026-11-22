@@ -7,7 +7,7 @@ export const BODIES = [
   { id: 'saturn', m: 2.858e-4, a: 9.5388, ph: 0 }, { id: 'uranus', m: 4.366e-5, a: 19.191, ph: 0.9 }, { id: 'neptune', m: 5.151e-5, a: 30.069, ph: 3.7 }, { id: 'bh', m: 0.05 },
 ];
 export const IDX = Object.fromEntries(BODIES.map((b, i) => [b.id, i]));
-// P : { mbh, vbh (UA/an), back, side, yoff, tiltX, tiltZ (trajectoire du trou noir), T0 (années avant le passage), T1, earthPh, sample (jours entre deux échantillons), eta }
+// P : { mbh, vbh (UA/an), back, side (ou cross : [x, z], point où il traverse le plan), yoff, tiltX, tiltZ (trajectoire du trou noir), inertial, T0 (années avant le passage), T1, earthPh, sample (jours entre deux échantillons), eta }
 export function simulate(P) {
   const n = BODIES.length, m = BODIES.map(b => b.m); m[IDX.bh] = P.mbh;
   const x = new Float64Array(n * 3), v = new Float64Array(n * 3), a = new Float64Array(n * 3);
@@ -19,7 +19,7 @@ export function simulate(P) {
     if (c) { for (let k = 0; k < 3; k++) { x[i * 3 + k] += x[c * 3 + k]; v[i * 3 + k] += v[c * 3 + k]; } }
   }
   // le trou noir : traverse l'écliptique à t = 0, « back » UA derrière Saturne sur son orbite
-  const S = BODIES[IDX.saturn], bi = IDX.bh, cx = S.a - P.side, cz = P.back; // Saturne est en (a,0,0) à t=0 et avance vers −z
+  const S = BODIES[IDX.saturn], bi = IDX.bh, cx = P.cross ? P.cross[0] : S.a - P.side, cz = P.cross ? P.cross[1] : P.back; // Saturne est en (a,0,0) à t=0 et avance vers −z
   const dir = [P.tiltX || 0, -1, P.tiltZ || 0], dl = Math.sqrt(dir[0] * dir[0] + 1 + dir[2] * dir[2]); for (let k = 0; k < 3; k++) dir[k] /= dl;
   x[bi * 3] = cx - dir[0] * P.vbh * P.T0; x[bi * 3 + 1] = (P.yoff || 0) - dir[1] * P.vbh * P.T0; x[bi * 3 + 2] = cz - dir[2] * P.vbh * P.T0;
   v[bi * 3] = dir[0] * P.vbh; v[bi * 3 + 1] = dir[1] * P.vbh; v[bi * 3 + 2] = dir[2] * P.vbh;
@@ -33,11 +33,10 @@ export function simulate(P) {
     }
   };
   const H = (P.sample || 1) / 365.25, eta = P.eta || 0.02, ns = Math.floor((P.T0 + P.T1) / H) + 1, N3 = n * 3; let steps = 0, minEM = 9;
-  const X = new Float32Array(ns * N3), V = new Float32Array(ns * N3);
+  const X = new Float64Array(ns * N3), V = new Float64Array(ns * N3), rel = P.inertial ? 0 : 1; // inertial : repère fixe de départ, sinon positions relatives au Soleil
   acc();
   for (let s = 0; s < ns; s++) {
-    // échantillon : positions et vitesses relatives au Soleil
-    for (let i = 0; i < n; i++) for (let k = 0; k < 3; k++) { X[s * N3 + i * 3 + k] = x[i * 3 + k] - x[k]; V[s * N3 + i * 3 + k] = v[i * 3 + k] - v[k]; }
+    for (let i = 0; i < n; i++) for (let k = 0; k < 3; k++) { X[s * N3 + i * 3 + k] = x[i * 3 + k] - rel * x[k]; V[s * N3 + i * 3 + k] = v[i * 3 + k] - rel * v[k]; }
     for (let left = H; left > 1e-12;) {
       let h = eta * Math.sqrt(tmin2); if (h >= left) h = left; else if (h > left * 0.5) h = left * 0.5; left -= h; steps++;
       for (let q = 0; q < N3; q++) { v[q] += 0.5 * h * a[q]; x[q] += h * v[q]; }

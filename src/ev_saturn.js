@@ -3,20 +3,21 @@
 import { createKit, T, TF, THREE, fmtDur, fmtDist, fr, clamp, sstep, NOISE, YEAR, DAY, makeStars, makeGlow } from './kit.js';
 import { simulate, elements, IDX, G, KMS } from './nbody.js';
 import { makeBH } from './bh.js';
-const AU = 149597870.7, RS = 60268 / AU, MBH = 0.05, RSKM = 2.953 * MBH, FLAT = 0.902, DEG = Math.PI / 180;
+export const AU = 149597870.7, RS = 60268 / AU, FLAT = 0.902, DEG = Math.PI / 180;
+const MBH = 0.05, RSKM = 2.953 * MBH;
 // trajectoire du trou noir : réglée pour que le coup de frein laisse Saturne dans le plan des planètes, avec un périhélie à 0,94 UA
 const BHP = { mbh: MBH, vbh: 40 / KMS, back: 0.6066, side: 0.248, yoff: -0.3205, tiltX: -1.715, tiltZ: 0.3755, T0: 3, T1: 40, sample: 1, eta: 0.02 };
 // position de la Terre sur son orbite au moment du passage du trou noir : c'est elle qui décide de la distance de la rencontre, huit ans plus tard
 const SC = { far: 245, near: 246.4 };
 const S = IDX.sun, E = IDX.earth, M = IDX.moon, SA = IDX.saturn, B = IDX.bh, TI = 11, NB = 12, N3 = 33;
-const INFO = [
+export const INFO = [
   { id: 'sun', label: T('Soleil'), km: 695700, col: 0xfff0d0, g: 0.05 }, { id: 'mercury', label: T('Mercure'), km: 2440, col: 0xb0a8a0, g: 0.009, span: 0.22 }, { id: 'venus', label: T('Vénus'), km: 6052, col: 0xf4e2b4, g: 0.013, span: 0.56 },
   { id: 'earth', label: T('Terre'), km: 6371, col: 0x78b0ff, g: 0.014, span: 0.9, kind: 1 }, { id: 'moon', label: T('Lune'), km: 1737, col: 0xc8c8c8, g: 0.006, kind: 2 }, { id: 'mars', label: T('Mars'), km: 3390, col: 0xe88050, g: 0.011, span: 1.7 },
   { id: 'jupiter', label: T('Jupiter'), km: 69911, col: 0xecc8a0, g: 0.017, span: 10, kind: 3 }, { id: 'saturn', label: T('Saturne'), km: 60268, col: 0xf2dca4, g: 0.018, span: 12 }, { id: 'uranus', label: T('Uranus'), km: 25362, col: 0xa8e4ec, g: 0.012, span: 43, kind: 3 },
   { id: 'neptune', label: T('Neptune'), km: 24622, col: 0x7090ff, g: 0.012, span: 43, kind: 3 }, { id: 'bh', label: T('Trou noir'), km: 0, col: 0xb070ff, g: 0, span: 3.2 }, { id: 'titan', label: T('Titan'), km: 2575, col: 0xe0b060, g: 0.005 },
 ];
 const PRI = ['saturn', 'bh', 'earth', 'moon', 'sun', 'jupiter', 'mars', 'venus', 'mercury', 'uranus', 'neptune', 'titan'];
-const RING = /* glsl */`
+export const RING = /* glsl */`
 float ringTau(float r,float k){
   float n=mix(1.,.75+.5*vnoise(vec3(r*160.,1.3,.7)),k),n2=mix(1.,.8+.4*vnoise(vec3(r*45.,4.,2.)),k);
   float c=smoothstep(1.235,1.30,r)*(1.-smoothstep(1.52,1.53,r))*(.10+.12*smoothstep(1.24,1.52,r))*n;
@@ -25,7 +26,7 @@ float ringTau(float r,float k){
   float a=smoothstep(2.025,2.032,r)*(1.-smoothstep(2.262,2.27,r))*.52*mix(1.,n,.3)*(1.-.9*k*(smoothstep(2.209,2.212,r)-smoothstep(2.217,2.22,r)));
   float f=exp(-pow((r-2.326)/.004,2.))*.25*k;
   return clamp(c+b+cd+a+f,0.,1.);}`;
-const SAT_F = /* glsl */`precision highp float;varying vec3 vP;uniform vec3 uSunO;${NOISE}${RING}
+export const SAT_F = /* glsl */`precision highp float;varying vec3 vP;uniform vec3 uSunO;${NOISE}${RING}
 void main(){vec3 p=normalize(vP);vec3 N=normalize(vec3(p.x,p.y/${FLAT},p.z));vec3 P=vec3(p.x,p.y*${FLAT},p.z);
   float lat=asin(clamp(p.y,-1.,1.));float w=fbm3(vec3(p.x*3.,p.y*14.,p.z*3.))-.5;
   float b=sin(lat*22.+w*2.2)*.5+.5,b2=sin(lat*7.+1.)*.5+.5;
@@ -34,7 +35,7 @@ void main(){vec3 p=normalize(vP);vec3 N=normalize(vec3(p.x,p.y/${FLAT},p.z));vec
   float mu=dot(N,uSunO);float lit=pow(max(mu,0.),.75)*smoothstep(-.02,.1,mu);
   float sh=0.;if(uSunO.y*P.y<0.){float t=-P.y/uSunO.y;sh=ringTau(length(P.xz+uSunO.xz*t),1.);}
   gl_FragColor=vec4(c*lit*(1.-.88*sh)*1.02,1.);}`;
-const RING_F = /* glsl */`precision highp float;varying vec2 vXY;uniform vec3 uSunO;uniform float uCamY;${NOISE}${RING}
+export const RING_F = /* glsl */`precision highp float;varying vec2 vXY;uniform vec3 uSunO;uniform float uCamY;${NOISE}${RING}
 void main(){float r=length(vXY);float k=clamp(1.-fwidth(r)*110.,0.,1.);float tau=ringTau(r,k);if(tau<.004)discard;
   vec3 alb=mix(vec3(.56,.49,.41),vec3(.99,.94,.83),smoothstep(.1,.8,tau));
   vec3 P=vec3(vXY.x,0.,-vXY.y);vec3 Sq=normalize(vec3(uSunO.x,uSunO.y/${FLAT},uSunO.z));float bq=dot(P,Sq),disc=bq*bq-(dot(P,P)-1.);
@@ -42,13 +43,13 @@ void main(){float r=length(vXY);float k=clamp(1.-fwidth(r)*110.,0.,1.);float tau
   bool lit=uSunO.y*uCamY>0.;
   vec3 col=lit?alb*(.35+.65*tau)*.95:alb*(4.*tau*(1.-tau)*.32+.02);
   gl_FragColor=vec4(col*(1.-.97*shadow),tau);}`;
-const BALL_F = /* glsl */`precision highp float;varying vec3 vN,vP;uniform vec3 uSun,uCol;uniform float uKind;${NOISE}
+export const BALL_F = /* glsl */`precision highp float;varying vec3 vN,vP;uniform vec3 uSun,uCol;uniform float uKind;${NOISE}
 void main(){vec3 N=normalize(vN);float mu=dot(N,uSun);vec3 p=normalize(vP);vec3 c=uCol;
   if(uKind>.5&&uKind<1.5){float land=smoothstep(.5,.56,fbm(p*2.2+4.));c=mix(vec3(.05,.16,.42),vec3(.25,.33,.16),land);c=mix(c,vec3(.9),smoothstep(.8,.95,abs(p.y)));c=mix(c,vec3(.95),smoothstep(.5,.75,fbm(p*4.+9.))*.8);}
   else if(uKind>1.5&&uKind<2.5){c*=.75+.5*fbm(p*5.);c*=1.-.35*smoothstep(.52,.6,fbm3(p*1.7+2.));}
   else if(uKind>2.5){c*=.82+.25*sin(p.y*18.+fbm3(p*4.)*2.);}
   gl_FragColor=vec4(c*pow(max(mu,0.),.8)*smoothstep(-.02,.08,mu)*1.2,1.);}`;
-const BALL_V = 'varying vec3 vN,vP;void main(){vP=position;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}';
+export const BALL_V = 'varying vec3 vN,vP;void main(){vP=position;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}';
 
 export function start() {
   let R, tE, tPass, dE, moonLost;

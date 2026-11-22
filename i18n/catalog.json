@@ -72,39 +72,45 @@
  "Et si un trou noir délogeait Saturne ?": {
   "at": [
    "app.js:18",
-   "ev_saturn.js:109"
+   "ev_saturn.js:110"
+  ]
+ },
+ "Et si un trou noir emportait le Soleil ?": {
+  "at": [
+   "app.js:19",
+   "ev_rogue.js:72"
   ]
  },
  "Événements cosmiques": {
   "at": [
-   "app.js:21"
+   "app.js:22"
   ]
  },
  "La version {0} est disponible (vous avez la {1}).": {
   "at": [
-   "app.js:37"
+   "app.js:38"
   ],
   "args": "v, VERSION"
  },
  "La télécharger": {
   "at": [
-   "app.js:37"
+   "app.js:38"
   ]
  },
  "Ne plus vérifier": {
   "at": [
-   "app.js:37"
+   "app.js:38"
   ]
  },
  "Menu": {
   "at": [
-   "app.js:53",
+   "app.js:54",
    "kit.js:157"
   ]
  },
  "Retour au menu": {
   "at": [
-   "app.js:53"
+   "app.js:54"
   ]
  },
  "Notre voisine": {
@@ -249,7 +255,8 @@
  "Scénario": {
   "at": [
    "ev_andromeda.js:28",
-   "ev_saturn.js:114"
+   "ev_rogue.js:77",
+   "ev_saturn.js:115"
   ]
  },
  "Collision frontale (scénario classique)": {
@@ -393,8 +400,8 @@
  "Depuis la Terre": {
   "at": [
    "ev_betelgeuse.js:25",
-   "ev_saturn.js:112",
-   "ev_sun.js:30"
+   "ev_rogue.js:76",
+   "ev_saturn.js:113"
   ]
  },
  "Près de l’étoile": {
@@ -1702,7 +1709,7 @@
  "Mars": {
   "at": [
    "ev_phobos.js:41",
-   "ev_saturn.js:14",
+   "ev_saturn.js:15",
    "ev_sun.js:18"
   ]
  },
@@ -1790,380 +1797,658 @@
   ],
   "args": "CH.filter(c => c.t < t).length, CH.length"
  },
+ "Un rendez-vous connu d’avance": {
+  "at": [
+   "ev_rogue.js:32"
+  ]
+ },
+ "Un trou noir de 4,1 masses solaires ne se cache pas longtemps : des années avant son arrivée, les planètes extérieures dévient déjà. On sait où il passera, et quand. On ne peut rien y faire : il pèse quatre fois le Soleil.": {
+  "at": [
+   "ev_rogue.js:32"
+  ]
+ },
+ "L’entrée": {
+  "at": [
+   "ev_rogue.js:33"
+  ]
+ },
+ "Il arrive à 118 km/s, vingt-cinq fois la distance Terre-Soleil par an. De l’orbite de Neptune à celle de Jupiter, il lui faut un an. Vu de la Terre, rien : une sphère noire de 24 km.": {
+  "at": [
+   "ev_rogue.js:33"
+  ]
+ },
+ "Le passage": {
+  "at": [
+   "ev_rogue.js:34",
+   "ev_saturn.js:75"
+  ]
+ },
+ "Il coupe le plan des planètes à l’intérieur de l’orbite de Mars et passe à 138 millions de km du Soleil, moins que la distance Terre-Soleil. Pendant quelques semaines, c’est lui, et non le Soleil, l’astre le plus lourd du voisinage.": {
+  "at": [
+   "ev_rogue.js:34"
+  ]
+ },
+ "Le Soleil arraché": {
+  "at": [
+   "ev_rogue.js:35"
+  ]
+ },
+ "Le Soleil est tiré vers le trou noir et repart à 50 km/s, dans une direction nouvelle. Les planètes ne le suivent que si elles sont assez près de lui pour encaisser le même coup : Mercure et Vénus restent, sur des orbites déformées. Mars, frôlé de près, est chassé à 70 km/s.": {
+  "at": [
+   "ev_rogue.js:35"
+  ]
+ },
+ "La Terre lâchée": {
+  "at": [
+   "ev_rogue.js:37"
+  ]
+ },
+ "Le trou noir est passé à 77 millions de km de la Terre. Elle n’est plus liée au Soleil : elle s’en éloigne à près de 40 km/s, et la Lune part avec elle.": {
+  "at": [
+   "ev_rogue.js:37"
+  ]
+ },
+ "Les géantes orphelines": {
+  "at": [
+   "ev_rogue.js:38",
+   "ev_rogue.js:43",
+   "ev_rogue.js:57"
+  ]
+ },
+ "Jupiter, Saturne, Uranus et Neptune sont trop loin pour suivre. Le Soleil s’en va sans elles : elles continuent sur leur lancée, sans étoile. Quatre planètes errantes de plus dans la Galaxie.": {
+  "at": [
+   "ev_rogue.js:38",
+   "ev_rogue.js:43"
+  ]
+ },
+ "Un an plus tard": {
+  "at": [
+   "ev_rogue.js:39"
+  ]
+ },
+ "La Terre est à la distance où se trouvait Saturne. Le Soleil n’est plus qu’une étoile très brillante, qui lui donne 1 % de sa lumière d’avant. La température d’équilibre approche −190 °C : les océans gèlent en surface et, à terme, l’air lui-même se condense.": {
+  "at": [
+   "ev_rogue.js:39"
+  ]
+ },
+ "Dans le noir": {
+  "at": [
+   "ev_rogue.js:40"
+  ]
+ },
+ "La Terre et la Lune dérivent ensemble entre les étoiles. La Lune tourne toujours autour d’elle, mais plus rien ne l’éclaire. La chaleur interne de la planète, elle, continue : sous la glace, le fond des océans reste liquide.": {
+  "at": [
+   "ev_rogue.js:40"
+  ]
+ },
+ "La Terre suit": {
+  "at": [
+   "ev_rogue.js:42"
+  ]
+ },
+ "Le trou noir est passé à 135 millions de km de la Terre, presque aussi près que du Soleil : les deux ont reçu à peu près le même coup. La Terre reste liée au Soleil, et la Lune à la Terre.": {
+  "at": [
+   "ev_rogue.js:42"
+  ]
+ },
+ "Une autre année": {
+  "at": [
+   "ev_rogue.js:44"
+  ]
+ },
+ "La nouvelle orbite va de 0,77 à 1,47 UA, inclinée de 50° sur l’ancien plan, et l’année dure 433 jours. Au plus près, la Terre reçoit 70 % de lumière en plus ; au plus loin, moitié moins.": {
+  "at": [
+   "ev_rogue.js:44"
+  ]
+ },
+ "Un système réduit": {
+  "at": [
+   "ev_rogue.js:45",
+   "ev_rogue.js:50"
+  ]
+ },
+ "Il reste trois planètes autour du Soleil : Mercure, Vénus et la Terre. Les orbites de Mercure et de Vénus se croisent désormais ; à long terme, rien ne garantit que ce trio soit stable.": {
+  "at": [
+   "ev_rogue.js:45",
+   "ev_rogue.js:50"
+  ]
+ },
+ "La Terre suit, mal": {
+  "at": [
+   "ev_rogue.js:47"
+  ]
+ },
+ "Le trou noir est passé loin de la Terre, à 235 millions de km, mais près du Soleil. Le Soleil a été déplacé sous elle : la Terre reste liée, sur une orbite qui plonge vers lui.": {
+  "at": [
+   "ev_rogue.js:47"
+  ]
+ },
+ "La Lune perdue": {
+  "at": [
+   "ev_rogue.js:48"
+  ]
+ },
+ "Si près du Soleil, la Terre ne peut plus retenir un satellite aussi lointain que la Lune. Elle s’échappe et devient une planète à part entière.": {
+  "at": [
+   "ev_rogue.js:48"
+  ]
+ },
+ "Une année de 237 jours": {
+  "at": [
+   "ev_rogue.js:49"
+  ]
+ },
+ "La Terre passe maintenant de 1,27 UA à 0,23 UA du Soleil, plus près que Mercure aujourd’hui. Au plus près, elle reçoit dix-neuf fois la lumière actuelle : la température d’équilibre dépasse 250 °C.": {
+  "at": [
+   "ev_rogue.js:49"
+  ]
+ },
+ "Ce que le calcul dit, et ne dit pas": {
+  "at": [
+   "ev_rogue.js:52"
+  ]
+ },
+ "Climat, marées, séismes : rien de cela n’est simulé. Mais la gravité seule suffit à montrer que tout dépend de l’endroit où se trouve la Terre le jour du passage : changez de scénario, vous changez son sort.": {
+  "at": [
+   "ev_rogue.js:52"
+  ]
+ },
+ "Le trou noir arrive": {
+  "at": [
+   "ev_rogue.js:55",
+   "ev_saturn.js:92"
+  ]
+ },
+ "Le passage près du Soleil": {
+  "at": [
+   "ev_rogue.js:55"
+  ]
+ },
+ "Le Soleil est arraché": {
+  "at": [
+   "ev_rogue.js:56"
+  ]
+ },
+ "Qui suit le Soleil ?": {
+  "at": [
+   "ev_rogue.js:56"
+  ]
+ },
+ "Le Soleil vu de la Terre, un an après": {
+  "at": [
+   "ev_rogue.js:57"
+  ]
+ },
+ "Dix ans plus tard": {
+  "at": [
+   "ev_rogue.js:58"
+  ]
+ },
+ "Autour du Soleil, trente ans plus tard": {
+  "at": [
+   "ev_rogue.js:58"
+  ]
+ },
+ "Trente ans plus tard": {
+  "at": [
+   "ev_rogue.js:59"
+  ]
+ },
+ "Le trou noir, de près": {
+  "at": [
+   "ev_rogue.js:59",
+   "ev_saturn.js:96"
+  ]
+ },
+ "Fiction · le Soleil arraché par un trou noir": {
+  "at": [
+   "ev_rogue.js:72"
+  ]
+ },
+ "Fiction · un scénario calculé, pas une prévision": {
+  "at": [
+   "ev_rogue.js:72",
+   "ev_saturn.js:110"
+  ]
+ },
+ "Ceci est une fiction. Un trou noir de 4,1 masses solaires, 24 km de diamètre, traverse le système solaire à 118 km/s et passe à l’intérieur de l’orbite de Mars. Il pèse quatre fois le Soleil : c’est le Soleil qui est arraché à ses planètes. Le sort de la Terre dépend de l’endroit où elle se trouve ce jour-là. Tout est calculé : la gravité de onze corps, pas à pas.": {
+  "at": [
+   "ev_rogue.js:73"
+  ]
+ },
+ "Point de départ inspiré de la trilogie « Black Hole » de Jason Thomson (un trou noir traverse le système solaire en 2199) ; la masse, la vitesse et la trajectoire retenues ici, et tout le calcul, sont ceux de cette scène, pas ceux du roman. Aucun trou noir n’est connu près du Soleil : le plus proche repéré à ce jour est à plus de mille années-lumière. Orbites de départ simplifiées : circulaires, dans un même plan. Marées, climat et collisions ne sont pas simulés.": {
+  "at": [
+   "ev_rogue.js:74"
+  ]
+ },
+ "Le système solaire": {
+  "at": [
+   "ev_rogue.js:75",
+   "ev_saturn.js:113",
+   "ev_sun.js:30"
+  ]
+ },
+ "En suivant le Soleil": {
+  "at": [
+   "ev_rogue.js:75"
+  ]
+ },
+ "Près du trou noir": {
+  "at": [
+   "ev_rogue.js:76",
+   "ev_saturn.js:114"
+  ]
+ },
+ "La Terre est éjectée, avec la Lune": {
+  "at": [
+   "ev_rogue.js:77"
+  ]
+ },
+ "La Terre reste, sur une année de 433 jours": {
+  "at": [
+   "ev_rogue.js:77"
+  ]
+ },
+ "La Terre reste, mais plonge vers le Soleil": {
+  "at": [
+   "ev_rogue.js:77"
+  ]
+ },
+ "Fiction. Tailles et distances réelles : les planètes sont des points tant qu’on ne s’en approche pas. « Depuis la Terre » : vue du centre de la Terre, sans atmosphère.": {
+  "at": [
+   "ev_rogue.js:82",
+   "ev_saturn.js:120"
+  ]
+ },
+ "avant le passage du trou noir près du Soleil": {
+  "at": [
+   "ev_rogue.js:84"
+  ]
+ },
+ "après le passage du trou noir · fiction": {
+  "at": [
+   "ev_rogue.js:84",
+   "ev_saturn.js:122"
+  ]
+ },
+ "Trou noir : <b>4,1 masses solaires</b> · horizon de <b>24 km</b> de diamètre": {
+  "at": [
+   "ev_rogue.js:87"
+  ]
+ },
+ "Vitesse : {0} km/s · à {1} du Soleil": {
+  "at": [
+   "ev_rogue.js:87",
+   "ev_saturn.js:127"
+  ],
+  "args": "fr(len(vb) * KMS, 1), fmtDist(len(sub(bh, su, _c)) * AU)"
+ },
+ "Il n’émet rien. Seule la déformation des étoiles derrière lui le trahit.": {
+  "at": [
+   "ev_rogue.js:87",
+   "ev_saturn.js:127"
+  ]
+ },
+ "Trou noir : à <b>{0}</b> du Soleil · {1} km/s": {
+  "at": [
+   "ev_rogue.js:91"
+  ],
+  "args": "fmtDist(len(sub(bh, su, _c)) * AU), fr(len(vb) * KMS, 0)"
+ },
+ "Soleil : emporté à <b>{0} km/s</b>, à {1} de son point de départ": {
+  "at": [
+   "ev_rogue.js:91"
+  ],
+  "args": "fr(len(vs) * KMS, 0), fmtDist(len(su) * AU)"
+ },
+ "Terre : à <b>{0} UA</b> du Soleil · lumière reçue : <b>{1} %</b> de celle d’aujourd’hui": {
+  "at": [
+   "ev_rogue.js:92"
+  ],
+  "args": "fr(r, r < 10 ? 2 : 0), fr(light, light < 10 ? 1 : 0)"
+ },
+ "Soleil dans notre ciel : <b>{0}°</b> (aujourd’hui 0,53°) · température d’équilibre : <b>{1} °C</b> (aujourd’hui −18 °C, sans effet de serre)": {
+  "at": [
+   "ev_rogue.js:93"
+  ],
+  "args": "fr(ang, ang < 0.1 ? 3 : 2), fr(teq, 0)"
+ },
+ "Orbite de la Terre : <b>{0} à {1} UA</b> · année de <b>{2} jours</b>": {
+  "at": [
+   "ev_rogue.js:94",
+   "ev_saturn.js:134"
+  ],
+  "args": "fr(eE.q, 2), fr(eE.Q, 2), fr(eE.P * 365.25, 0)"
+ },
+ "La Terre n’est plus liée au Soleil": {
+  "at": [
+   "ev_rogue.js:94"
+  ]
+ },
+ "Lune : à <b>{0}</b> de la Terre": {
+  "at": [
+   "ev_rogue.js:95",
+   "ev_saturn.js:135"
+  ],
+  "args": "fmtDist(dm * AU)"
+ },
+ "Lune : à <b>{0}</b> de la Terre, arrachée": {
+  "at": [
+   "ev_rogue.js:95",
+   "ev_saturn.js:135"
+  ],
+  "args": "fmtDist(dm * AU)"
+ },
+ "Planètes encore liées au Soleil : <b>{0}</b> sur 8": {
+  "at": [
+   "ev_rogue.js:96"
+  ],
+  "args": "n"
+ },
  "Mercure": {
-  "at": [
-   "ev_saturn.js:13",
-   "ev_sun.js:18"
-  ]
- },
- "Vénus": {
-  "at": [
-   "ev_saturn.js:13",
-   "ev_sun.js:18"
-  ]
- },
- "Terre": {
   "at": [
    "ev_saturn.js:14",
    "ev_sun.js:18"
   ]
  },
+ "Vénus": {
+  "at": [
+   "ev_saturn.js:14",
+   "ev_sun.js:18"
+  ]
+ },
+ "Terre": {
+  "at": [
+   "ev_saturn.js:15",
+   "ev_sun.js:18"
+  ]
+ },
  "Lune": {
   "at": [
-   "ev_saturn.js:14"
+   "ev_saturn.js:15"
   ]
  },
  "Jupiter": {
   "at": [
-   "ev_saturn.js:15",
+   "ev_saturn.js:16",
    "ev_sl9.js:56",
    "ev_sun.js:18"
   ]
  },
  "Saturne": {
   "at": [
-   "ev_saturn.js:15"
+   "ev_saturn.js:16"
   ]
  },
  "Uranus": {
   "at": [
-   "ev_saturn.js:15"
+   "ev_saturn.js:16"
   ]
  },
  "Neptune": {
   "at": [
-   "ev_saturn.js:16"
+   "ev_saturn.js:17"
   ]
  },
  "Titan": {
   "at": [
-   "ev_saturn.js:16"
+   "ev_saturn.js:17"
   ]
  },
  "Un visiteur invisible": {
   "at": [
-   "ev_saturn.js:73"
+   "ev_saturn.js:74"
   ]
  },
  "Un trou noir ne brille pas. Celui-ci pèse cinquante fois Jupiter dans une sphère de 300 mètres : aucun télescope ne le verrait arriver. On ne le détecterait que par ses effets, des planètes lointaines qui dévient de leur route.": {
-  "at": [
-   "ev_saturn.js:73"
-  ]
- },
- "Le passage": {
   "at": [
    "ev_saturn.js:74"
   ]
  },
  "Il traverse le plan des planètes juste derrière Saturne, à 44 millions de km. Pendant quelques semaines, sa gravité tire la planète en arrière, contre le sens de sa course.": {
   "at": [
-   "ev_saturn.js:74"
+   "ev_saturn.js:75"
   ]
  },
  "Saturne freinée": {
   "at": [
-   "ev_saturn.js:75"
+   "ev_saturn.js:76"
   ]
  },
  "Saturne avançait à 9,6 km/s, la vitesse qui la maintenait à 9,5 UA du Soleil. Il lui en reste moins de la moitié. Trop lente pour tenir son orbite, elle commence à tomber vers le Soleil.": {
   "at": [
-   "ev_saturn.js:75"
+   "ev_saturn.js:76"
   ]
  },
  "Le trou noir repart": {
   "at": [
-   "ev_saturn.js:76"
+   "ev_saturn.js:77"
   ]
  },
  "Il passe à 4,9 UA du Soleil et ressort par le sud du système solaire, sans rien toucher. Il a aussi bousculé Uranus et Neptune ; Jupiter et les planètes intérieures n’ont presque rien senti.": {
   "at": [
-   "ev_saturn.js:76"
+   "ev_saturn.js:77"
   ]
  },
  "La chute": {
   "at": [
-   "ev_saturn.js:77"
+   "ev_saturn.js:78"
   ]
  },
  "La nouvelle orbite de Saturne est une ellipse très allongée : 10 UA au plus loin, 0,94 UA au plus près, un tour en 12,8 ans. Elle coupe désormais les orbites de Jupiter, de Mars et de la Terre.": {
   "at": [
-   "ev_saturn.js:77"
+   "ev_saturn.js:78"
   ]
  },
  "Une nouvelle lumière": {
   "at": [
-   "ev_saturn.js:78"
+   "ev_saturn.js:79"
   ]
  },
  "Saturne approche à 15 km/s. Elle dépasse Vénus en éclat, puis montre à l’œil nu un disque et des anneaux. Si près du Soleil, la glace de ses anneaux commence à se sublimer.": {
   "at": [
-   "ev_saturn.js:78"
+   "ev_saturn.js:79"
   ]
  },
  "Au plus près": {
   "at": [
-   "ev_saturn.js:79",
    "ev_saturn.js:80",
+   "ev_saturn.js:81",
    "ev_tde.js:70"
   ]
  },
  "Saturne passe à 2,2 millions de km, moins de six fois la distance de la Lune. Son disque couvre six fois la largeur de la pleine Lune, ses anneaux quatorze. Sa marée sur la Terre vaut plus de quarante fois celle de la Lune.": {
   "at": [
-   "ev_saturn.js:79"
+   "ev_saturn.js:80"
   ]
  },
  "Saturne passe à 5 millions de km, treize fois la distance de la Lune. Son disque est deux fois et demie plus large que la pleine Lune, ses anneaux six fois. Sa marée sur la Terre dépasse trois fois celle de la Lune.": {
   "at": [
-   "ev_saturn.js:80"
+   "ev_saturn.js:81"
   ]
  },
  "La Lune arrachée": {
   "at": [
-   "ev_saturn.js:81"
+   "ev_saturn.js:82"
   ]
  },
  "Avec Saturne si proche, la zone où la Terre peut retenir un satellite se réduit à 330 000 km. La Lune, à 384 000 km, se retrouve dehors : elle quitte notre orbite et devient une petite planète qui tourne seule autour du Soleil.": {
   "at": [
-   "ev_saturn.js:81"
+   "ev_saturn.js:82"
   ]
  },
  "La Lune reste": {
   "at": [
-   "ev_saturn.js:82"
+   "ev_saturn.js:83"
   ]
  },
  "À cette distance, la Terre peut encore retenir un satellite jusqu’à 770 000 km : la Lune, à 384 000 km, reste avec nous, sur une orbite plus allongée qu’avant.": {
   "at": [
-   "ev_saturn.js:82"
+   "ev_saturn.js:83"
   ]
  },
  "La Terre déviée": {
   "at": [
-   "ev_saturn.js:83",
-   "ev_saturn.js:84"
+   "ev_saturn.js:84",
+   "ev_saturn.js:85"
   ]
  },
  "Saturne pèse 95 Terres : en quelques jours, elle a changé notre orbite. La Terre s’éloigne maintenant jusqu’à 1,34 UA du Soleil, où elle reçoit 45 % de lumière en moins, et l’année dure 464 jours.": {
   "at": [
-   "ev_saturn.js:83"
+   "ev_saturn.js:84"
   ]
  },
  "Saturne pèse 95 Terres : en quelques jours, elle a changé notre orbite. La Terre s’éloigne maintenant jusqu’à 1,14 UA du Soleil, où elle reçoit 24 % de lumière en moins, et l’année dure 407 jours.": {
   "at": [
-   "ev_saturn.js:84"
+   "ev_saturn.js:85"
   ]
  },
  "Ce que le calcul ne dit pas": {
   "at": [
-   "ev_saturn.js:85"
+   "ev_saturn.js:86"
   ]
  },
  "Marées géantes, séismes, climat : rien de cela n’est simulé. La scène ne calcule que la gravité entre onze points, et c’est déjà elle qui décide de la longueur de l’année et du sort de la Lune.": {
   "at": [
-   "ev_saturn.js:85"
+   "ev_saturn.js:86"
   ]
  },
  "Saturne revient": {
   "at": [
-   "ev_saturn.js:86",
-   "ev_saturn.js:95"
+   "ev_saturn.js:87",
+   "ev_saturn.js:96"
   ]
  },
  "Saturne repasse au plus près du Soleil à peu près tous les treize ans. La Terre n’est pas au rendez-vous à chaque fois, mais les deux orbites continuent de se croiser.": {
   "at": [
-   "ev_saturn.js:86"
+   "ev_saturn.js:87"
   ]
  },
  "Jupiter s’en mêle": {
   "at": [
-   "ev_saturn.js:87"
+   "ev_saturn.js:88"
   ]
  },
  "Saturne passe près de Jupiter, qui dévie sa route. Chaque rencontre modifie les orbites, et une différence infime au départ donne une suite tout autre : au-delà de quelques décennies, ce calcul n’est plus qu’une histoire possible parmi d’autres.": {
   "at": [
-   "ev_saturn.js:87"
-  ]
- },
- "Le trou noir arrive": {
-  "at": [
-   "ev_saturn.js:91"
+   "ev_saturn.js:88"
   ]
  },
  "Le passage près de Saturne": {
   "at": [
-   "ev_saturn.js:91"
+   "ev_saturn.js:92"
   ]
  },
  "Saturne commence à tomber": {
   "at": [
-   "ev_saturn.js:92"
+   "ev_saturn.js:93"
   ]
  },
  "Saturne croise l’orbite de Jupiter": {
   "at": [
-   "ev_saturn.js:92"
+   "ev_saturn.js:93"
   ]
  },
  "Saturne grandit dans notre ciel": {
   "at": [
-   "ev_saturn.js:93"
+   "ev_saturn.js:94"
   ]
  },
  "Au plus près, vu de la Terre": {
   "at": [
-   "ev_saturn.js:93"
+   "ev_saturn.js:94"
   ]
  },
  "La Terre vue de Saturne": {
   "at": [
-   "ev_saturn.js:94"
+   "ev_saturn.js:95"
   ]
  },
  "La nouvelle orbite de la Terre": {
   "at": [
-   "ev_saturn.js:94"
+   "ev_saturn.js:95"
   ]
  },
  "Quarante ans plus tard": {
   "at": [
-   "ev_saturn.js:95"
-  ]
- },
- "Le trou noir, de près": {
-  "at": [
-   "ev_saturn.js:95"
+   "ev_saturn.js:96"
   ]
  },
  "Fiction · Saturne délogée par un trou noir": {
   "at": [
-   "ev_saturn.js:109"
-  ]
- },
- "Fiction · un scénario calculé, pas une prévision": {
-  "at": [
-   "ev_saturn.js:109"
+   "ev_saturn.js:110"
   ]
  },
  "Ceci est une fiction. Un trou noir de 0,05 masse solaire, moins de 300 mètres de diamètre, traverse le système solaire à 40 km/s et frôle Saturne. La planète perd plus de la moitié de sa vitesse, tombe vers le Soleil et vient croiser l’orbite de la Terre. À partir de ce point de départ, tout est calculé : la gravité de onze corps, pas à pas.": {
   "at": [
-   "ev_saturn.js:110"
+   "ev_saturn.js:111"
   ]
  },
  "Aucun trou noir de cette masse n’a jamais été observé (il devrait être « primordial », né juste après le Big Bang : une hypothèse), et aucun objet de ce genre n’est connu près du Soleil. Sa trajectoire et la position de la Terre ont été choisies pour que Saturne passe près de nous. Orbites de départ simplifiées : circulaires, dans un même plan. Les anneaux et Titan sont supposés intacts ; marées, climat et collisions ne sont pas simulés.": {
   "at": [
-   "ev_saturn.js:111"
-  ]
- },
- "Le système solaire": {
-  "at": [
-   "ev_saturn.js:112",
-   "ev_sun.js:30"
+   "ev_saturn.js:112"
   ]
  },
  "Près de Saturne": {
   "at": [
-   "ev_saturn.js:113"
-  ]
- },
- "Près du trou noir": {
-  "at": [
-   "ev_saturn.js:113"
+   "ev_saturn.js:114"
   ]
  },
  "Saturne passe à 2 millions de km : la Lune est arrachée": {
   "at": [
-   "ev_saturn.js:114"
+   "ev_saturn.js:115"
   ]
  },
  "Saturne passe à 5 millions de km : la Lune reste": {
   "at": [
-   "ev_saturn.js:114"
-  ]
- },
- "Fiction. Tailles et distances réelles : les planètes sont des points tant qu’on ne s’en approche pas. « Depuis la Terre » : vue du centre de la Terre, sans atmosphère.": {
-  "at": [
-   "ev_saturn.js:119"
+   "ev_saturn.js:115"
   ]
  },
  "avant le passage du trou noir près de Saturne": {
   "at": [
-   "ev_saturn.js:121"
-  ]
- },
- "après le passage du trou noir · fiction": {
-  "at": [
-   "ev_saturn.js:121"
+   "ev_saturn.js:122"
   ]
  },
  "Trou noir : <b>0,05 masse solaire</b>, 52 fois Jupiter · horizon de <b>295 m</b> de diamètre": {
   "at": [
-   "ev_saturn.js:126"
-  ]
- },
- "Vitesse : {0} km/s · à {1} du Soleil": {
-  "at": [
-   "ev_saturn.js:126"
-  ],
-  "args": "fr(len(vb) * KMS, 1), fmtDist(len(bh) * AU)"
- },
- "Il n’émet rien. Seule la déformation des étoiles derrière lui le trahit.": {
-  "at": [
-   "ev_saturn.js:126"
+   "ev_saturn.js:127"
   ]
  },
  "Trou noir : à <b>{0}</b> de Saturne": {
   "at": [
-   "ev_saturn.js:130"
+   "ev_saturn.js:131"
   ],
   "args": "fmtDist(len(sub(bh, sa, _c)) * AU)"
  },
  "Saturne : {0} km/s": {
   "at": [
-   "ev_saturn.js:130"
+   "ev_saturn.js:131"
   ],
   "args": "fr(vs, 1)"
  },
  "Saturne : à <b>{0} UA</b> du Soleil · {1} km/s": {
   "at": [
-   "ev_saturn.js:130"
+   "ev_saturn.js:131"
   ],
   "args": "fr(rs, 2), fr(vs, 1)"
  },
  "Saturne vue de la Terre : à <b>{0}</b> · disque de <b>{1}°</b> (Lune : 0,52°)": {
   "at": [
-   "ev_saturn.js:131"
+   "ev_saturn.js:132"
   ],
   "args": "fmtDist(d * AU), fr(ang, ang < 0.1 ? 3 : 2)"
  },
  "Éclat : magnitude <b>{0}</b> (pleine Lune : −12,7 ; ordre de grandeur, sans les anneaux)": {
   "at": [
-   "ev_saturn.js:132"
+   "ev_saturn.js:133"
   ],
   "args": "fr(mag, 1)"
  },
  "marée : <b>{0} ×</b> celle de la Lune": {
   "at": [
-   "ev_saturn.js:132"
-  ],
-  "args": "fr(tide, tide < 10 ? 1 : 0)"
- },
- "Orbite de la Terre : <b>{0} à {1} UA</b> · année de <b>{2} jours</b>": {
-  "at": [
    "ev_saturn.js:133"
   ],
-  "args": "fr(elE.q, 2), fr(elE.Q, 2), fr(elE.P * 365.25, 0)"
- },
- "Lune : à <b>{0}</b> de la Terre": {
-  "at": [
-   "ev_saturn.js:134"
-  ],
-  "args": "fmtDist(dm * AU)"
- },
- "Lune : à <b>{0}</b> de la Terre, arrachée": {
-  "at": [
-   "ev_saturn.js:134"
-  ],
-  "args": "fmtDist(dm * AU)"
+  "args": "fr(tide, tide < 10 ? 1 : 0)"
  },
  "Shoemaker-Levy 9 · la comète contre Jupiter": {
   "at": [
@@ -4375,7 +4660,7 @@
   ],
   "args": "nx.label"
  },
- "Simulateur · treize événements · vues libres": {
+ "Simulateur · quatorze événements · vues libres": {
   "at": [
    "page:menu"
   ]
@@ -4546,6 +4831,16 @@
   ]
  },
  "Le système solaire · depuis la Terre · près de Saturne · près du trou noir": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Un trou noir de quatre masses solaires passe à l’intérieur de l’orbite de Mars. Le Soleil est arraché à 50 km/s, les planètes géantes restent sur place, sans étoile. La Terre suit, plonge vers le Soleil ou part dans le noir avec la Lune : trois scénarios calculés.": {
+  "at": [
+   "page:menu"
+  ]
+ },
+ "Le système solaire · en suivant le Soleil · depuis la Terre · près du trou noir": {
   "at": [
    "page:menu"
   ]

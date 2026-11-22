@@ -9,7 +9,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const exe = process.env.CHROME || ['/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find(p => fs.existsSync(p));
 const b = await puppeteer.launch({ executablePath: exe, headless: 'new', protocolTimeout: 900000, args: ['--no-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--window-size=640,360'] });
 const url = 'file://' + path.join(ROOT, 'dist/pseudo.html');
-const all = ['', 'chicxulub', 'theia', 'kilonova', 'cygnus', 'tde', 'fall', 'chelyabinsk', 'sl9', 'phobos', 'sun', 'andromeda', 'betelgeuse', 'saturn'], evs = process.argv.length > 2 ? process.argv.slice(2) : all;
+const all = ['', 'chicxulub', 'theia', 'kilonova', 'cygnus', 'tde', 'fall', 'chelyabinsk', 'sl9', 'phobos', 'sun', 'andromeda', 'betelgeuse', 'saturn', 'rogue'], evs = process.argv.length > 2 ? process.argv.slice(2) : all;
 const leftovers = new Map();
 for (const ev of evs) {
   const p = await b.newPage(); await p.setViewport({ width: 640, height: 360 });
