@@ -41,8 +41,10 @@ export function start() {
     },
     distLabel: (d) => TF('{0} millions d’a.-l.', [fr(d * KLY / 1000, d < 300 ? 2 : 1)]), bloom: [0.4, 0.5, 0.9], exposure: 1.05,
     update(t, dt, k) {
+      // Le calcul avance par pas fixes et ne dépasse jamais l'horloge : il reste en retard de moins d'un pas. On ne revient à un point
+      // de reprise que si l'horloge a vraiment reculé (saut dans la chronologie), jamais pour un écart d'arrondi.
       const target = t / G; if (target < sim.t - 1e-6) sim.rewind(target);
-      let n = 0; while (sim.t < target - sim.DT * 0.5 && n < 9) { sim.step(); n++; }
+      let n = 0; while (sim.t + sim.DT <= target + 1e-9 && n < 9) { sim.step(); n++; }
       held = sim.t < target - sim.DT * 2; k.hold = held;
       if (n) geo.attributes.position.needsUpdate = true;
       pA.fromArray(sim.c[0].p); pB.fromArray(sim.c[1].p); sunP.fromArray(sim.pos, sim.sunIdx * 3);

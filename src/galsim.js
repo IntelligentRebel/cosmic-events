@@ -54,5 +54,5 @@ export function createSim(vtan, seed = 5, FR = 2.6, FD = 70, NS = 1) {
   return { N, pos, vel, col, host, c, sunIdx, DT, get t() { return t; }, step,
     sep: () => Math.hypot(c[1].p[0] - c[0].p[0], c[1].p[1] - c[0].p[1], c[1].p[2] - c[0].p[2]),
     relv: () => Math.hypot(c[1].v[0] - c[0].v[0], c[1].v[1] - c[0].v[1], c[1].v[2] - c[0].v[2]) / KMS,
-    rewind(target) { let b = cps[0]; for (const s of cps) if (s.t <= target + 1e-9) b = s; pos.set(b.pos); vel.set(b.vel); for (let i = 0; i < 2; i++) { c[i].p = b.c[i].p.slice(); c[i].v = b.c[i].v.slice(); } t = b.t; } };
+    rewind(target) { if (typeof window !== 'undefined') window.__rw = (window.__rw || 0) + 1; let b = cps[0]; for (const s of cps) if (s.t <= target + 1e-9) b = s; pos.set(b.pos); vel.set(b.vel); for (let i = 0; i < 2; i++) { c[i].p = b.c[i].p.slice(); c[i].v = b.c[i].v.slice(); } t = b.t; } };
 }
