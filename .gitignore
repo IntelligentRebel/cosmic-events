@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 dist/
 # captures et fichiers de travail
 tests/shots/
