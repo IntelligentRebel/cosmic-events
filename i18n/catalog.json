@@ -2949,7 +2949,7 @@
    "ev_saturn.js:96"
   ]
  },
- "Fiction · le Soleil arraché par un trou noir": {
+ "Fiction inspirée de la trilogie « Black Hole » de Jason Thomson": {
   "at": [
    "ev_rogue.js:72"
   ]
@@ -2965,7 +2965,12 @@
    "ev_rogue.js:73"
   ]
  },
- "Point de départ inspiré de la trilogie « Black Hole » de Jason Thomson (un trou noir traverse le système solaire en 2199) ; la masse, la vitesse et la trajectoire retenues ici, et tout le calcul, sont ceux de cette scène, pas ceux du roman. Aucun trou noir n’est connu près du Soleil : le plus proche repéré à ce jour est à plus de mille années-lumière. Orbites de départ simplifiées : circulaires, dans un même plan. Marées, climat et collisions ne sont pas simulés.": {
+ "Le point de départ vient de la trilogie « Black Hole » de Jason Thomson (The Approach, The Reconfiguration, The Reckoning) : le 9 novembre 2199, un trou noir traverse le système solaire et passe à l’intérieur de l’orbite de Mars. Seule cette prémisse est reprise. La masse, la vitesse et la trajectoire retenues ici, tout le calcul et ce qui arrive aux planètes sont ceux de cette scène, pas ceux des romans.": {
+  "at": [
+   "ev_rogue.js:74"
+  ]
+ },
+ "Aucun trou noir n’est connu près du Soleil : le plus proche repéré à ce jour est à plus de mille années-lumière. Orbites de départ simplifiées : circulaires, dans un même plan. Marées, climat et collisions ne sont pas simulés.": {
   "at": [
    "ev_rogue.js:74"
   ]
@@ -5762,7 +5767,7 @@
    "page:menu"
   ]
  },
- "Un trou noir de quatre masses solaires passe à l’intérieur de l’orbite de Mars. Le Soleil est arraché à 50 km/s, les planètes géantes restent sur place, sans étoile. La Terre suit, plonge vers le Soleil ou part dans le noir avec la Lune : trois scénarios calculés.": {
+ "Un trou noir de quatre masses solaires passe à l’intérieur de l’orbite de Mars. Le Soleil est arraché à 50 km/s, les planètes géantes restent sur place, sans étoile. La Terre suit, plonge vers le Soleil ou part dans le noir avec la Lune : trois scénarios calculés. Le point de départ vient des romans de Jason Thomson, où un trou noir traverse le système solaire en 2199 ; le calcul est celui de ce simulateur.": {
   "at": [
    "page:menu"
   ]
