@@ -1,6 +1,7 @@
 // Une explosion nucléaire aérienne vue à la distance de votre choix, et l'essai Starfish Prime (1962) vu d'Honolulu.
 // Tout vient de lois d'échelle publiées (Glasstone & Dolan, The Effects of Nuclear Weapons, 1977 ; résumées dans la Nuclear Weapons FAQ de C. Sublette, section 5).
 import { createKit, T, TF, THREE, fmtDur, fr, clamp, sstep, lerp, NOISE, makeBackdrop, BACKDROP_VERT, makeGround, makeStars, makeGlow } from './kit.js';
+import { makeTown } from './nuke_town.js';
 const C0 = 340, P0 = 14.7, KPA = 6.895, RE = 7.4e6; // son (m/s), pression normale (psi), rayon terrestre « optique » (m)
 // ---- lois d'échelle (W en kilotonnes)
 const PSI = [[20, 0.28], [10, 0.45], [5, 0.71], [3, 1.0], [1, 2.2]]; // surpression (psi) → distance (km) pour 1 kt, ×W^0.33
@@ -24,7 +25,7 @@ const cloudTop = (W) => 13700 * Math.pow(W / 21, 0.204);                        
 const radR = (W) => 700 * Math.pow(W, 0.19);                                                        // 1 000 rads (m)
 const shockU = (p) => C0 * Math.sqrt(1 + 6 * p / (7 * P0)), windU = (p) => 5 * p / (7 * P0) * C0 / Math.sqrt(1 + 6 * p / (7 * P0));
 const lum = (t, W) => { if (t <= 0) return 0; const x = t / tMax(W), m = 2 * x * x / (1 + x * x * x * x); return Math.max(Math.exp(-5 * t / tMin(W)), m); };
-const PRESETS = { hiro: [15, 3], naga: [21, 3], bravo: [15000, 60], tsar: [50000, 150] };
+const PRESETS = { annie: [16, 2.3], hiro: [15, 3], naga: [21, 3], bravo: [15000, 60], tsar: [50000, 150] };
 
 const SHAPE = /* glsl */`uniform float uT,uL,uHot,uCloud,uCapR,uCapH,uStemR,uStemH;uniform vec3 uCam,uSun,uC;
 ${NOISE}
@@ -76,7 +77,7 @@ void main(){vec3 d=normalize(uBasis*vec3(vUv.x*uTan*uAspect,vUv.y*uTan,-1.));vec
   gl_FragColor=vec4(col,1.);}`;
 
 export function start() {
-  let POIS, W = 15, D = 3000, star = false, H, TM, RFB, tArr, pObs, Q, HT, tab = [], shake = 0, prevT = -1e9, time = 0;
+  let POIS, W = 16, D = 2300, star = false, H, TM, RFB, tArr, pObs, Q, HT, tab = [], shake = 0, prevT = -1e9, time = 0;
   const yStr = (w) => w < 1000 ? TF('{0} kt', [fr(w, w < 10 ? 1 : 0)]) : TF('{0} Mt', [fr(w / 1000, w < 10000 ? 1 : 0)]);
   const dStr = (m) => m < 10000 ? TF('{0} km', [fr(m / 1000, 1)]) : TF('{0} km', [fr(m / 1000, 0)]);
   const tArrAt = (g) => { if (g <= tab[0][0]) return tab[0][1] * g / tab[0][0]; for (let i = 1; i < tab.length; i++) if (g <= tab[i][0]) return lerp(tab[i - 1][1], tab[i][1], (g - tab[i - 1][0]) / (tab[i][0] - tab[i - 1][0])); return tab[tab.length - 1][1]; };
@@ -98,6 +99,7 @@ export function start() {
     { t: 90, title: T('Jusqu’en Nouvelle-Zélande'), text: T('L’aurore est vue jusqu’en Nouvelle-Zélande, à l’autre bout du Pacifique. Aux îles Kwajalein, une lueur rouge persiste au moins 90 minutes.') },
     { t: 300, title: T('Une ceinture de radiations en plus'), text: T('Les électrons piégés forment une ceinture de radiations artificielle. Trois satellites tombent en panne presque aussitôt, au moins six autres dans les mois suivants, dont Telstar 1.') },
   ] : [
+    kit && kit.opt.preset === 'annie' ? { t: -6, title: T('L’essai Annie'), text: T('Le 17 mars 1953, dans le Nevada, deux maisons en bois sont construites exprès à 1,1 km et à 2,3 km d’une bombe de 16 kilotonnes. La première est détruite ; la seconde reste debout, vitres et portes arrachées, l’intérieur ravagé. Vous êtes à la distance de la seconde, dans une ville générique. La vraie bombe était sur une tour de 90 mètres ; ici elle explose plus haut, ce qui porte le souffle un peu plus loin.') } :
     { t: -6, title: T('Avant'), text: TF('Une bombe de {0} va exploser à {1} de vous, à {2} d’altitude. Tout ce qui suit découle de lois d’échelle publiées après les essais atmosphériques.', [yStr(W), dStr(D), dStr(H)]) },
     { t: 0, title: T('L’éclair'), text: T('La lumière arrive en même temps que l’explosion. Un premier éclair, très bref, puis une seconde impulsion bien plus longue qui porte presque toute la chaleur. Regarder dans cette direction suffit à éblouir, parfois à brûler la rétine.') },
     { t: TM, title: T('La chaleur'), text: TF('À cette distance, vous recevez {0} cal/cm² en quelques secondes : {1}.', [fr(Q, Q < 10 ? 1 : 0), burnLabel()]) },
@@ -112,15 +114,15 @@ export function start() {
   const GZ = new THREE.Vector3(), CL = new THREE.Vector3(), YOU = new THREE.Vector3(0, 2, 0), SF = new THREE.Vector3(-0.92, 0, 0.39).normalize().multiplyScalar(Math.cos(10 * Math.PI / 180)).setY(Math.sin(10 * Math.PI / 180)), SFP = SF.clone().multiplyScalar(1e6), tmp = new THREE.Vector3();
   const ringP = [0, 1, 2, 3].map(() => new THREE.Vector3());
   const apply = (k) => { recompute(); setMoments(); k.setJournal(J()); layout(); };
-  const kit = createKit({
+  let kit; kit = createKit({
     title: T('Explosion nucléaire · à la distance de votre choix'), kicker: T('Essais atmosphériques, 1945-1962 · lois d’échelle publiées'), h1: T('Une explosion nucléaire, à votre distance'),
-    intro: T('Choisissez la puissance, de 1 kilotonne à 100 mégatonnes, et la distance à laquelle vous vous trouvez. La scène calcule ce qui vous atteint, et quand : l’éclair, la chaleur, puis le souffle, bien plus tard. Quatre bombes réelles servent de repères, ainsi que l’essai Starfish Prime, tiré dans l’espace en 1962.'),
-    warn: T('Explosion en l’air, par temps clair, sur terrain plat et dégagé : dans une ville, les immeubles font écran à la chaleur et le relief change le souffle. Chaleur, surpression et délais suivent les lois d’échelle de Glasstone et Dolan (1977), fiables à dix ou vingt pour cent près jusqu’à 20 mégatonnes ; au-delà, elles sous-estiment la chaleur (pour la Tsar Bomba, des brûlures au troisième degré étaient possibles à 100 km). L’allure de la boule de feu et du nuage est une mise en scène. Hiroshima et Nagasaki ont fait à elles deux environ 200 000 morts avant la fin de 1945.'),
+    intro: T('Choisissez la puissance, de 1 kilotonne à 100 mégatonnes, et la distance à laquelle vous vous trouvez. La scène calcule ce qui vous atteint, et quand : l’éclair, la chaleur, puis le souffle, bien plus tard. Une petite ville vous entoure, une plus grande entoure le point zéro. Cinq explosions réelles servent de repères, ainsi que l’essai Starfish Prime, tiré dans l’espace en 1962.'),
+    warn: T('Explosion en l’air, par temps clair, sur terrain plat et dégagé : dans une ville, les immeubles font écran à la chaleur et le relief change le souffle. Chaleur, surpression et délais suivent les lois d’échelle de Glasstone et Dolan (1977), fiables à dix ou vingt pour cent près jusqu’à 20 mégatonnes ; au-delà, elles sous-estiment la chaleur (pour la Tsar Bomba, des brûlures au troisième degré étaient possibles à 100 km). L’allure de la boule de feu et du nuage est une mise en scène. Hiroshima et Nagasaki ont fait à elles deux environ 200 000 morts avant la fin de 1945.') + ' ' + T('Les deux villes sont un décor : chaque bâtiment et chaque arbre réagit aux valeurs calculées à sa propre distance, avec les seuils de dégâts publiés (vitres vers 7 kPa, maison en bois détruite à 34 kPa, béton armé au-delà de 100 kPa), mais la façon dont ils tombent, la poussière et les départs de feu sont une mise en scène. Il n’y a volontairement personne dans les rues.'),
     views: [{ id: 'ground', label: T('À votre distance'), cam: { mode: 'look', fov: 60, yaw: 0, pitch: 0.12 } }, { id: 'over', label: T('Vue d’ensemble'), cam: { mode: 'orbit', dist: 12000, min: 300, max: 3e6, pitch: 0.28, yaw: 0.9, fov: 50 } }],
     options: [
-      { id: 'preset', type: 'select', label: T('Repère'), value: 'hiro', choices: [['hiro', T('Hiroshima, 1945 · 15 kt')], ['naga', T('Nagasaki, 1945 · 21 kt')], ['bravo', T('Castle Bravo, 1954 · 15 Mt')], ['tsar', T('Tsar Bomba, 1961 · 50 Mt')], ['star', T('Starfish Prime, 1962 · 1,4 Mt à 400 km d’altitude')], ['free', T('Réglage libre')]] },
-      { id: 'y', type: 'range', label: T('Puissance'), min: 0, max: 5, step: 0.01, value: Math.log10(15), fmt: (v) => yStr(Math.pow(10, v)) },
-      { id: 'd', type: 'range', label: T('Votre distance'), min: -0.3, max: 2.7, step: 0.01, value: Math.log10(3), fmt: (v) => dStr(Math.pow(10, v) * 1000) },
+      { id: 'preset', type: 'select', label: T('Repère'), value: 'annie', choices: [['annie', T('Essai Annie, 1953 · 16 kt, maison témoin à 2,3 km')], ['hiro', T('Hiroshima, 1945 · 15 kt')], ['naga', T('Nagasaki, 1945 · 21 kt')], ['bravo', T('Castle Bravo, 1954 · 15 Mt')], ['tsar', T('Tsar Bomba, 1961 · 50 Mt')], ['star', T('Starfish Prime, 1962 · 1,4 Mt à 400 km d’altitude')], ['free', T('Réglage libre')]] },
+      { id: 'y', type: 'range', label: T('Puissance'), min: 0, max: 5, step: 0.01, value: Math.log10(16), fmt: (v) => yStr(Math.pow(10, v)) },
+      { id: 'd', type: 'range', label: T('Votre distance'), min: -0.3, max: 2.7, step: 0.01, value: Math.log10(2.3), fmt: (v) => dStr(Math.pow(10, v) * 1000) },
     ],
     onOpt: (id, v, k) => {
       if (id === 'preset') { star = v === 'star'; if (star && k.view === 'ground') k.setFocus(POIS.sf); else k.setFocus(null); const p = PRESETS[v]; if (p) { W = p[0]; D = p[1] * 1000; k.setOpt('y', Math.log10(W)); k.setOpt('d', Math.log10(D / 1000)); } if (v !== 'free') { k.sim.t = -5; k.sim.paused = false; } }
@@ -143,6 +145,7 @@ export function start() {
         + '<br>' + TF('Chaleur reçue : <b>{0} cal/cm²</b> · {1}', [fr(Q, Q < 10 ? 1 : 0), burnLabel()]) + (suns > 0.05 ? ' · ' + TF('au pic, <b>{0} fois</b> le plein soleil', [fr(suns, suns < 10 ? 1 : 0)]) : '')
         + '<br>' + (t < tArr ? TF('Souffle : arrive dans <b>{0}</b> · {1} kPa, vent à {2} km/h', [fmtDur(tArr - Math.max(t, 0)), fr(kpa, kpa < 10 ? 1 : 0), fr(windU(pObs) * 3.6, 0)]) : TF('Souffle passé : <b>{0} kPa</b>, vent à {1} km/h · {2}', [fr(kpa, kpa < 10 ? 1 : 0), fr(windU(pObs) * 3.6, 0), blastLabel()]))
         + '<br>' + TF('Boule de feu : <b>{0}</b> de diamètre · sommet du nuage vers {1} km (ordre de grandeur)', [dStr(Math.max(dia, 0)), fr(HT / 1000, 0)])
+        + '<br>' + TF('Autour de vous · maisons effondrées : <b>{0}</b> sur {1} · arbres abattus : {2} sur {3}', TOWN.stats(t).map(n => fr(n, 0)))
         + (D < radR(W) * 1.3 ? '<br>' + T('Rayonnement initial : dose mortelle à cette distance') : '');
     },
     distLabel: (d) => dStr(d), bloom: [0.55, 0.6, 0.9], exposure: 0.95,
@@ -151,7 +154,7 @@ export function start() {
       time += dt; const u = sky.material.uniforms, gnd = k.view === 'ground';
       u.uMode.value = star ? 1 : 0; u.uT.value = time; fire.visible = false; stars.visible = star; lamps.visible = star; rings.visible = !star && !gnd; dustRing.visible = false; mark.visible = !star && !gnd; scorch.visible = !star && t > 0;
       if (star) {
-        u.uSfT.value = t; u.uFlash.value = 0; u.uDust.value = 0; const fl = t > 0 ? Math.exp(-t / 0.35) : 0, glowA = t > 0 ? Math.exp(-t / 200) * (1 - Math.exp(-t / 15)) : 0;
+        TOWN.update({ visible: false }); u.uSfT.value = t; u.uFlash.value = 0; u.uDust.value = 0; const fl = t > 0 ? Math.exp(-t / 0.35) : 0, glowA = t > 0 ? Math.exp(-t / 200) * (1 - Math.exp(-t / 15)) : 0;
         G.u.uSunCol.value.setRGB(0.05 + 3 * fl + 0.5 * glowA, 0.05 + 3 * fl + 0.12 * glowA, 0.08 + 2.8 * fl + 0.1 * glowA); G.u.uAmb.value.setRGB(0.012, 0.014, 0.02); G.u.uSun.value.copy(SF); G.u.uHaze.value.setRGB(0.006, 0.008, 0.015);
         lampList.forEach((l, i) => { l.material.opacity = t > 0.05 && l.userData.dead ? 0 : 0.95; });
         k.renderer.toneMappingExposure = 1.1; if (gnd) { k.cam.pos.set(0, 1.7, 0); k.cam.near = 0.3; k.cam.far = 4e6; } else { k.cam.target.set(0, 0, 0); k.cam.near = k.cam.dist * 0.02; k.cam.far = 4e6; }
@@ -163,7 +166,7 @@ export function start() {
       const cloud = sstep(5, 22, x);
       CL.set(0, zc, -D); GZ.set(0, 0, -D); u.uC.value.set(0, zc - drop, -D); u.uCapR.value = capR; u.uCapH.value = capR * lerp(1, 0.36, clamp(sstep(8, 400, x) * rise + 0.25 * cloud, 0, 1));
       u.uStemH.value = zc; u.uStemR.value = t > 4 * TM ? capR * 0.28 * sstep(4, 30, x) : 0; u.uCloud.value = cloud; u.uHot.value = sstep(1.2, 60, x); u.uL.value = t > 0 ? L * 3 + 0.4 * Math.exp(-x / 6) : 0;
-      fire.visible = t > 0; { const rb = Math.max(capR * 1.5, zc * 0.5 + u.uCapH.value * 1.5) * 1.25 * 1.02; fire.position.set(0, zc - drop - zc * 0.5, -D); fire.scale.setScalar(rb); }
+      fire.visible = t > 0; fire.renderOrder = gnd ? 0.5 : 4; { const rb = Math.max(capR * 1.5, zc * 0.5 + u.uCapH.value * 1.5) * 1.25 * 1.02; fire.position.set(0, zc - drop - zc * 0.5, -D); fire.scale.setScalar(rb); }
       // lumière reçue : éclairement relatif au plein soleil
       const suns = t > 0 ? Q / (2.22 * TM) / 0.0327 * Math.min(L, 1) : 0, flash = 1 - Math.exp(-suns / 40);
       u.uFlash.value = gnd ? flash : 0; G.u.uSun.value.copy(sunDir); G.u.uSunCol.value.setRGB(1.05 + 6 * flash, 0.98 + 5.6 * flash, 0.86 + 5 * flash); G.u.uAmb.value.setRGB(0.3, 0.33, 0.4); G.u.uHaze.value.setRGB(0.64, 0.71, 0.84);
@@ -174,10 +177,11 @@ export function start() {
       scorch.position.set(0, 0.6 - drop, -D); scorch.scale.setScalar(Math.min(rPsi(20, W) * 1000, Math.max(rs, 1))); 
       const since = t - tArr; if (prevT < tArr && t >= tArr && dt > 0 && pObs > 0.05) { shake = clamp(pObs / 2, 0.15, 3); boom(k, clamp(pObs / 3, 0.15, 1)); }
       prevT = t; shake *= Math.exp(-dt * 0.9); u.uDust.value = gnd && since > 0 ? clamp(pObs / 4, 0, 1) * Math.exp(-since / 25) : 0;
+      { const xx = Math.max(t, 0) / TM; TOWN.update({ visible: true, t, time, D, drop, fire: u.uC.value, sun: sunDir, flash, flashGZ: t > 0 ? 1 - Math.exp(-L * 3) : 0, th: xx * xx / (1.5 + xx * xx), dust: u.uDust.value, rs: t >= tab[tab.length - 1][1] ? 1e9 : rs, pObs, tArr, gnd }); }
       if (gnd) { k.cam.pos.set(0, 1.7, 0); if (shake > 0.01) k.cam.pos.add(tmp.set(Math.sin(time * 61), Math.sin(time * 47), Math.sin(time * 53)).multiplyScalar(0.06 * shake)); k.cam.near = 0.3; k.cam.far = 4e6; }
       else { if (!k.focusId) k.cam.target.set(0, Math.min(zc * 0.45, HT * 0.4), -D); k.cam.near = Math.max(1, k.cam.dist * 0.01); k.cam.far = 6e6; }
     },
-    post: (t, k) => { const u = sky.material.uniforms, c = k.camera; u.uBasis.value.setFromMatrix4(c.matrixWorld); u.uTan.value = Math.tan(c.fov * Math.PI / 360); u.uAspect.value = c.aspect; u.uCam.value.copy(c.position); G.u.uCamL.value.copy(c.position); G.u.uFade.value = k.view === 'ground' ? 0.005 : 1 / (Math.max(k.cam.dist, 2000) * 4 * 0.004); },
+    post: (t, k) => { const u = sky.material.uniforms, c = k.camera; u.uBasis.value.setFromMatrix4(c.matrixWorld); u.uTan.value = Math.tan(c.fov * Math.PI / 360); u.uAspect.value = c.aspect; u.uCam.value.copy(c.position); G.u.uCamL.value.copy(c.position); G.u.uFade.value = k.view === 'ground' ? 0.005 : 1 / (Math.max(k.cam.dist, 2000) * 4 * 0.004); TOWN.U.uHz.value = 0.004 * G.u.uFade.value; TOWN.post(c, k.renderer.domElement.height); },
   });
   const frame = (k) => { k.cam.dist = clamp(star ? 3000 : Math.max(HT * 2.2, rPsi(1, W) * 2600, D * 1.6), 300, 3e6); };
   const S = kit.scene, sunDir = new THREE.Vector3(0.45, 0.6, 0.66).normalize();
@@ -187,6 +191,7 @@ export function start() {
   const fire = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), new THREE.ShaderMaterial({ uniforms: U, side: THREE.BackSide, depthTest: false, depthWrite: false, transparent: true, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
     vertexShader: 'varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}', fragmentShader: CLOUD })); fire.renderOrder = 4; fire.frustumCulled = false;
   S.add(sky, fire); const stars = kit.addSky(makeStars({ n: 5000, seed: 62, band: 0.35, bright: 0.9 })); stars.visible = false;
+  const TOWN = makeTown(S), fxAt = (g) => { const sl = Math.hypot(g, H) / 1000; return [tArrAt(g), psiAt(sl, W), fluence(sl, W)]; };
   const G = makeGround({ a: 0x8f9a62, b: 0x6d7748, scale: 0.004, fade: 0.00001 }); S.add(G.mesh);
   // repères de la vue d'ensemble : cercles de dégâts, position de l'observateur
   const rings = new THREE.Group(); S.add(rings); const circ = []; for (const col of [0xff5a3c, 0xffb347, 0xffe28a, 0xff3fa0]) { const pts = []; for (let j = 0; j <= 256; j++) pts.push(new THREE.Vector3(Math.cos(j / 128 * Math.PI), 0, Math.sin(j / 128 * Math.PI))); const l = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.9, depthTest: false })); l.renderOrder = 5; rings.add(l); circ.push(l); }
@@ -198,7 +203,7 @@ export function start() {
     const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 7, 6), new THREE.MeshBasicMaterial({ color: 0x15161a })); pole.position.set(g.position.x, 3.5, g.position.z); lamps.add(pole); }
   function layout() {
     const rr = [rPsi(20, W), rPsi(5, W), rPsi(1, W), burnR(W)[0]].map(x => x * 1000); circ.forEach((l, i) => { l.scale.setScalar(rr[i]); l.position.set(0, 2, -D); }); ringP.forEach((p, i) => { const a = 0.6 + i * 0.5; p.set(Math.cos(a) * rr[i], 2, -D + Math.sin(a) * rr[i]); });
-    G.setSize(Math.max(8e4, D * 6, rr[2] * 8)); mark.position.copy(YOU); mark.scale.setScalar(Math.max(60, D * 0.03)); lamps.visible = star;
+    G.setSize(Math.max(8e4, D * 6, rr[2] * 8)); mark.position.copy(YOU); mark.scale.setScalar(Math.max(60, D * 0.03)); lamps.visible = star; TOWN.layout(D, fxAt);
   }
   function boom(k, g0) {
     if (!k.ac || !k.soundOn) return; const ac = k.ac, now = ac.currentTime, len = ac.sampleRate * 4, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1);

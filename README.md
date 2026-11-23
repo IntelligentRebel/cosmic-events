@@ -21,7 +21,7 @@ Each scene has a clock you can slow down ten thousand times or speed up to a hun
 | 4.5 billion years ago | **Theia, the birth of the Moon** | A Mars-sized planet hits the proto-Earth; the Earth melts, a debris disc forms, the Moon assembles and recedes, up to today. |
 | From 4.5 billion years ago to today | **The young Moon** | Just after the impact the Moon is fifteen times closer: a huge glowing disc over an Earth that spins in five hours. Tides push it away and lengthen the day, epoch by epoch. |
 | 66 million years ago | **Last morning of the Cretaceous** | The Chicxulub impact at the distance you choose: fireball, earthquake, ejecta rain, blast wave, tsunami. |
-| 1945 to 1962 | **A nuclear explosion, at the distance you choose** | Pick the yield (1 kiloton to 100 megatons) and where you stand: flash, heat, then the blast wave, from the published scaling laws. Hiroshima, Tsar Bomba, and Starfish Prime, detonated in space above the Pacific. |
+| 1945 to 1962 | **A nuclear explosion, at the distance you choose** | Pick the yield (1 kiloton to 100 megatons) and where you stand: flash, heat, then the blast wave, from the published scaling laws. A small town around you and a city around ground zero take the damage building by building: windows, roofs, walls, trees. The 1953 Annie test houses, Hiroshima, Tsar Bomba, and Starfish Prime, detonated in space above the Pacific. |
 | July 1994 | **The comet against Jupiter** | The fragments of Shoemaker-Levy 9, at their real impact times, plumes and scars. |
 | 15 February 2013 | **The morning of Chelyabinsk** | An 18-metre asteroid brighter than the Sun, shadows sweeping the streets, and the blast wave two and a half minutes later. |
 | 17 August 2017 | **The forge of gold** | The neutron-star merger GW170817: the last hundred seconds, the gravitational wave you can hear, the jet, the kilonova. |
@@ -46,7 +46,7 @@ Each scene has a clock you can slow down ten thousand times or speed up to a hun
 - **Points of interest**: a “Center on…” list in every scene (the comet, the impact site, a planet…) and arrows at the edge of the screen that show where they are; one tick hides them.
 - **Time under control**: keys 1 to 9, a slider, and an automatic tempo that slows down at the key moments. A list of moments jumps straight to them.
 - **Honest about what is known**: each scene says what is measured or computed (trajectories, timings, orders of magnitude, the bending of light around the black holes) and what is an artistic rendering. Key figures come from published sources, listed below.
-- **One file, offline**: the whole simulator is a single HTML file of about 3.6 MB, with no server, no account and no network access. Almost everything is procedural: the only image files are NASA's maps of Mars and Phobos and a NASA photograph of the Moon.
+- **One file, offline**: the whole simulator is a single HTML file of about 3.7 MB, with no server, no account and no network access. Almost everything is procedural: the only image files are NASA's maps of Mars and Phobos and a NASA photograph of the Moon.
 - **11 languages**: English, 简体中文, Deutsch, Español, Português, Русский, Français, 日本語, 한국어, Italiano, Polski. It follows your browser's language (English otherwise); you can change it from the menu.
 
 ## Use it
@@ -75,7 +75,7 @@ The source is written in French (variables, comments, texts). Every displayed te
 - Chelyabinsk: [Wikipedia summary of the published measurements](https://en.wikipedia.org/wiki/Chelyabinsk_meteor)
 - Shoemaker-Levy 9: [NASA NSSDC impact times](https://nssdc.gsfc.nasa.gov/planetary/impact.html)
 - Phobos: Black & Mittal 2015, [summary](https://www.sciencedaily.com/releases/2015/11/151124143506.htm); maps of Mars and Phobos: [NASA 3D Resources](https://github.com/nasa/NASA-3D-Resources)
-- Nuclear explosion: scaling laws of Glasstone & Dolan, *The Effects of Nuclear Weapons* (1977), as summarised in Carey Sublette's Nuclear Weapons FAQ, section 5; [Starfish Prime](https://en.wikipedia.org/wiki/Starfish_Prime)
+- Nuclear explosion: scaling laws of Glasstone & Dolan, *The Effects of Nuclear Weapons* (1977), as summarised in Carey Sublette's Nuclear Weapons FAQ, section 5; the two test houses of [Upshot-Knothole Annie](https://en.wikipedia.org/wiki/Upshot-Knothole_Annie) (1953); [Starfish Prime](https://en.wikipedia.org/wiki/Starfish_Prime)
 - DART: [Thomas et al. 2023](https://doi.org/10.1038/s41586-023-05805-2) (period change), Cheng et al. 2023 (momentum transfer), Dotto et al. 2024 (LICIACube)
 - The young Moon: lunar laser ranging (3.8 cm per year), tidal rhythmites (Williams 2000 for 620 million years ago; a 3.2-billion-year-old deposit for the 13-hour day); the Moon photograph comes from [NASA 3D Resources](https://github.com/nasa/NASA-3D-Resources)
 - The two black-hole flyby scenes are fiction: no published source describes them. The starting points are chosen, the rest is a Newtonian N-body integration (`src/nbody.js`)

@@ -10,7 +10,7 @@ for (const ev of evs) {
   const p = await b.newPage(); await p.setViewport({ width: 640, height: 360 }); const errs = [];
   p.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') errs.push(m.text().slice(0, 300)); }); p.on('pageerror', e => errs.push('PAGEERR ' + e.message));
   await p.goto(url + '#pr=0.5&lang=' + (process.env.LANG_ID || 'fr')); await new Promise(r => setTimeout(r, 400));
-  await p.click(`[data-event="${ev}"]`); await new Promise(r => setTimeout(r, 1200));
+  await p.click(`[data-event="${ev}"]`); await new Promise(r => setTimeout(r, 1500)); await p.waitForFunction(() => window.__sim && window.__sim.kit, { timeout: 120000 }); await new Promise(r => setTimeout(r, 800));
   const out = await p.evaluate(async () => {
     const s = window.__sim, k = s.kit, $ = id => document.getElementById(id), o = []; const fin = () => { const c = k.camera.position; return isFinite(c.x + c.y + c.z) && isFinite(k.sim.t); };
     o.push('titre=' + document.title.slice(0, 30) + ' hud caché=' + $('hud').classList.contains('hidden'));
@@ -27,7 +27,7 @@ for (const ev of evs) {
     o.push(`moments=${ms.length} vues=${k.cfg.views.length} vitesse="${$('speed').textContent}" ${nan || 'nombres finis'} err="${($('err').style.display === 'block' ? $('err').textContent : '')}"`);
     return o;
   });
-  const menuBack = await (async () => { const nav = p.waitForNavigation({ timeout: 8000 }).catch(() => null); await p.evaluate(() => document.getElementById('menuBtn').click()); await nav; await new Promise(r => setTimeout(r, 400)); return p.$$eval('[data-event]', e => e.length); })();
+  const menuBack = await (async () => { const nav = p.waitForNavigation({ timeout: 8000 }).catch(() => null); await p.evaluate(() => document.getElementById('menuBtn').click()); await nav; for (let i = 0; i < 20; i++) { await new Promise(r => setTimeout(r, 500)); try { const n = await p.$$eval('[data-event]', e => e.length); if (n) return n; } catch (e) { /* la page est encore en train de se recharger */ } } return 0; })();
   const ok = !errs.length && !/NaN|err="[^"]/.test(out.join(' ')) && menuBack === 17; if (!ok) bad++;
   console.log((ok ? 'OK  ' : 'FAIL') + ' ' + ev + '\n   ' + out.join('\n   ') + '\n   retour menu: ' + menuBack + ' cartes' + (errs.length ? '\n   ERR ' + [...new Set(errs)].slice(0, 6).join('\n   ERR ') : ''));
   await p.close();
